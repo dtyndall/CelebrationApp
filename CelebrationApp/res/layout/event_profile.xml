@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/event_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="24dp"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/event_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/event_name"
+        android:layout_below="@+id/event_name"
+        android:layout_marginTop="70dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/event_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/event_description"
+        android:layout_alignBottom="@+id/event_description"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="38dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/author_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/event_description"
+        android:layout_alignRight="@+id/event_category"
+        android:layout_marginRight="24dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/event_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/event_description"
+        android:layout_below="@+id/event_description"
+        android:layout_marginTop="42dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/event_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/event_location"
+        android:layout_alignBottom="@+id/event_location"
+        android:layout_alignLeft="@+id/event_category"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/event_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/event_location"
+        android:layout_below="@+id/event_location"
+        android:layout_marginTop="47dp"
+        android:text="TextView" />
+
+
+</RelativeLayout>
