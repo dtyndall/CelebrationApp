@@ -6,12 +6,16 @@ import java.util.HashMap;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 public class Days extends Activity {
 
@@ -35,12 +39,16 @@ public class Days extends Activity {
 					HashMap eventDate = (HashMap) (dayListView.
 							getItemAtPosition(position));
 					String event_date =  eventDate.get("date").toString();
-					
+					Bundle extras = new Bundle();
 					Intent daySchedule = new Intent(Days.this,
 							Schedule.class);
-					daySchedule.putExtra("event_date", event_date);
-
+					
+					extras.putString("event_date", event_date);
+					extras.putString("parent","1");
+					
+					daySchedule.putExtras(extras);
 					startActivity(daySchedule);
+					String testing = "haha maybe?";
 				}
 			});
 
@@ -51,4 +59,30 @@ public class Days extends Activity {
 			dayListView.setAdapter(adapter);
 
 	}
+	
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.mainmenu, menu);
+	    return true;
+	  }
+	//NEW
+	  @Override
+	  public boolean onOptionsItemSelected(MenuItem item) {
+	    switch (item.getItemId()) {
+	    case R.id.action_refresh:
+	    	Intent home = new Intent(Days.this,
+					MainActivity.class);
+			startActivity(home);
+	      break;
+	    case R.id.action_settings:
+	      Toast.makeText(this, "Action Settings selected", Toast.LENGTH_SHORT)
+	          .show();
+	      break;
+
+	    default:
+	      break;
+	    }
+
+	    return true;
+	  }
 }

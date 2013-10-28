@@ -14,60 +14,69 @@
         android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
+    <Button
+        android:id="@+id/storeFavorite"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="50dp"
+        android:layout_marginRight="50dp"
+        android:text="Favorite" />
+
     <TextView
         android:id="@+id/event_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/event_name"
         android:layout_below="@+id/event_name"
-        android:layout_marginTop="70dp"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/event_category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/event_description"
-        android:layout_alignBottom="@+id/event_description"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="38dp"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/author_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/event_description"
-        android:layout_alignRight="@+id/event_category"
-        android:layout_marginRight="24dp"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/event_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/event_description"
-        android:layout_below="@+id/event_description"
-        android:layout_marginTop="42dp"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/event_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/event_location"
-        android:layout_alignBottom="@+id/event_location"
-        android:layout_alignLeft="@+id/event_category"
+        android:layout_marginTop="143dp"
         android:text="TextView" />
 
     <TextView
         android:id="@+id/event_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/event_location"
-        android:layout_below="@+id/event_location"
-        android:layout_marginTop="47dp"
+        android:layout_alignBaseline="@+id/event_location"
+        android:layout_alignBottom="@+id/event_location"
+        android:layout_alignLeft="@+id/event_description"
         android:text="TextView" />
 
+    <TextView
+        android:id="@+id/author_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/event_category"
+        android:layout_alignBottom="@+id/event_category"
+        android:layout_alignLeft="@+id/event_name"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/event_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/event_category"
+        android:layout_below="@+id/event_category"
+        android:layout_marginTop="28dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/event_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/event_date"
+        android:layout_below="@+id/event_date"
+        android:layout_marginTop="19dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/event_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/storeFavorite"
+        android:layout_below="@+id/event_name"
+        android:layout_marginTop="22dp"
+        android:text="TextView" />
 
 </RelativeLayout>

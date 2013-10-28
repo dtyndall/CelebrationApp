@@ -9,62 +9,21 @@
     tools:context=".MainActivity" >
 
     <Button
-        android:id="@+id/viewEvents"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="81dp"
-        android:layout_marginTop="39dp"
-        android:text="View Event Profile" />
-
-    <TextView
-        android:id="@+id/testInternet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/viewRoom"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="26dp"
-        android:text="TextView" />
-
-    <Button
-        android:id="@+id/makeFavorite"
+        android:id="@+id/showPersonalSchedule"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/testInternet"
-        android:layout_below="@+id/viewEvents"
-        android:layout_marginLeft="27dp"
-        android:layout_marginTop="87dp"
-        android:text="makeFavorite" />
-
-    <TextView
-        android:id="@+id/showFavorite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/makeFavorite"
-        android:layout_below="@+id/makeFavorite"
-        android:layout_marginTop="54dp"
-        android:text="TextView" />
-
-    <Button
-        android:id="@+id/viewFavorite"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/showFavorite"
-        android:layout_marginLeft="22dp"
-        android:layout_toRightOf="@+id/makeFavorite"
-        android:text="view Favorite" />
+        android:layout_marginTop="19dp"
+        android:text="Show peronsal Schedule" />
 
     <Button
         android:id="@+id/showSchedule"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/viewFavorite"
-        android:layout_below="@+id/viewEvents"
-        android:layout_marginTop="19dp"
-        android:text="Show Schedule" />
+        android:layout_alignRight="@+id/showPersonalSchedule"
+        android:layout_below="@+id/showPersonalSchedule"
+        android:layout_marginTop="66dp"
+        android:text="Show daily Schedule" />
 
 </RelativeLayout>
