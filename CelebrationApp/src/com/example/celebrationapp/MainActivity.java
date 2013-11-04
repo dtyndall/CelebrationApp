@@ -45,7 +45,7 @@ public class MainActivity extends Activity {
 		Tabbed.setOnClickListener(new OnClickListener() {
 			public void onClick(View view) {
 				Intent eventList = new Intent(MainActivity.this,
-						ScheduleTabbed.class);
+						TabbedSchedule.class);
 				startActivity(eventList);
 			}
 		});

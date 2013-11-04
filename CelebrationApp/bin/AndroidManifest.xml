@@ -39,7 +39,7 @@
             android:name="com.example.celebrationapp.Days">
         </activity>
         <activity 
-            android:name="com.example.celebrationapp.ScheduleTabbed">
+            android:name="com.example.celebrationapp.TabbedSchedule">
         </activity>
     </application>
 
