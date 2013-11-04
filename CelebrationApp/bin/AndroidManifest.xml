@@ -9,7 +9,7 @@
     
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="11"
         android:targetSdkVersion="17" />
 
     <application
@@ -37,6 +37,9 @@
         </activity>
         <activity 
             android:name="com.example.celebrationapp.Days">
+        </activity>
+        <activity 
+            android:name="com.example.celebrationapp.ScheduleTabbed">
         </activity>
     </application>
 
