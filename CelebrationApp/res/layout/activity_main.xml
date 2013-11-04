@@ -26,4 +26,13 @@
         android:layout_marginTop="66dp"
         android:text="Show daily Schedule" />
 
+    <Button
+        android:id="@+id/scheduleTabbedButton"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/showPersonalSchedule"
+        android:layout_below="@+id/showPersonalSchedule"
+        android:text="Show schedule tabbed" />
+
 </RelativeLayout>

@@ -48,7 +48,6 @@ public class Days extends Activity {
 					
 					daySchedule.putExtras(extras);
 					startActivity(daySchedule);
-					String testing = "haha maybe?";
 				}
 			});
 

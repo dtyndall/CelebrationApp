@@ -104,19 +104,15 @@ public class Schedule extends Activity {
 		String eventDate = extras.getString("event_date");
 		
 		ArrayList<HashMap<String, String>> sessionList = dbTools.getSessions(eventDate);
-		
 		final ListView eventListView = (ListView) findViewById(R.id.eventList);
-		
 		eventListView.setOnItemClickListener(new OnItemClickListener() {
 
 				@Override
 				public void onItemClick(AdapterView<?> parent, View view,
 						int position, long id) {
-					
 					HashMap eventId = (HashMap) (eventListView.
 							getItemAtPosition(position));
 					String event_id =  eventId.get("event_id").toString();
-					System.out.println(event_id);
 					Intent eventProfile = new Intent(Schedule.this,
 							EventProfile.class);
 					eventProfile.putExtra("event_id", event_id);

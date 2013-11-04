@@ -32,13 +32,20 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 
 		getData();
-		
-		
+
 		final Button showSchedule = (Button) findViewById(R.id.showSchedule);
 		showSchedule.setOnClickListener(new OnClickListener() {
 			public void onClick(View view) {
 				Intent eventList = new Intent(MainActivity.this,
 						Days.class);
+				startActivity(eventList);
+			}
+		});
+		final Button Tabbed = (Button) findViewById(R.id.scheduleTabbedButton);
+		Tabbed.setOnClickListener(new OnClickListener() {
+			public void onClick(View view) {
+				Intent eventList = new Intent(MainActivity.this,
+						ScheduleTabbed.class);
 				startActivity(eventList);
 			}
 		});
@@ -62,8 +69,10 @@ public class MainActivity extends Activity {
 
 		if (isInternetPresent) {
 			RequestQueue queue = Volley.newRequestQueue(this);
-			final String urlEvent = "http://192.168.2.2/getAllEvents.php";
-			final String urlSession = "http://192.168.2.2/getAllSession.php";
+			final String urlEvent = "http://10.0.2.2/getAllEvents.php";
+			final String urlSession = "http://10.0.2.2/getAllSession.php";
+			final String urlConference = "http://10.0.2.2/getConference.php";
+			
 			final DBTools dbTools = new DBTools(this);
 			
 			// prepare the Request
@@ -79,6 +88,7 @@ public class MainActivity extends Activity {
 							ArrayList<HashMap<String, String>> events = jParse
 									.getParsedJson(response, "event");
 							for (HashMap<String, String> map : events) {
+
 								dbTools.insertEvent(map);
 							}
 						}
@@ -89,7 +99,27 @@ public class MainActivity extends Activity {
 
 						}
 					});
-			
+			JsonObjectRequest getConference = new JsonObjectRequest(
+					Request.Method.GET, urlConference, null,
+					new Response.Listener<JSONObject>() {
+						@Override
+						public void onResponse(JSONObject response) {
+
+							// display response
+							JSONParser jParse = new JSONParser();
+							ArrayList<HashMap<String, String>> conference = jParse
+									.getParsedJson(response, "conference");
+							for (HashMap<String, String> map : conference) {
+								dbTools.insertConference(map);
+							}
+						}
+					}, new Response.ErrorListener() {
+						@Override
+						public void onErrorResponse(VolleyError error) {
+							Log.d("Error.Response", error.toString());
+
+						}
+					});
 			JsonObjectRequest getSession = new JsonObjectRequest(
 					Request.Method.GET, urlSession, null,
 					new Response.Listener<JSONObject>() {
@@ -99,7 +129,6 @@ public class MainActivity extends Activity {
 							JSONParser jParse = new JSONParser();
 							ArrayList<HashMap<String, String>> session = jParse
 									.getParsedJson(response, "session");
-							System.out.println(session.toString());
 
 							for (HashMap<String, String> map : session) {
 								dbTools.insertSession(map);
@@ -115,6 +144,7 @@ public class MainActivity extends Activity {
 			// add it to the RequestQueue
 			queue.add(getEvent);
 			queue.add(getSession);
+			queue.add(getConference);
 		} else {
 			Toast.makeText(getApplicationContext(), "No Internet", Toast.LENGTH_SHORT).show();
 		}
