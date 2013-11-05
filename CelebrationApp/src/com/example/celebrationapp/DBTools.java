@@ -231,7 +231,28 @@ public class DBTools extends SQLiteOpenHelper{
 		}
 		return dayList;
 		
+	}
+	public ArrayList<HashMap<String, String>> getFavoriteDays() {
 		
+		ArrayList<HashMap<String, String>> dayList = new ArrayList<HashMap<String, String>>();
+		
+		String selectAllQuery = "Select DISTINCT date FROM session inner join favorite where session.sevent_id=favorite.event_id";
+		
+		SQLiteDatabase database = this.getWritableDatabase();
+		
+		Cursor cursor = database.rawQuery(selectAllQuery, null);
+		if (cursor.moveToFirst()) {
+			do {
+				
+				HashMap<String, String> daymap = new HashMap<String, String>();
+				
+				daymap.put("date", cursor.getString(0));
+				
+				dayList.add(daymap);
+			} while (cursor.moveToNext());
+			
+		}
+		return dayList;
 		
 	}
 	

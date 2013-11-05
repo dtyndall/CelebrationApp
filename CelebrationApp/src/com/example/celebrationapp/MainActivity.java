@@ -46,6 +46,7 @@ public class MainActivity extends Activity {
 			public void onClick(View view) {
 				Intent eventList = new Intent(MainActivity.this,
 						TabbedSchedule.class);
+				eventList.putExtra("parent", "1");
 				startActivity(eventList);
 			}
 		});
@@ -53,8 +54,8 @@ public class MainActivity extends Activity {
 		showPersonalSchedule.setOnClickListener(new OnClickListener() {
 			public void onClick(View view) {
 				Intent eventList = new Intent(MainActivity.this,
-						Schedule.class);
-				eventList.putExtra("parent", "home");
+						TabbedSchedule.class);
+				eventList.putExtra("parent", "personal");
 				startActivity(eventList);
 			}
 		});
