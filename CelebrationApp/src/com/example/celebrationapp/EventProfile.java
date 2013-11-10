@@ -89,7 +89,8 @@ public class EventProfile extends Activity {
 										eventList.get("event_name"),eventId, 
 										sessionList.get("event_location"),
 										sessionList.get("event_time"),
-										eventList.get("author_name"));
+										eventList.get("author_name"),
+										eventList.get("track"));
 					
 					if(message.equals("add")){
 						Toast.makeText(getApplicationContext(), "Event added to personal schedule"

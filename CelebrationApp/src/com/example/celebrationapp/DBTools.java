@@ -364,7 +364,7 @@ public class DBTools extends SQLiteOpenHelper{
 	
 	
 	public String storeFavorite(String name, String id, String location, 
-			String time, String authorName){
+			String time, String authorName, String track){
 		String selectQuery = "SELECT * FROM favorite WHERE event_id='" + id + "'";
 		
 		SQLiteDatabase database = this.getWritableDatabase();
@@ -378,6 +378,7 @@ public class DBTools extends SQLiteOpenHelper{
 			values.put("event_location", location);
 			values.put("event_time", time);
 			values.put("author_name", authorName);
+			values.put("track", track);
 			
 			database.insert("favorite", null, values);
 
@@ -522,6 +523,41 @@ public class DBTools extends SQLiteOpenHelper{
 												replace(String.valueOf(time), String.valueOf(newTime)));
 				}
 				
+				sessionArrayList.add(sessionmap);
+			} while (cursor.moveToNext());
+			
+		}
+		return sessionArrayList;
+	}
+	public ArrayList<HashMap<String, String>> getFilteredFavorite(
+			String eventDate, String filterBy) {
+		
+		ArrayList<HashMap<String, String>> sessionArrayList = new ArrayList<HashMap<String, String>>();
+		
+		String selectAllQuery = "Select * from session inner join favorite where " +
+				"session.sevent_id=favorite.event_id and date ='" + eventDate + "'ORDER BY " + filterBy + " ASC";
+		SQLiteDatabase database = this.getWritableDatabase();
+		Cursor cursor = database.rawQuery(selectAllQuery, null);
+		
+		if (cursor.moveToFirst()) {
+			do {
+				
+				HashMap<String, String> sessionmap = new HashMap<String, String>();
+				
+				sessionmap.put("event_id", cursor.getString(0));
+				sessionmap.put("event_location", cursor.getString(1));
+				sessionmap.put("event_date", cursor.getString(2));
+				sessionmap.put("event_time", cursor.getString(3));
+				sessionmap.put("event_name", cursor.getString(6));
+				sessionmap.put("author_name", cursor.getString(9));
+				sessionmap.put("track", cursor.getString(10));
+				int time = Integer.parseInt(sessionmap.get("event_time").substring(0, 2));
+				int newTime;
+				if(time > 12){
+					newTime = time - 12;
+					sessionmap.put("event_time", sessionmap.get("event_time").
+							replace(String.valueOf(time), String.valueOf(newTime)));
+				}
 				sessionArrayList.add(sessionmap);
 			} while (cursor.moveToNext());
 			

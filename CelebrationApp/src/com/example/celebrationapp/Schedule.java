@@ -41,6 +41,8 @@ public class Schedule extends Activity {
 			roomListing();
 		}else if(parent.equals("filter")){
 			filteredListing();
+		}else if(parent.equals("personalFilter")){
+			peronsalFilteredListing();
 		}
 	}
 	
@@ -80,7 +82,43 @@ public class Schedule extends Activity {
 			eventListView.setAdapter(adapter);
 		
 	}
+	
+	private void peronsalFilteredListing() {
+		Intent theIntent = getIntent();
+		Bundle extras = theIntent.getExtras();
+		System.out.println("THIS GOT CALLED");
+		String eventDate = extras.getString("event_date");
+		String filterBy = extras.getString("key");
+//		String type = extras.getString("type");
+		
+		ArrayList<HashMap<String, String>> sessionList = 
+					dbTools.getFilteredFavorite(eventDate, filterBy);
+		System.out.println(sessionList);
+		final ListView eventListView = (ListView) findViewById(R.id.eventList);
+		eventListView.setOnItemClickListener(new OnItemClickListener() {
 
+				@Override
+				public void onItemClick(AdapterView<?> parent, View view,
+						int position, long id) {
+					HashMap eventId = (HashMap) (eventListView.
+							getItemAtPosition(position));
+					String event_id =  eventId.get("event_id").toString();
+					Intent eventProfile = new Intent(Schedule.this,
+							EventProfile.class);
+					eventProfile.putExtra("event_id", event_id);
+
+					startActivity(eventProfile);
+				}
+			});
+
+			ListAdapter adapter = new SimpleAdapter( Schedule.this,sessionList, 
+					R.layout.event_single, new String[] { "event_id","event_name",
+					"event_time", "author_name", "event_location"}, new int[] {R.id.eventId,
+					R.id.eventName,R.id.eventTime, R.id.authorName, R.id.eventLocation});
+				
+			eventListView.setAdapter(adapter);
+		
+	}
 
 	public boolean onCreateOptionsMenu(Menu menu) {
 	    MenuInflater inflater = getMenuInflater();

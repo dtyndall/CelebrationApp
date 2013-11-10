@@ -33,14 +33,16 @@ public class MainActivity extends Activity {
 
 		getData();
 
-		final Button showSchedule = (Button) findViewById(R.id.showSchedule);
-		showSchedule.setOnClickListener(new OnClickListener() {
-			public void onClick(View view) {
-				Intent eventList = new Intent(MainActivity.this,
-						Days.class);
-				startActivity(eventList);
-			}
-		});
+//		final Button showSchedule = (Button) findViewById(R.id.showSchedule);
+//		showSchedule.setOnClickListener(new OnClickListener() {
+//			public void onClick(View view) {
+//				Intent eventList = new Intent(MainActivity.this,
+//						Days.class);
+//				startActivity(eventList);
+//			}
+//		});
+		
+		
 		final Button Tabbed = (Button) findViewById(R.id.scheduleTabbedButton);
 		Tabbed.setOnClickListener(new OnClickListener() {
 			public void onClick(View view) {
@@ -54,7 +56,7 @@ public class MainActivity extends Activity {
 		showPersonalSchedule.setOnClickListener(new OnClickListener() {
 			public void onClick(View view) {
 				Intent eventList = new Intent(MainActivity.this,
-						TabbedSchedule.class);
+						TabbedPersonal.class);
 				eventList.putExtra("parent", "personal");
 				startActivity(eventList);
 			}
@@ -71,9 +73,9 @@ public class MainActivity extends Activity {
 			final DBTools dbTools = new DBTools(this);
 			
 			RequestQueue queue = Volley.newRequestQueue(this);
-			final String urlEvent = "http://192.168.2.2/getAllEvents.php";
-			final String urlSession = "http://192.168.2.2/getAllSession.php";
-			final String urlConference = "http://192.168.2.2/getConference.php";
+			final String urlEvent = "http://192.168.167.195/getAllEvents.php";
+			final String urlSession = "http://192.168.167.195/getAllSession.php";
+			final String urlConference = "http://192.168.167.195/getConference.php";
 			
 			
 			

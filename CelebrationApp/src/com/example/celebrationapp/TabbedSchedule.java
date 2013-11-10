@@ -9,7 +9,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TabHost;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TabHost.TabSpec;
 
 @SuppressWarnings("deprecation")
@@ -120,7 +126,6 @@ public class TabbedSchedule extends TabActivity {
 	    case R.id.time:
 	    	finish();
 	    	filter.putExtra("parent", "1");
-	    	System.out.println(getParent());
 	    	startActivity(filter);
 	    	
 	      break;
@@ -151,6 +156,8 @@ public class TabbedSchedule extends TabActivity {
 
 	    return true;
 	  }
+	  
+	  
 	  
 	 
 }

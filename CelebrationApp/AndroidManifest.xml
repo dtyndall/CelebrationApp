@@ -41,6 +41,12 @@
             android:name="com.example.celebrationapp.TabbedSchedule">
         </activity>
         <activity 
+            android:name="com.example.celebrationapp.TabbedPersonal">
+        </activity>
+        <activity 
+            android:name="com.example.celebrationapp.TabbedSingle">
+        </activity>
+        <activity 
             android:name="com.example.celebrationapp.WebViewActivity">
         </activity>
     </application>
