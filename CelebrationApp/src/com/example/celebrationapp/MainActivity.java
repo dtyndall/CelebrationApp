@@ -63,18 +63,19 @@ public class MainActivity extends Activity {
 	}
 
 	private void getData() {
-
-
+		
 		ConnectionDetector cd = new ConnectionDetector(getApplicationContext());
 		Boolean isInternetPresent = cd.isConnectingToInternet();
 
 		if (isInternetPresent) {
-			RequestQueue queue = Volley.newRequestQueue(this);
-			final String urlEvent = "http://10.0.2.2/getAllEvents.php";
-			final String urlSession = "http://10.0.2.2/getAllSession.php";
-			final String urlConference = "http://10.0.2.2/getConference.php";
-			
 			final DBTools dbTools = new DBTools(this);
+			
+			RequestQueue queue = Volley.newRequestQueue(this);
+			final String urlEvent = "http://192.168.167.195/getAllEvents.php";
+			final String urlSession = "http://192.168.167.195/getAllSession.php";
+			final String urlConference = "http://192.168.167.195/getConference.php";
+			
+			
 			
 			// prepare the Request
 
@@ -165,8 +166,6 @@ public class MainActivity extends Activity {
 	    case R.id.action_refresh:
 	      break;
 	    case R.id.action_settings:
-	      Toast.makeText(this, "Action Settings selected", Toast.LENGTH_SHORT)
-	          .show();
 	      break;
 
 	    default:
@@ -175,5 +174,7 @@ public class MainActivity extends Activity {
 
 	    return true;
 	  }
+	  
+
 
 }

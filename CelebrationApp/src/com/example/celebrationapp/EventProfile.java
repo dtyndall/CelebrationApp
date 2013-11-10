@@ -40,6 +40,7 @@ public class EventProfile extends Activity {
 		TextView eventDate = (TextView) findViewById(R.id.event_date);
 		
 		Button storeFavorite = (Button) findViewById(R.id.storeFavorite);
+		Button showSurvey = (Button) findViewById(R.id.event_survey);
 		
 		Intent theIntent = getIntent();
 		Bundle extras = theIntent.getExtras();
@@ -54,10 +55,32 @@ public class EventProfile extends Activity {
 			eventCat.setText(eventList.get("event_category"));
 			eventName.setText(eventList.get("event_name"));
 			authorName.setText(eventList.get("author_name"));
+			authorName.setOnClickListener(new View.OnClickListener() {
+				  @Override
+				  public void onClick(View v) {
+					  Intent authorList = new Intent(EventProfile.this,
+								TabbedSchedule.class);
+						authorList.putExtra("parent", "author");
+						authorList.putExtra("author", eventList.get("author_name"));
+						startActivity(authorList);
+				  }
+
+				});
 			eventDesc.setText(eventList.get("event_description"));
 			
 			eventDate.setText(sessionList.get("event_date"));
 			eventLocation.setText(sessionList.get("event_location"));
+			eventLocation.setOnClickListener(new View.OnClickListener() {
+				  @Override
+				  public void onClick(View v) {
+					  Intent roomList = new Intent(EventProfile.this,
+								TabbedSchedule.class);
+						roomList.putExtra("parent", "room");
+						roomList.putExtra("room", sessionList.get("event_location"));
+						startActivity(roomList);
+				  }
+
+				});
 			eventTime.setText(sessionList.get("event_time"));
 			
 			storeFavorite.setOnClickListener(new OnClickListener() {
@@ -75,6 +98,17 @@ public class EventProfile extends Activity {
 						Toast.makeText(getApplicationContext(), "Event removed from personal schedule"
 								, Toast.LENGTH_SHORT).show();
 					}
+				}
+			});
+			showSurvey.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View view) {
+					Intent survey = new Intent(EventProfile.this,
+							WebViewActivity.class);
+					survey.putExtra("survey", eventList.get("survey"));
+					startActivity(survey);
+					
 				}
 			});
 		}
