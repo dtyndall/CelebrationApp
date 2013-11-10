@@ -4,5 +4,8 @@
     <string name="app_name">CelebrationApp</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_section1">pony</string>
+    <string name="title_section2">rabbit</string>
+    <string name="title_section3">woof</string>
 
 </resources>

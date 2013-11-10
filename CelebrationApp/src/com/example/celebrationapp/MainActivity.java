@@ -71,9 +71,9 @@ public class MainActivity extends Activity {
 			final DBTools dbTools = new DBTools(this);
 			
 			RequestQueue queue = Volley.newRequestQueue(this);
-			final String urlEvent = "http://192.168.167.195/getAllEvents.php";
-			final String urlSession = "http://192.168.167.195/getAllSession.php";
-			final String urlConference = "http://192.168.167.195/getConference.php";
+			final String urlEvent = "http://192.168.2.2/getAllEvents.php";
+			final String urlSession = "http://192.168.2.2/getAllSession.php";
+			final String urlConference = "http://192.168.2.2/getConference.php";
 			
 			
 			

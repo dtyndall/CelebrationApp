@@ -120,10 +120,11 @@ public class TabbedSchedule extends TabActivity {
 	    case R.id.time:
 	    	finish();
 	    	filter.putExtra("parent", "1");
+	    	System.out.println(getParent());
 	    	startActivity(filter);
 	    	
 	      break;
-	    case R.id.author:
+	    case R.id.author: 
 	    	finish();
 	    	filter.putExtra("parent", "filter");
 	    	filter.putExtra("filter", "author_name");

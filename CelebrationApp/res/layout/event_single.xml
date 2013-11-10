@@ -8,15 +8,18 @@
         android:id="@+id/eventId"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone" />
+        android:visibility="gone"
+         />
 
     <TextView
         android:id="@+id/eventName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#444444"
+        android:maxLength="19"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold" 
+        />
 
     <TextView
         android:id="@+id/eventTime"
@@ -25,7 +28,8 @@
         android:layout_below="@id/eventName"
         android:textColor="#444444"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold" 
+        />
     
     <TextView
         android:id="@+id/authorName"
@@ -33,8 +37,20 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:textColor="#444444"
+        android:maxLength="18"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold" 
+        />
+    <TextView
+        android:id="@+id/eventDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+     	android:layout_below="@id/authorName"
+        android:layout_alignParentRight="true"
+        android:textColor="#444444"
+        android:textSize="20sp"
+        android:textStyle="bold" 
+        />
     
     <TextView
         android:id="@+id/eventLocation"
@@ -44,6 +60,16 @@
         android:layout_alignParentRight="true"
         android:textColor="#444444"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold" 
+        />
+    <TextView
+        android:id="@+id/eventLocationAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:textColor="#444444"
+        android:textSize="20sp"
+        android:textStyle="bold" 
+        />
 
 </RelativeLayout>
