@@ -3,11 +3,9 @@ package com.example.celebrationapp;
 import java.util.HashMap;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -23,6 +21,7 @@ public class EventProfile extends Activity {
 	TextView event_name;
 	TextView event_description;
 	TextView author_name;
+	TextView event_track;
 	
 	DBTools dbTools = new DBTools(this);
 	@Override
@@ -38,6 +37,7 @@ public class EventProfile extends Activity {
 		TextView eventLocation = (TextView) findViewById(R.id.event_location);
 		TextView eventTime = (TextView) findViewById(R.id.event_time);
 		TextView eventDate = (TextView) findViewById(R.id.event_date);
+		TextView eventTrack = (TextView) findViewById(R.id.event_track);
 		
 		Button storeFavorite = (Button) findViewById(R.id.storeFavorite);
 		Button showSurvey = (Button) findViewById(R.id.event_survey);
@@ -52,6 +52,7 @@ public class EventProfile extends Activity {
 		
 		
 		if(eventList.size() != 0){
+			eventTrack.setText(eventList.get("track"));
 			eventCat.setText(eventList.get("event_category"));
 			eventName.setText(eventList.get("event_name"));
 			authorName.setText(eventList.get("author_name"));
@@ -67,7 +68,7 @@ public class EventProfile extends Activity {
 
 				});
 			eventDesc.setText(eventList.get("event_description"));
-			
+			eventDesc.setMovementMethod(new ScrollingMovementMethod());
 			eventDate.setText(sessionList.get("event_date"));
 			eventLocation.setText(sessionList.get("event_location"));
 			eventLocation.setOnClickListener(new View.OnClickListener() {

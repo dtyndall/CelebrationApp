@@ -9,35 +9,27 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TabHost;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TabHost.TabSpec;
 
 @SuppressWarnings("deprecation")
-public class TabbedSchedule extends TabActivity {
-	
-	
+public class TabbedPersonal extends TabActivity {
+
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
+		
 		
 		Intent theIntent = getIntent();
 		Bundle extra = theIntent.getExtras();
 		String parent = extra.getString("parent");
-		String author = extra.getString("author");
-		String roomNum = extra.getString("room");
 		
 		DBTools dbTools = new DBTools(this);
 		
 		
 		TabHost tabHost = getTabHost();
 		
-		if(parent.equals("1")){
-			ArrayList<HashMap<String, String>> days = dbTools.getDays();
+		 if(parent.equals("personal")){
+			ArrayList<HashMap<String, String>> days = dbTools.getFavoriteDays();
 
 			for (HashMap<String, String> date : days) {
 				
@@ -46,53 +38,15 @@ public class TabbedSchedule extends TabActivity {
 				Intent tabIntent = new Intent(this, Schedule.class);
 				Bundle extras = new Bundle();
 				extras.putString("event_date", date.get("date"));
-				extras.putString("parent","1");
-				tabIntent.putExtras(extras);
-				tabBar.setContent(tabIntent);
-				tabHost.addTab(tabBar);
-			}
-		}else if(parent.equals("personal")){
-			ArrayList<HashMap<String, String>> days = dbTools.getFavoriteDays();
-
-			for (HashMap<String, String> date : days) {
-				
-				TabSpec tabBar = tabHost.newTabSpec(date.get("date"));
-				tabBar.setIndicator(date.get("date"));
-				Intent tabIntent = new Intent(this, Schedule.class);
-				Bundle extras = new Bundle();
-				extras.putString("event_date", date.get("date"));
 				extras.putString("parent","personal");
 				tabIntent.putExtras(extras);
 				tabBar.setContent(tabIntent);
 				tabHost.addTab(tabBar);
 			}
-		}else if(parent.equals("author")){
-				
-				TabSpec tabBar = tabHost.newTabSpec(author);
-				tabBar.setIndicator(author);
-				Intent tabIntent = new Intent(this, Schedule.class);
-				Bundle extras = new Bundle();
-				extras.putString("author", author);
-				extras.putString("parent","author");
-				tabIntent.putExtras(extras);
-				tabBar.setContent(tabIntent);
-				tabHost.addTab(tabBar);
-				
-		}else if(parent.equals("room")){
-
-					TabSpec tabBar = tabHost.newTabSpec(roomNum);
-					tabBar.setIndicator(roomNum);
-					Intent tabIntent = new Intent(this, Schedule.class);
-					Bundle extras = new Bundle();
-					extras.putString("room", roomNum);
-					extras.putString("parent","room");
-					tabIntent.putExtras(extras);
-					tabBar.setContent(tabIntent);
-					tabHost.addTab(tabBar);
-					
+		
 		}else if(parent.equals("filter")){
-			ArrayList<HashMap<String, String>> days = dbTools.getDays();
-			
+			ArrayList<HashMap<String, String>> days = dbTools.getFavoriteDays();
+
 			String filterBy = extra.getString("filter");
 			
 			for (HashMap<String, String> date : days) {
@@ -102,7 +56,7 @@ public class TabbedSchedule extends TabActivity {
 				Intent tabIntent = new Intent(this, Schedule.class);
 				Bundle extras = new Bundle();
 				extras.putString("event_date", date.get("date"));
-				extras.putString("parent","filter");
+				extras.putString("parent","personalFilter");
 				extras.putString("key",filterBy);
 				tabIntent.putExtras(extras);
 				tabBar.setContent(tabIntent);
@@ -113,26 +67,19 @@ public class TabbedSchedule extends TabActivity {
 	}
 	public boolean onCreateOptionsMenu(Menu menu) {
 	    MenuInflater inflater = getMenuInflater();
-	    Intent theIntent = getIntent();
-		Bundle extra = theIntent.getExtras();
-	    if(extra.get("parent").equals("author") || extra.get("parent").equals("room")){
-	    	
-	    }else{
 	    inflater.inflate(R.menu.options, menu);
-	    }
 	    return true;
 	  }
-
-	
-	//NEW
+	  
+	  //NEW
 	  @Override
 	  public boolean onOptionsItemSelected(MenuItem item) {
-		Intent filter = new Intent(this, TabbedSchedule.class);
+		Intent filter = new Intent(this, TabbedPersonal.class);
 		
 		switch (item.getItemId()) {
 	    case R.id.time:
 	    	finish();
-	    	filter.putExtra("parent", "1");
+	    	filter.putExtra("parent", "personal");
 	    	startActivity(filter);
 	    	
 	      break;
@@ -168,3 +115,4 @@ public class TabbedSchedule extends TabActivity {
 	  
 	 
 }
+

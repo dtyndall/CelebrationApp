@@ -74,11 +74,12 @@ public class Schedule extends Activity {
 				}
 			});
 
-			ListAdapter adapter = new SimpleAdapter( Schedule.this,sessionList, 
-					R.layout.event_single, new String[] { "event_id","event_name",
-					"event_time", "author_name", "event_location"}, new int[] {R.id.eventId,
-					R.id.eventName,R.id.eventTime, R.id.authorName, R.id.eventLocation});
-				
+//			ListAdapter adapter = new SimpleAdapter( Schedule.this,sessionList, 
+//					R.layout.event_single, new String[] { "event_id","event_name",
+//					"event_time", "author_name", "event_location"}, new int[] {R.id.eventId,
+//					R.id.eventName,R.id.eventTime, R.id.authorName, R.id.eventLocation});
+//				
+			ListAdapter adapter = new CustomListAdapter(this, sessionList);
 			eventListView.setAdapter(adapter);
 		
 	}
@@ -202,11 +203,13 @@ public class Schedule extends Activity {
 				}
 			});
 
-			ListAdapter adapter = new SimpleAdapter( Schedule.this,sessionList, 
-					R.layout.event_single, new String[] { "event_id","event_name",
-					"event_time", "author_name", "event_location"}, new int[] {R.id.eventId,
-					R.id.eventName,R.id.eventTime, R.id.authorName, R.id.eventLocation});
-				
+//			ListAdapter adapter = new SimpleAdapter( Schedule.this,sessionList, 
+//					R.layout.event_single, new String[] { "event_id","event_name",
+//					"event_time", "author_name", "event_location"}, new int[] {R.id.eventId,
+//					R.id.eventName,R.id.eventTime, R.id.authorName, R.id.eventLocation});
+//				
+//			eventListView.setAdapter(adapter);
+			ListAdapter adapter = new CustomListAdapter(this, sessionList);
 			eventListView.setAdapter(adapter);
 
 	}
