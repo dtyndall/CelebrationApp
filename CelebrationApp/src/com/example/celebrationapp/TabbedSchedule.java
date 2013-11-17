@@ -30,6 +30,7 @@ public class TabbedSchedule extends TabActivity {
 		String parent = extra.getString("parent");
 		String author = extra.getString("author");
 		String roomNum = extra.getString("room");
+		String many = extra.getString("many");
 		
 		DBTools dbTools = new DBTools(this);
 		
@@ -74,6 +75,7 @@ public class TabbedSchedule extends TabActivity {
 				Bundle extras = new Bundle();
 				extras.putString("author", author);
 				extras.putString("parent","author");
+				extras.putString("many", many);
 				tabIntent.putExtras(extras);
 				tabBar.setContent(tabIntent);
 				tabHost.addTab(tabBar);

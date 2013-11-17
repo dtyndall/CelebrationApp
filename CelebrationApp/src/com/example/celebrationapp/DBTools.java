@@ -1,5 +1,6 @@
 package com.example.celebrationapp;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -33,8 +34,9 @@ public class DBTools extends SQLiteOpenHelper{
 			"CREATE TABLE IF NOT EXISTS " + table2 + " (sevent_id INTEGER, location TEXT, "
 			+ "date TEXT , time TEXT, session_id INTEGER PRIMARY KEY)";
 	final String CREATE_TABLE_3 =
-			"CREATE TABLE IF NOT EXISTS " + table3 + " (event_id INTEGER PRIMARY KEY, event_name TEXT," 
-			+ "event_location TEXT, event_time TEXT, author_name TEXT, track TEXT)";
+			"CREATE TABLE IF NOT EXISTS " + table3 + " (event_id INTEGER, event_name TEXT," 
+			+ "event_location TEXT, event_time TEXT, author_name TEXT, track TEXT, " +
+			"session_id INTEGER PRIMARY KEY)";
 	final String CREATE_TABLE_4 =
 			"CREATE TABLE IF NOT EXISTS " + table4 + " (conf_id INTEGER PRIMARY KEY, conf_name TEXT," 
 					+ "conf_year TEXT, conf_location TEXT, conf_map TEXT)";
@@ -215,9 +217,8 @@ public class DBTools extends SQLiteOpenHelper{
 	}
 	public HashMap<String, String> getSessionInfo(String id) {
 		HashMap<String, String> sessionmap = new HashMap<String, String>();
-
 		SQLiteDatabase database = this.getReadableDatabase();
-		String selectQuery = "SELECT * FROM session WHERE sevent_id= '" + id + "';";
+		String selectQuery = "SELECT * FROM session WHERE session_id= '" + id + "';";
 		Cursor cursor = database.rawQuery(selectQuery, null);
 
 		if (cursor.moveToFirst()) {
@@ -255,7 +256,6 @@ public class DBTools extends SQLiteOpenHelper{
 				String month = cursor.getString(0).substring(5,7);
 				daymap.put("public", month+"-"+day);
 				
-				System.out.println(day + " " + month);
 				dayList.add(daymap);
 			} while (cursor.moveToNext());
 			
@@ -268,7 +268,7 @@ public class DBTools extends SQLiteOpenHelper{
 		ArrayList<HashMap<String, String>> dayList = new ArrayList<HashMap<String, String>>();
 		
 		String selectAllQuery = "Select DISTINCT date FROM session inner join" +
-		" favorite where session.sevent_id=favorite.event_id ORDER BY date ASC";
+		" favorite where session.session_id=favorite.session_id ORDER BY date ASC";
 		
 		SQLiteDatabase database = this.getWritableDatabase();
 		
@@ -370,9 +370,9 @@ public class DBTools extends SQLiteOpenHelper{
 	}
 	
 	
-	public String storeFavorite(String name, String id, String location, 
+	public String storeFavorite(String sessionId, String name, String id, String location, 
 			String time, String authorName, String track){
-		String selectQuery = "SELECT * FROM favorite WHERE event_id='" + id + "'";
+		String selectQuery = "SELECT * FROM favorite WHERE session_id='" + sessionId + "'";
 		
 		SQLiteDatabase database = this.getWritableDatabase();
 		Cursor cursor = database.rawQuery(selectQuery, null);
@@ -386,6 +386,7 @@ public class DBTools extends SQLiteOpenHelper{
 			values.put("event_time", time);
 			values.put("author_name", authorName);
 			values.put("track", track);
+			values.put("session_id", sessionId);
 			
 			database.insert("favorite", null, values);
 
@@ -394,7 +395,7 @@ public class DBTools extends SQLiteOpenHelper{
 			
 		}else
 		{
-			database.delete("favorite", "event_id" + "=" + id, null);
+			database.delete("favorite", "session_id" + "=" + sessionId, null);
 			return "delete";
 		}
 
@@ -404,7 +405,7 @@ public class DBTools extends SQLiteOpenHelper{
 		ArrayList<HashMap<String, String>> eventsArrayList = new ArrayList<HashMap<String, String>>();
 
 		String selectQuery = "Select * from session inner join favorite where " +
-				"session.sevent_id=favorite.event_id and date ='" + eventDate + "'";
+				"session.session_id=favorite.session_id and date ='" + eventDate + "' ORDER BY time ASC";
 
 		SQLiteDatabase database = this.getWritableDatabase();
 
@@ -417,10 +418,13 @@ public class DBTools extends SQLiteOpenHelper{
 				HashMap<String, String> contactMap = new HashMap<String, String>();
 
 				contactMap.put("event_id", cursor.getString(0));
-				contactMap.put("event_location", cursor.getString(2));
+				contactMap.put("event_location", cursor.getString(1));
 				contactMap.put("event_time", cursor.getString(3));
 				contactMap.put("event_name", cursor.getString(6));
 				contactMap.put("author_name", cursor.getString(9));
+				contactMap.put("session_id", cursor.getString(4));
+				contactMap.put("track", cursor.getString(10));
+				System.out.println("track" + cursor.getString(7));
 
 				int time = Integer.parseInt(contactMap.get("event_time").substring(0, 2));
 				int newTime;
@@ -439,11 +443,18 @@ public class DBTools extends SQLiteOpenHelper{
 
 	}
 
-	public ArrayList<HashMap<String, String>> getAuthorList(String authorName) {
+	public ArrayList<HashMap<String, String>> getAuthorList(String authorName, String many) {
 		ArrayList<HashMap<String, String>> authorArrayList = new ArrayList<HashMap<String, String>>();
-		String selectQuery = "Select * from session inner join event where " +
-				"session.sevent_id=event.event_id and author_name ='" + authorName + "'ORDER BY time ASC";
+		String selectQuery = "";
+		if(many != null){
+			 selectQuery = "Select * from session inner join event where " +
+					"session.sevent_id=event.event_id and author_name LIKE '%" + authorName + "%' ORDER BY time ASC";
 
+		}else{
+			 selectQuery = "Select * from session inner join event where " +
+						"session.sevent_id=event.event_id and author_name = '" + authorName + "' ORDER BY time ASC";
+		}
+		
 		SQLiteDatabase database = this.getWritableDatabase();
 
 		Cursor cursor = database.rawQuery(selectQuery, null);
@@ -595,6 +606,66 @@ public class DBTools extends SQLiteOpenHelper{
 		return sessionArrayList;
 	}
 
+	
+	public void itsDeadJim() {
+		SQLiteDatabase db = this.getWritableDatabase();
+		String query = "DROP TABLE IF EXISTS event";
+		String query1 = "DROP TABLE IF EXISTS session";
+		String query3 = "DROP TABLE IF EXISTS conference";
+		Log.d("dbTools UPGRADE", "TABLE UPGRADED");
+		db.execSQL(query);
+		db.execSQL(query1);
+		db.execSQL(query3);
+		onCreate(db);
+		
+	}
+
+	public String checkFavorite() {
+		SQLiteDatabase database = this.getReadableDatabase();
+		
+		String favoriteQuery = "SELECT event_id FROM favorite";
+		String eventQuery = "SELECT event_id FROM event";
+		
+		Cursor eventCursor = database.rawQuery(eventQuery, null);
+		Cursor favoriteCursor = database.rawQuery(favoriteQuery, null);
+		ArrayList<String> favIds = new ArrayList<String>();
+		if(favoriteCursor.moveToFirst()){
+			
+			
+			do{
+				favIds.add(favoriteCursor.getString(0));
+				
+			}while(favoriteCursor.moveToNext());
+		}	
+		ArrayList<String> eventIds = new ArrayList<String>();
+		if(eventCursor.moveToFirst()){
+				
+			do{
+				eventIds.add(eventCursor.getString(0));
+			}while(eventCursor.moveToNext());
+		
+		}
+		for (int i=0; i<favIds.size(); i++) {
+		    if (!eventIds.contains(favIds.get(i))) {
+		    	database.delete("favorite", "event_id" + "=" + favIds.get(i), null); 
+		    }
+		}
+		return null;
+	}
+
+	public boolean ifFavorite(String eventId) {
+		SQLiteDatabase database = this.getReadableDatabase();
+		
+		String checkQuery = "SELECT * FROM favorite WHERE event_id = '"+ eventId +"';";
+		Cursor checkCursor = database.rawQuery(checkQuery, null);
+		
+		if(checkCursor.moveToFirst()){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
 	
 
 }

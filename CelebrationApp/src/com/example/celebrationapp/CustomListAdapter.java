@@ -8,14 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class CustomListAdapter extends BaseAdapter {
 
     private ArrayList<HashMap<String, String>> list;
     private LayoutInflater mInflater;
-    private HashMap<String,String> map;
     
     public CustomListAdapter(Context context, ArrayList<HashMap<String, String>> sessionList){
     	list  = sessionList;
@@ -52,13 +50,14 @@ public class CustomListAdapter extends BaseAdapter {
     			  View nextChild =((ViewGroup)convertView).getChildAt(i);
     			  TextView next;
     			  next = (TextView) nextChild;
-    			 if(next.getId() == 2131230737){
+    			  //System.out.println("ID OF CHILD " + next.getId());
+    			 if(next.getId() == 2131230739){
     				 eventName = next;
     			 }
-    			 if(next.getId() == 2131230738){
+    			 if(next.getId() ==  2131230740){
     				 eventTime = next;
     			 }
-    			 if(next.getId() == 2131230739){
+    			 if(next.getId() == 2131230741){
     				 authorName = next;
     			 }
     			 if(next.getId() == 2131230724){
@@ -69,7 +68,7 @@ public class CustomListAdapter extends BaseAdapter {
     		  
     		  HashMap<String, String> currentData = new HashMap<String, String>();
               currentData = list.get(position);
-              
+              System.out.println(currentData);
               eventName.setText(currentData.get("event_name"));
               authorName.setText(currentData.get("author_name"));
               eventTime.setText(currentData.get("event_time"));

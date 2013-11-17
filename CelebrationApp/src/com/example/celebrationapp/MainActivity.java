@@ -31,16 +31,10 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		//clearData();
 		getData();
+		
 
-//		final Button showSchedule = (Button) findViewById(R.id.showSchedule);
-//		showSchedule.setOnClickListener(new OnClickListener() {
-//			public void onClick(View view) {
-//				Intent eventList = new Intent(MainActivity.this,
-//						Days.class);
-//				startActivity(eventList);
-//			}
-//		});
 		
 		
 		final Button Tabbed = (Button) findViewById(R.id.scheduleTabbedButton);
@@ -58,12 +52,39 @@ public class MainActivity extends Activity {
 				Intent eventList = new Intent(MainActivity.this,
 						TabbedPersonal.class);
 				eventList.putExtra("parent", "personal");
+				checkFavorite();
 				startActivity(eventList);
 			}
 		});
 		
 	}
 
+	
+
+	private void clearData(){
+		ConnectionDetector cd = new ConnectionDetector(getApplicationContext());
+		Boolean isInternetPresent = cd.isConnectingToInternet();
+
+		if (isInternetPresent) {
+			final DBTools dbTools = new DBTools(this);
+			
+			dbTools.itsDeadJim();
+			
+		}
+		
+	}
+	private void checkFavorite() {
+		final DBTools dbTools = new DBTools(this);
+		
+		 dbTools.checkFavorite();
+		
+//		if(message.equals("change")){
+//			Toast.makeText(getApplicationContext(), "An event from your personal" +
+//					"schedule has been changed.", Toast.LENGTH_LONG).show();
+//			
+//		}
+		
+	}
 	private void getData() {
 		
 		ConnectionDetector cd = new ConnectionDetector(getApplicationContext());
@@ -73,9 +94,9 @@ public class MainActivity extends Activity {
 			final DBTools dbTools = new DBTools(this);
 			
 			RequestQueue queue = Volley.newRequestQueue(this);
-			final String urlEvent = "http://192.168.167.195/getAllEvents.php";
-			final String urlSession = "http://192.168.167.195/getAllSession.php";
-			final String urlConference = "http://192.168.167.195/getConference.php";
+			final String urlEvent = "http://192.168.173.33/getAllEvents.php";
+			final String urlSession = "http://192.168.173.33/getAllSession.php";
+			final String urlConference = "http://192.168.173.33/getConference.php";
 			
 			
 			
@@ -86,7 +107,6 @@ public class MainActivity extends Activity {
 					new Response.Listener<JSONObject>() {
 						@Override
 						public void onResponse(JSONObject response) {
-
 							// display response
 							JSONParser jParse = new JSONParser();
 							ArrayList<HashMap<String, String>> events = jParse
