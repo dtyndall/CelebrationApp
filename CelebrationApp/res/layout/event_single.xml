@@ -10,17 +10,32 @@
         android:layout_height="wrap_content"
         android:visibility="gone"
          />
-
-    <TextView
-        android:id="@+id/eventName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_margin"
-        android:textColor="#444444"
-        android:maxLength="20"
-        android:textSize="20sp"
-        android:textStyle="bold" 
-        />
+	  
+     <com.example.celebrationapp.MyTextView
+	 	android:id="@+id/eventName"
+		android:layout_width="wrap_content"
+     	android:layout_height="wrap_content"
+      	android:textSize="20sp"
+      	android:textStyle="bold"
+      	android:ellipsize="marquee"
+		android:maxWidth="190dp"
+      	android:fadingEdge="horizontal"
+      	android:marqueeRepeatLimit="marquee_forever"
+      	android:scrollHorizontally="true"  
+      	android:singleLine="true"
+    	android:textAppearance="?android:attr/textAppearanceLarge"
+    	android:layout_marginRight="10dp"></com.example.celebrationapp.MyTextView>
+     
+<!--     <TextView -->
+<!--         android:id="@+id/eventName" -->
+<!--         android:layout_width="wrap_content" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:layout_margin="@dimen/activity_margin" -->
+<!--         android:textColor="#444444" -->
+<!--         android:maxLength="20" -->
+<!--         android:textSize="20sp" -->
+<!--         android:textStyle="bold"  -->
+<!--     		        /> -->
 
     <TextView
         android:id="@+id/eventTime"
@@ -32,18 +47,32 @@
         android:textSize="20sp"
         android:textStyle="bold" 
         />
-    
-    <TextView
-        android:id="@+id/authorName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_margin"
-        android:layout_alignParentRight="true"
-        android:textColor="#444444"
-        android:maxLength="18"
-        android:textSize="20sp"
-        android:textStyle="bold" 
-        />
+      <com.example.celebrationapp.MyTextView
+	 	android:id="@+id/authorName"
+		android:layout_width="wrap_content"
+     	android:layout_height="wrap_content"
+      	android:textSize="20sp"
+      	android:textStyle="bold"
+      	android:ellipsize="marquee"
+      	android:layout_alignParentRight="true"
+		android:maxWidth="150dp"
+      	android:fadingEdge="horizontal"
+      	android:marqueeRepeatLimit="marquee_forever"
+      	android:scrollHorizontally="true"  
+      	android:singleLine="true"
+    	android:textAppearance="?android:attr/textAppearanceLarge"
+    	android:layout_marginRight="10dp"></com.example.celebrationapp.MyTextView>
+<!--     <TextView -->
+<!--         android:id="@+id/authorName" -->
+<!--         android:layout_width="wrap_content" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:layout_margin="@dimen/activity_margin" -->
+<!--         android:layout_alignParentRight="true" -->
+<!--         android:textColor="#444444" -->
+<!--         android:maxLength="18" -->
+<!--         android:textSize="20sp" -->
+<!--         android:textStyle="bold"  -->
+<!--         /> -->
     <TextView
         android:id="@+id/eventDate"
         android:layout_width="wrap_content"

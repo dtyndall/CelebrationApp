@@ -53,7 +53,7 @@ public class CustomListAdapter extends BaseAdapter {
     		 }
     	
     	
-    	  TextView eventName = (TextView) convertView.findViewById(R.id.eventName);
+    	  MyTextView eventName = (MyTextView) convertView.findViewById(R.id.eventName);
 		  TextView authorName = (TextView) convertView.findViewById(R.id.authorName);
 		  TextView eventTime = (TextView) convertView.findViewById(R.id.eventTime);
 		  TextView eventLocation = (TextView) convertView.findViewById(R.id.eventLocation);
