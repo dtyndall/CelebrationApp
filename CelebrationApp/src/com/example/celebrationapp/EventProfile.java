@@ -123,7 +123,7 @@ public class EventProfile extends Activity {
 				});
 			eventTime.setText(sessionList.get("event_time"));
 			
-			if(dbTools.ifFavorite(eventId)){
+			if(dbTools.ifFavorite(sessionList.get("session_id"))){
 				storeFavorite.setBackgroundResource(android.R.drawable.btn_star_big_on);
 			}else{
 				storeFavorite.setBackgroundResource(android.R.drawable.btn_star_big_off);
@@ -140,12 +140,12 @@ public class EventProfile extends Activity {
 					
 					if(message.equals("add")){
 						storeFavorite.setBackgroundResource(android.R.drawable.btn_star_big_on);
-						Toast.makeText(getApplicationContext(), "Event added to personal schedule"
-											, Toast.LENGTH_SHORT).show();
+//						Toast.makeText(getApplicationContext(), "Event added to personal schedule"
+//											, Toast.LENGTH_SHORT).show();
 					}else{
 						storeFavorite.setBackgroundResource(android.R.drawable.btn_star_big_off);
-						Toast.makeText(getApplicationContext(), "Event removed from personal schedule"
-								, Toast.LENGTH_SHORT).show();
+//						Toast.makeText(getApplicationContext(), "Event removed from personal schedule"
+//								, Toast.LENGTH_SHORT).show();
 					}
 				}
 			});

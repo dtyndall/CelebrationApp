@@ -65,7 +65,6 @@ public class Schedule extends Activity {
 					
 					HashMap eventId = (HashMap) (eventListView.
 							getItemAtPosition(position));
-					System.out.println(eventId);
 					String event_id =  eventId.get("event_id").toString();
 					String session_id = eventId.get("session_id").toString();
 					Intent eventProfile = new Intent(Schedule.this,
@@ -154,12 +153,13 @@ public class Schedule extends Activity {
 					startActivity(eventProfile);
 				}
 			});
-
-			ListAdapter adapter = new SimpleAdapter( Schedule.this,authorList, 
-					R.layout.event_single, new String[] { "event_id","event_name",
-					"event_time", "event_location","event_date"}, new int[] {R.id.eventId,
-					R.id.eventName,R.id.eventTime, R.id.eventLocationAuthor,R.id.eventDate});
-			
+			ListAdapter adapter = new CustomListAdapter(this, authorList);
+		
+//			ListAdapter adapter = new SimpleAdapter( Schedule.this,authorList, 
+//					R.layout.event_single, new String[] { "event_id","event_name",
+//					"event_time", "event_location","event_date"}, new int[] {R.id.eventId,
+//					R.id.eventName,R.id.eventTime, R.id.eventLocationAuthor,R.id.eventDate});
+//			
 			eventListView.setAdapter(adapter);
 		
 	}
@@ -189,11 +189,12 @@ public class Schedule extends Activity {
 				}
 			});
 
-			ListAdapter adapter = new SimpleAdapter( Schedule.this,roomList, 
-					R.layout.event_single, new String[] { "event_id","event_name",
-					"event_time","author_name", "event_date"}, new int[] {R.id.eventId,
-					R.id.eventName,R.id.eventTime, R.id.authorName, R.id.eventDate});
-			
+			ListAdapter adapter = new CustomListAdapter(this, roomList);
+//			ListAdapter adapter = new SimpleAdapter( Schedule.this,roomList, 
+//					R.layout.event_single, new String[] { "event_id","event_name",
+//					"event_time","author_name", "event_date"}, new int[] {R.id.eventId,
+//					R.id.eventName,R.id.eventTime, R.id.authorName, R.id.eventDate});
+//			
 			eventListView.setAdapter(adapter);
 		
 	}
@@ -278,7 +279,6 @@ public class Schedule extends Activity {
 	
 	public boolean onCreateOptionsMenu(Menu menu) {
 	    MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.options, menu);
 	    return true;
 	  }
 	  

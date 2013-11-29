@@ -15,7 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -25,7 +24,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 public class MainActivity extends Activity {
-
+	final DBTools dbTools = new DBTools(this);
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -34,7 +33,19 @@ public class MainActivity extends Activity {
 		//clearData();
 		getData();
 		
-
+		
+		final Button map = (Button) findViewById(R.id.getMap);
+		
+		map.setOnClickListener(new OnClickListener() {
+			public void onClick(View view) {
+				Intent viewMap = new Intent(MainActivity.this,
+						ViewMap.class);
+				viewMap.putExtra("url", dbTools.getMapURL());
+				startActivity(viewMap);
+				
+			}
+			
+		});
 		
 		
 		final Button Tabbed = (Button) findViewById(R.id.scheduleTabbedButton);
@@ -59,7 +70,6 @@ public class MainActivity extends Activity {
 		
 	}
 
-	
 
 	private void clearData(){
 		ConnectionDetector cd = new ConnectionDetector(getApplicationContext());
@@ -91,12 +101,12 @@ public class MainActivity extends Activity {
 		Boolean isInternetPresent = cd.isConnectingToInternet();
 
 		if (isInternetPresent) {
-			final DBTools dbTools = new DBTools(this);
+			//final DBTools dbTools = new DBTools(this);
 			
 			RequestQueue queue = Volley.newRequestQueue(this);
-			final String urlEvent = "http://192.168.173.33/getAllEvents.php";
-			final String urlSession = "http://192.168.173.33/getAllSession.php";
-			final String urlConference = "http://192.168.173.33/getConference.php";
+			final String urlEvent = "http://192.168.162.113/getAllEvents.php";
+			final String urlSession = "http://192.168.162.113/getAllSession.php";
+			final String urlConference = "http://192.168.162.113/getConference.php";
 			
 			
 			
@@ -170,7 +180,7 @@ public class MainActivity extends Activity {
 			queue.add(getSession);
 			queue.add(getConference);
 		} else {
-			Toast.makeText(getApplicationContext(), "No Internet", Toast.LENGTH_SHORT).show();
+			//Toast.makeText(getApplicationContext(), "No Internet", Toast.LENGTH_SHORT).show();
 		}
 
 	}

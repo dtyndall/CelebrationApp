@@ -148,14 +148,28 @@ public class TabbedSchedule extends TabActivity {
 	    	finish();
 	    	filter.putExtra("parent", "filter");
 	    	filter.putExtra("filter", "track");
-	    	//filter.putExtra("type", "leadership");
+	    	//filter.putExtra("type", "Leadership");
 	    	startActivity(filter);
 	    	break;
-	    case R.id.doer:
+	    case R.id.technical:
 	    	finish();
 	    	filter.putExtra("parent", "filter");
 	    	filter.putExtra("filter", "track");
-	    	//filter.putExtra("type", "teacher");
+	    	//filter.putExtra("type", "Technical");
+	    	startActivity(filter);
+	    	break;
+	    case R.id.civic:
+	    	finish();
+	    	filter.putExtra("parent", "filter");
+	    	filter.putExtra("filter", "track");
+	    	//filter.putExtra("type", "Civic Engagement");
+	    	startActivity(filter);
+	    	break;
+	    case R.id.corps:
+	    	finish();
+	    	filter.putExtra("parent", "filter");
+	    	filter.putExtra("filter", "track");
+	    	//filter.putExtra("type", "Corps Practices");
 	    	startActivity(filter);
 	    	break;
 

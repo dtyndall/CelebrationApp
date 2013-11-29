@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView.FindListener;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
@@ -38,65 +40,65 @@ public class CustomListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
     	ViewHolder holder;
+    	
     	TextView eventName = null; 
     	TextView eventTime = null; 
     	TextView authorName = null; 
     	TextView eventLocation = null;
-    	
+    	holder = new ViewHolder();
     	if (convertView == null) {
+    		
     		  convertView = mInflater.inflate(R.layout.event_single, null);
-    		  holder = new ViewHolder();
+    		 
     		  for(int i=0; i<((ViewGroup)convertView).getChildCount(); ++i) {
-    			  View nextChild =((ViewGroup)convertView).getChildAt(i);
-    			  TextView next;
-    			  next = (TextView) nextChild;
-    			  //System.out.println("ID OF CHILD " + next.getId());
-    			 if(next.getId() == 2131230739){
-    				 eventName = next;
-    			 }
-    			 if(next.getId() ==  2131230740){
-    				 eventTime = next;
-    			 }
-    			 if(next.getId() == 2131230741){
-    				 authorName = next;
-    			 }
-    			 if(next.getId() == 2131230724){
-    				 eventLocation = next;
-    			 }
+    			  
+	    			  View nextChild =((ViewGroup)convertView).getChildAt(i);
+	    			  TextView next;
+	    			  next = (TextView) nextChild;
+	    			  //System.out.println("ID OF CHILD " + next.getId());
+	    			 if(next.getId() == 2131296276){
+	    				 eventName = next;
+	    			 }
+	    			 if(next.getId() ==  2131296277){
+	    				 eventTime = next;
+	    			 }
+	    			 if(next.getId() == 2131296278){
+	    				 authorName = next;
+	    			 }
+	    			 if(next.getId() == 2131296261){
+	    				 eventLocation = next;
+	    			 }
     			
     			}
     		  
     		  HashMap<String, String> currentData = new HashMap<String, String>();
               currentData = list.get(position);
-              System.out.println(currentData);
+              //System.out.println(currentData);
+             
               eventName.setText(currentData.get("event_name"));
               authorName.setText(currentData.get("author_name"));
               eventTime.setText(currentData.get("event_time"));
+              
               eventLocation.setText(currentData.get("event_location"));
-              if(currentData.get("track").equals("technical")){
+              if(currentData.get("track").equals("Leadership")){
             	 eventName.setTextColor(0xffff0000);
               }
-              if(currentData.get("track").equals("leadership")){
-            	  eventName.setTextColor(0xff00ff00);
+              if(currentData.get("track").equals("Civic Engagement")){
+            	  eventName.setTextColor(0xffff00ff);
               }
-              if(currentData.get("track").equals("teacher")){
-            	  eventName.setTextColor(0xff00ffff);
+              if(currentData.get("track").equals("Corps Practices")){
+            	  eventName.setTextColor(0xff0000ff);
+              }
+              if(currentData.get("track").equals("Technical Excellence")){
+            	  eventName.setTextColor(0xffffc800);
               }
               
-//              if (currentData != null) {
-//                 
-//            	  System.out.println(currentData.get("event_name"));
-//                  System.out.println(currentData.get("event_location"));
-//                  System.out.println(currentData.get("event_time"));
-//                  System.out.println(currentData.get("author_name"));
-//              } 
-
     		  convertView.setTag(holder);
     		 } else {
     		  holder = (ViewHolder) convertView.getTag();
     		 }
     	  
-		  
+		  holder.eventName = (TextView) convertView.findViewById(R.id.event_name);
 
     	  
     	 return convertView;
@@ -104,7 +106,6 @@ public class CustomListAdapter extends BaseAdapter {
 
 
 		static class ViewHolder {
-    	 TextView eventName;
-    	 TextView eventId;
+			TextView eventName;
     	}
 }

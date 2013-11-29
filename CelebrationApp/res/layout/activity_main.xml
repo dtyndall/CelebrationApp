@@ -17,7 +17,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="90dp"
         android:text="Show peronsal Schedule" />
-
     <Button
         android:id="@+id/scheduleTabbedButton"
         style="?android:attr/buttonBarButtonStyle"
@@ -27,5 +26,15 @@
         android:layout_below="@+id/showPersonalSchedule"
         android:layout_marginTop="37dp"
         android:text="Show schedule tabbed" />
+
+    <Button
+        android:id="@+id/getMap"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/scheduleTabbedButton"
+        android:layout_below="@+id/scheduleTabbedButton"
+        android:text="View Map" />
+
 
 </RelativeLayout>

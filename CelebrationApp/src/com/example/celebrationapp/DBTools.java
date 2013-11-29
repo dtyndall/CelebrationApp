@@ -138,17 +138,33 @@ public class DBTools extends SQLiteOpenHelper{
 }
 	public void insertConference(HashMap<String, String> queryValues) {
 			SQLiteDatabase database = this.getWritableDatabase();
+			String selectQuery = "SELECT * FROM conference WHERE conf_id= '" + 
+					queryValues.get("Conf_Id") + "';";
+			Cursor cursor = database.rawQuery(selectQuery, null);
+			if(cursor.moveToFirst()){
+				ContentValues values = new ContentValues();
+				
+				values.put("conf_id", queryValues.get("Conf_Id"));
+				values.put("conf_name", queryValues.get("Conf_Name"));
+				values.put("conf_year", queryValues.get("Conf_year"));
+				values.put("conf_location", queryValues.get("Conf_location"));
+				values.put("conf_map", queryValues.get("Conf_map"));
+				
+				
+				database.update("conference", values, "conf_id" + " = ?",
+						new String[] { queryValues.get("Conf_id") });
+				return;
+			}
 			
 			ContentValues values = new ContentValues();
 		
-			values.put("conf_id", queryValues.get("conf_id"));
-			values.put("conf_name", queryValues.get("conf_name"));
-			values.put("conf_year", queryValues.get("conf_year"));
-			values.put("conf_location", queryValues.get("conf_location"));
-			values.put("conf_map", queryValues.get("conf_map"));
-			
+			values.put("conf_id", queryValues.get("Conf_Id"));
+			values.put("conf_name", queryValues.get("Conf_Name"));
+			values.put("conf_year", queryValues.get("Conf_year"));
+			values.put("conf_location", queryValues.get("Conf_location"));
+			values.put("conf_map", queryValues.get("Conf_map"));
 			database.insert("conference", null, values);
-		
+			
 			database.close();
 		
 	}
@@ -424,7 +440,6 @@ public class DBTools extends SQLiteOpenHelper{
 				contactMap.put("author_name", cursor.getString(9));
 				contactMap.put("session_id", cursor.getString(4));
 				contactMap.put("track", cursor.getString(10));
-				System.out.println("track" + cursor.getString(7));
 
 				int time = Integer.parseInt(contactMap.get("event_time").substring(0, 2));
 				int newTime;
@@ -452,7 +467,7 @@ public class DBTools extends SQLiteOpenHelper{
 
 		}else{
 			 selectQuery = "Select * from session inner join event where " +
-						"session.sevent_id=event.event_id and author_name = '" + authorName + "' ORDER BY time ASC";
+						"session.sevent_id=event.event_id and author_name LIKE '%" + authorName + "%' ORDER BY time ASC";
 		}
 		
 		SQLiteDatabase database = this.getWritableDatabase();
@@ -469,8 +484,11 @@ public class DBTools extends SQLiteOpenHelper{
 				contactMap.put("event_location", cursor.getString(1));
 				contactMap.put("event_date", cursor.getString(2));
 				contactMap.put("event_time", cursor.getString(3));
+				contactMap.put("session_id", cursor.getString(4));
 				contactMap.put("event_name", cursor.getString(6));
 				contactMap.put("author_name", cursor.getString(7));
+				contactMap.put("track",cursor.getString(10));
+				
 				
 				int time = Integer.parseInt(contactMap.get("event_time").substring(0, 2));
 				int newTime;
@@ -510,6 +528,8 @@ public class DBTools extends SQLiteOpenHelper{
 				contactMap.put("event_time", cursor.getString(3));
 				contactMap.put("event_name", cursor.getString(6));
 				contactMap.put("author_name", cursor.getString(7));
+				contactMap.put("session_id", cursor.getString(4));
+				contactMap.put("track", cursor.getString(10));
 				
 				int time = Integer.parseInt(contactMap.get("event_time").substring(0, 2));
 				int newTime;
@@ -656,7 +676,7 @@ public class DBTools extends SQLiteOpenHelper{
 	public boolean ifFavorite(String eventId) {
 		SQLiteDatabase database = this.getReadableDatabase();
 		
-		String checkQuery = "SELECT * FROM favorite WHERE event_id = '"+ eventId +"';";
+		String checkQuery = "SELECT * FROM favorite WHERE session_id = '"+ eventId +"';";
 		Cursor checkCursor = database.rawQuery(checkQuery, null);
 		
 		if(checkCursor.moveToFirst()){
@@ -664,6 +684,18 @@ public class DBTools extends SQLiteOpenHelper{
 		}else{
 			return false;
 		}
+	}
+
+	public String getMapURL() {
+		SQLiteDatabase database = this.getReadableDatabase();
+		
+		String mapQuery = "SELECT * FROM conference;";
+		Cursor mapCursor = database.rawQuery(mapQuery, null);
+		
+		if(mapCursor.moveToFirst()){
+			return mapCursor.getString(4);
+		}
+		return "cheese";
 	}
 	
 	
