@@ -1,7 +1,9 @@
 package com.example.celebrationapp;
 
-import java.lang.reflect.Array;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 import android.content.ContentValues;
@@ -9,6 +11,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.text.format.DateFormat;
 import android.util.Log;
 
 public class DBTools extends SQLiteOpenHelper{
@@ -119,7 +122,8 @@ public class DBTools extends SQLiteOpenHelper{
 				values.put("time", queryValues.get("Time"));
 				values.put("session_id", queryValues.get("session_id"));
 				
-
+				
+				
 				
 				database.update("session", values, "session_id" + " = ?",
 						new String[] { queryValues.get("session_id") });
@@ -245,9 +249,9 @@ public class DBTools extends SQLiteOpenHelper{
 				sessionmap.put("event_date", cursor.getString(2));
 				sessionmap.put("event_time", cursor.getString(3));
 				sessionmap.put("session_id", cursor.getString(4));
-
+					
 			} while (cursor.moveToNext());
-
+			
 		}
 		return sessionmap;
 
@@ -268,10 +272,17 @@ public class DBTools extends SQLiteOpenHelper{
 				HashMap<String, String> daymap = new HashMap<String, String>();
 				
 				daymap.put("date", cursor.getString(0));
-				String day = cursor.getString(0).substring(8,10);
-				String month = cursor.getString(0).substring(5,7);
-				daymap.put("public", month+"-"+day);
-				
+				try {
+					SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+					Date date = fmt.parse(cursor.getString(0));
+
+					SimpleDateFormat fmtOut = new SimpleDateFormat("EEEE");
+					daymap.put("public", fmtOut.format(date));
+					
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				dayList.add(daymap);
 			} while (cursor.moveToNext());
 			

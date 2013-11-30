@@ -61,6 +61,18 @@ public class EventProfile extends Activity {
 		if(eventList.size() != 0){
 			
 			eventTrack.setText(eventList.get("track"));
+			 if(eventList.get("track").equals("Leadership")){
+	        	 eventTrack.setTextColor(0xffff0000);
+	          }
+	          if(eventList.get("track").equals("Civic Engagement")){
+	        	  eventTrack.setTextColor(0xffff00ff);
+	          }
+	          if(eventList.get("track").equals("Corps Practices")){
+	        	  eventTrack.setTextColor(0xff0000ff);
+	          }
+	          if(eventList.get("track").equals("Technical Excellence")){
+	        	  eventTrack.setTextColor(0xffffc800);
+	          }
 			eventCat.setText(eventList.get("event_category"));
 			eventName.setText(eventList.get("event_name"));
 			
@@ -70,7 +82,6 @@ public class EventProfile extends Activity {
 				Collections.addAll(list, eventList.get("author_name").split(","));
 				LinearLayout authorLayout = (LinearLayout) findViewById(R.id.authorLayout);
 				for(int i = 0; i< list.size(); i++){
-					//System.out.println(list.get(i));
 					final int index = i;
 					TextView tv = new TextView(this);
 					tv.setTextSize(getResources().getDimension(R.dimen.authorSize));
