@@ -246,10 +246,14 @@ public class DBTools extends SQLiteOpenHelper{
 
 				sessionmap.put("sevent_id", cursor.getString(0));
 				sessionmap.put("event_location", cursor.getString(1));
-				//sessionmap.put("event_date", cursor.getString(2));
-				sessionmap.put("event_time", cursor.getString(3));
+				//sessionmap.put("event_time", cursor.getString(3));
 				sessionmap.put("session_id", cursor.getString(4));
 				try {
+					SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss"); 
+					Date timeDate = time.parse(cursor.getString(3));
+					SimpleDateFormat timeOut = new SimpleDateFormat("hh:mm a");
+					sessionmap.put("event_time", timeOut.format(timeDate));
+					
 					SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
 					Date date = fmt.parse(cursor.getString(2));
 
@@ -355,7 +359,7 @@ public class DBTools extends SQLiteOpenHelper{
 				sessionmap.put("event_id", cursor.getString(0));
 				sessionmap.put("event_location", cursor.getString(1));
 				sessionmap.put("event_date", cursor.getString(2));
-				sessionmap.put("event_time", cursor.getString(3));
+				//sessionmap.put("event_time", cursor.getString(3));
 				sessionmap.put("session_id", cursor.getString(4));
 				sessionmap.put("sevent_id", cursor.getString(5));
 				sessionmap.put("event_name", cursor.getString(6));
@@ -365,12 +369,17 @@ public class DBTools extends SQLiteOpenHelper{
 				sessionmap.put("track", cursor.getString(10));
 				sessionmap.put("event_description", cursor.getString(11));
 				sessionmap.put("event_category", cursor.getString(12));
-				int time = Integer.parseInt(sessionmap.get("event_time").substring(0, 2));
-				int newTime;
-				if(time > 12){
-					newTime = time - 12;
-					sessionmap.put("event_time", sessionmap.get("event_time").
-												replace(String.valueOf(time), String.valueOf(newTime)));
+				
+				try {
+					SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss"); 
+					Date timeDate = time.parse(cursor.getString(3));
+					SimpleDateFormat timeOut = new SimpleDateFormat("hh:mm a");
+					sessionmap.put("event_time", timeOut.format(timeDate));
+					
+					
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 				
 				sessionArrayList.add(sessionmap);
@@ -463,18 +472,22 @@ public class DBTools extends SQLiteOpenHelper{
 
 				contactMap.put("event_id", cursor.getString(0));
 				contactMap.put("event_location", cursor.getString(1));
-				contactMap.put("event_time", cursor.getString(3));
+				//contactMap.put("event_time", cursor.getString(3));
 				contactMap.put("event_name", cursor.getString(6));
 				contactMap.put("author_name", cursor.getString(9));
 				contactMap.put("session_id", cursor.getString(4));
 				contactMap.put("track", cursor.getString(10));
 
-				int time = Integer.parseInt(contactMap.get("event_time").substring(0, 2));
-				int newTime;
-				if(time > 12){
-					newTime = time - 12;
-					contactMap.put("event_time", contactMap.get("event_time").
-												replace(String.valueOf(time), String.valueOf(newTime)));
+				try {
+					SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss"); 
+					Date timeDate = time.parse(cursor.getString(3));
+					SimpleDateFormat timeOut = new SimpleDateFormat("hh:mm a");
+					contactMap.put("event_time", timeOut.format(timeDate));
+					
+					
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 				
 				eventsArrayList.add(contactMap);
@@ -511,19 +524,22 @@ public class DBTools extends SQLiteOpenHelper{
 				contactMap.put("event_id", cursor.getString(0));
 				contactMap.put("event_location", cursor.getString(1));
 				contactMap.put("event_date", cursor.getString(2));
-				contactMap.put("event_time", cursor.getString(3));
+				//contactMap.put("event_time", cursor.getString(3));
 				contactMap.put("session_id", cursor.getString(4));
 				contactMap.put("event_name", cursor.getString(6));
 				contactMap.put("author_name", cursor.getString(7));
 				contactMap.put("track",cursor.getString(10));
 				
-				
-				int time = Integer.parseInt(contactMap.get("event_time").substring(0, 2));
-				int newTime;
-				if(time > 12){
-					newTime = time - 12;
-					contactMap.put("event_time", contactMap.get("event_time").
-												replace(String.valueOf(time), String.valueOf(newTime)));
+				try {
+					SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss"); 
+					Date timeDate = time.parse(cursor.getString(3));
+					SimpleDateFormat timeOut = new SimpleDateFormat("hh:mm a");
+					contactMap.put("event_time", timeOut.format(timeDate));
+					
+					
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 				authorArrayList.add(contactMap);
 
@@ -553,18 +569,22 @@ public class DBTools extends SQLiteOpenHelper{
 				contactMap.put("event_id", cursor.getString(0));
 				contactMap.put("event_location", cursor.getString(1));
 				contactMap.put("event_date", cursor.getString(2));
-				contactMap.put("event_time", cursor.getString(3));
+				//contactMap.put("event_time", cursor.getString(3));
 				contactMap.put("event_name", cursor.getString(6));
 				contactMap.put("author_name", cursor.getString(7));
 				contactMap.put("session_id", cursor.getString(4));
 				contactMap.put("track", cursor.getString(10));
 				
-				int time = Integer.parseInt(contactMap.get("event_time").substring(0, 2));
-				int newTime;
-				if(time > 12){
-					newTime = time - 12;
-					contactMap.put("event_time", contactMap.get("event_time").
-												replace(String.valueOf(time), String.valueOf(newTime)));
+				try {
+					SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss"); 
+					Date timeDate = time.parse(cursor.getString(3));
+					SimpleDateFormat timeOut = new SimpleDateFormat("hh:mm a");
+					contactMap.put("event_time", timeOut.format(timeDate));
+					
+					
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 
 				roomArrayList.add(contactMap);
@@ -593,7 +613,7 @@ public class DBTools extends SQLiteOpenHelper{
 				sessionmap.put("event_id", cursor.getString(0));
 				sessionmap.put("event_location", cursor.getString(1));
 				sessionmap.put("event_date", cursor.getString(2));
-				sessionmap.put("event_time", cursor.getString(3));
+				//sessionmap.put("event_time", cursor.getString(3));
 				sessionmap.put("session_id", cursor.getString(4));
 				sessionmap.put("sevent_id", cursor.getString(5));
 				sessionmap.put("event_name", cursor.getString(6));
@@ -603,13 +623,16 @@ public class DBTools extends SQLiteOpenHelper{
 				sessionmap.put("track", cursor.getString(10));
 				sessionmap.put("event_description", cursor.getString(11));
 				sessionmap.put("event_category", cursor.getString(12));
-				int time = Integer.parseInt(sessionmap.get("event_time").substring(0, 2));
-				int newTime;
-				if(time > 12){
-					newTime = time - 12;
+				try {
+					SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss"); 
+					Date timeDate = time.parse(cursor.getString(3));
+					SimpleDateFormat timeOut = new SimpleDateFormat("hh:mm a");
+					sessionmap.put("event_time", timeOut.format(timeDate));
 					
-					sessionmap.put("event_time", sessionmap.get("event_time").
-												replace(String.valueOf(time), String.valueOf(newTime)));
+					
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 				
 				sessionArrayList.add(sessionmap);
@@ -636,16 +659,20 @@ public class DBTools extends SQLiteOpenHelper{
 				sessionmap.put("event_id", cursor.getString(0));
 				sessionmap.put("event_location", cursor.getString(1));
 				sessionmap.put("event_date", cursor.getString(2));
-				sessionmap.put("event_time", cursor.getString(3));
+				//sessionmap.put("event_time", cursor.getString(3));
 				sessionmap.put("event_name", cursor.getString(6));
 				sessionmap.put("author_name", cursor.getString(9));
 				sessionmap.put("track", cursor.getString(10));
-				int time = Integer.parseInt(sessionmap.get("event_time").substring(0, 2));
-				int newTime;
-				if(time > 12){
-					newTime = time - 12;
-					sessionmap.put("event_time", sessionmap.get("event_time").
-							replace(String.valueOf(time), String.valueOf(newTime)));
+				try {
+					SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss"); 
+					Date timeDate = time.parse(cursor.getString(3));
+					SimpleDateFormat timeOut = new SimpleDateFormat("hh:mm a");
+					sessionmap.put("event_time", timeOut.format(timeDate));
+					
+					
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 				sessionArrayList.add(sessionmap);
 			} while (cursor.moveToNext());
