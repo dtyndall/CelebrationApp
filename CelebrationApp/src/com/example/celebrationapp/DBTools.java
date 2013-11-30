@@ -246,10 +246,20 @@ public class DBTools extends SQLiteOpenHelper{
 
 				sessionmap.put("sevent_id", cursor.getString(0));
 				sessionmap.put("event_location", cursor.getString(1));
-				sessionmap.put("event_date", cursor.getString(2));
+				//sessionmap.put("event_date", cursor.getString(2));
 				sessionmap.put("event_time", cursor.getString(3));
 				sessionmap.put("session_id", cursor.getString(4));
+				try {
+					SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+					Date date = fmt.parse(cursor.getString(2));
+
+					SimpleDateFormat fmtOut = new SimpleDateFormat("EEEE");
+					sessionmap.put("event_date", fmtOut.format(date));
 					
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}	
 			} while (cursor.moveToNext());
 			
 		}
@@ -306,10 +316,17 @@ public class DBTools extends SQLiteOpenHelper{
 				HashMap<String, String> daymap = new HashMap<String, String>();
 				
 				daymap.put("date", cursor.getString(0));
-				String day = cursor.getString(0).substring(8,10);
-				String month = cursor.getString(0).substring(5,7);
-				daymap.put("public", month+"-"+day);
-				
+				try {
+					SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+					Date date = fmt.parse(cursor.getString(0));
+
+					SimpleDateFormat fmtOut = new SimpleDateFormat("EEEE");
+					daymap.put("public", fmtOut.format(date));
+					
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				dayList.add(daymap);
 			} while (cursor.moveToNext());
 			
