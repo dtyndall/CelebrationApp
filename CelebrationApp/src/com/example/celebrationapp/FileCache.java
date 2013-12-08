@@ -19,6 +19,7 @@ public class FileCache {
    }
  
    public File getFile(String url){
+	   //Gets file name
        String filename=String.valueOf(url.hashCode());
        File f = new File(cacheDir, filename);
        return f;
@@ -26,6 +27,7 @@ public class FileCache {
    }
  
    public void clear(){
+	   //Clears out file name
        File[] files=cacheDir.listFiles();
        if(files==null)
            return;

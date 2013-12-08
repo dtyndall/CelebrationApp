@@ -7,6 +7,7 @@ import java.io.OutputStream;
 public class Utils {
     public static void CopyStream(InputStream is, OutputStream os)
     {
+    	//Changes the image online to a bitmap
         final int buffer_size=1024;
         try
         {

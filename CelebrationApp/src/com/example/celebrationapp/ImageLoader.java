@@ -36,8 +36,12 @@ public class ImageLoader {
    int stub_id = R.drawable.ic_launcher;
    public void DisplayImage(String url, int loader, ImageView imageView)
    {
+	   //Sets placeholder image to stock android launcher image
        stub_id = loader;
        imageViews.put(imageView, url);
+       
+       //Changes the placeholder image to the map image from either online retrieval
+       //or local memory retrieval
        Bitmap bitmap=memoryCache.get(url);
        if(bitmap!=null)
            imageView.setImageBitmap(bitmap);

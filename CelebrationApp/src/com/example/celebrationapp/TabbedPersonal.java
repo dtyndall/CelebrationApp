@@ -18,9 +18,10 @@ public class TabbedPersonal extends TabActivity {
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		
-		
 		Intent theIntent = getIntent();
 		Bundle extra = theIntent.getExtras();
+		
+		//Get extra string "parent" passed in from another class
 		String parent = extra.getString("parent");
 		
 		DBTools dbTools = new DBTools(this);
@@ -29,10 +30,14 @@ public class TabbedPersonal extends TabActivity {
 		TabHost tabHost = getTabHost();
 		
 		 if(parent.equals("personal")){
+			//Gets the list of days
 			ArrayList<HashMap<String, String>> days = dbTools.getFavoriteDays();
-
+			//For the list of days gathered above the same number of tabs are created
+			//Those tabs are then filled with information for the daily schedule
 			for (HashMap<String, String> date : days) {
-				
+				//Creates tabs by the list of days
+				//Creates an intent for each tab which runs the Schedule class
+				//Passes several keywords to the Schedule class as extras
 				TabSpec tabBar = tabHost.newTabSpec(date.get("date"));
 				tabBar.setIndicator(date.get("public"));
 				Intent tabIntent = new Intent(this, Schedule.class);
@@ -45,12 +50,15 @@ public class TabbedPersonal extends TabActivity {
 			}
 		
 		}else if(parent.equals("filter")){
+			//Gets the list of days
 			ArrayList<HashMap<String, String>> days = dbTools.getFavoriteDays();
-
+			//Gets the extra for what to filter by
 			String filterBy = extra.getString("filter");
-			
+			String type = extra.getString("type");
 			for (HashMap<String, String> date : days) {
-				
+				//Creates tabs by the list of days
+				//Creates an intent for each tab which runs the Schedule class
+				//Passes several keywords to the Schedule class as extras
 				TabSpec tabBar = tabHost.newTabSpec(date.get("date"));
 				tabBar.setIndicator(date.get("public"));
 				Intent tabIntent = new Intent(this, Schedule.class);
@@ -58,6 +66,7 @@ public class TabbedPersonal extends TabActivity {
 				extras.putString("event_date", date.get("date"));
 				extras.putString("parent","personalFilter");
 				extras.putString("key",filterBy);
+				extras.putString("type", type);
 				tabIntent.putExtras(extras);
 				tabBar.setContent(tabIntent);
 				tabHost.addTab(tabBar);
@@ -75,7 +84,8 @@ public class TabbedPersonal extends TabActivity {
 	  @Override
 	  public boolean onOptionsItemSelected(MenuItem item) {
 		Intent filter = new Intent(this, TabbedPersonal.class);
-		
+		//When the user selects an option from the menu, the result 
+		//of their choice is run from the cases below 
 		switch (item.getItemId()) {
 	    case R.id.time:
 	    	finish();
@@ -87,28 +97,28 @@ public class TabbedPersonal extends TabActivity {
 	    	finish();
 	    	filter.putExtra("parent", "filter");
 	    	filter.putExtra("filter", "track");
-	    	//filter.putExtra("type", "Leadership");
+	    	filter.putExtra("type", "Leadership");
 	    	startActivity(filter);
 	    	break;
 	    case R.id.technical:
 	    	finish();
 	    	filter.putExtra("parent", "filter");
 	    	filter.putExtra("filter", "track");
-	    	//filter.putExtra("type", "Technical");
+	    	filter.putExtra("type", "Technical Excellence");
 	    	startActivity(filter);
 	    	break;
 	    case R.id.civic:
 	    	finish();
 	    	filter.putExtra("parent", "filter");
 	    	filter.putExtra("filter", "track");
-	    	//filter.putExtra("type", "Civic Engagement");
+	    	filter.putExtra("type", "Civic Engagement");
 	    	startActivity(filter);
 	    	break;
 	    case R.id.corps:
 	    	finish();
 	    	filter.putExtra("parent", "filter");
 	    	filter.putExtra("filter", "track");
-	    	//filter.putExtra("type", "Corps Practices");
+	    	filter.putExtra("type", "Corps Practices");
 	    	startActivity(filter);
 	    	break;
 

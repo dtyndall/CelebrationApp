@@ -24,13 +24,15 @@ public class Schedule extends Activity {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.event_list);
+		//Gathers the parent extra sent from other classes
+		
 		Intent theIntent = getIntent();
 		Bundle extras = theIntent.getExtras();
 		
 		String parent = extras.getString("parent");
 		
 
-		
+		//Depending on the parent extra gathered above the appropriate method will run
 		if(parent.equals("1")){
 			dailySchedule();
 		}else if(parent.equals("personal")){
@@ -51,78 +53,90 @@ public class Schedule extends Activity {
 	private void personalSchedule() {
 		Intent theIntent = getIntent();
 		Bundle extras = theIntent.getExtras();
-		
+		//Get the event_date extra sent from another class
 		String eventDate = extras.getString("event_date");
-		
+		//Gather an ArrayList of HashMaps filled with all information from the database
 		ArrayList<HashMap<String, String>> sessionList = dbTools.getFavorite(eventDate);
+		//Get a reference to the ListView on screen
 		final ListView eventListView = (ListView) findViewById(R.id.eventList);
-		
+		//Set a click listener for the ListView. This will allow users to click 
+		//individual tiles in the listview
 		eventListView.setOnItemClickListener(new OnItemClickListener() {
 
 				@Override
 				public void onItemClick(AdapterView<?> parent, View view,
 						int position, long id) {
-					
+					//Gets the HashMap stored in the tile at the selected position
 					HashMap eventId = (HashMap) (eventListView.
 							getItemAtPosition(position));
 					String event_id =  eventId.get("event_id").toString();
 					String session_id = eventId.get("session_id").toString();
+					//Creates an intent which starts EventProfile
 					Intent eventProfile = new Intent(Schedule.this,
 							EventProfile.class);
-					
+					//Stores two strings in the intent created
+					//these two strings are sent to EventProfile
 					eventProfile.putExtra("event_id", event_id);
 					eventProfile.putExtra("session_id", session_id);
 					
-
+					//EventProfile is run
 					startActivity(eventProfile);
 				}
 			});
+		//The list of event information is sent to the CustomListAdapter class I created
+		//This class creates each individual tile that shows up in the ListView
 		ListAdapter adapter = new CustomListAdapter(this, sessionList);
-//			ListAdapter adapter = new SimpleAdapter( Schedule.this,sessionList, 
-//					R.layout.event_single, new String[] { "event_id","event_name",
-//					"event_time", "author_name", "event_location"}, new int[] {R.id.eventId,
-//					R.id.eventName,R.id.eventTime, R.id.authorName, R.id.eventLocation});
-//			
-			eventListView.setAdapter(adapter);	
+
+		//Displays the ListView 
+		eventListView.setAdapter(adapter);	
 	}
 	protected void dailySchedule(){
 		Intent theIntent = getIntent();
 		Bundle extras = theIntent.getExtras();
 		
+		//Get the event_date extra sent from another class
 		String eventDate = extras.getString("event_date");
 		
+		//Gather an ArrayList of HashMaps filled with all information from the database
 		ArrayList<HashMap<String, String>> sessionList = dbTools.getSessions(eventDate);
-		//System.out.println("Session list" + sessionList);
 		
+		//Get a reference to the ListView on screen
 		final ListView eventListView = (ListView) findViewById(R.id.eventList);
+		
+		//Set a click listener for the ListView. This will allow users to click 
+		//individual tiles in the listview
 		eventListView.setOnItemClickListener(new OnItemClickListener() {
 
 				@Override
 				public void onItemClick(AdapterView<?> parent, View view,
 						int position, long id) {
+					
+					//Gets the HashMap stored in the tile at the selected position
 					HashMap eventId = (HashMap) (eventListView.
 							getItemAtPosition(position));
-					//System.out.println("LISTVIEW LINE " + eventId);
+					
 					String event_id =  eventId.get("event_id").toString();
 					String session_id =  eventId.get("session_id").toString();
+					
+					//Creates an intent which starts EventProfile
 					Intent eventProfile = new Intent(Schedule.this,
 							EventProfile.class);
+					
+					//Stores two strings in the intent created
+					//these two strings are sent to EventProfile
 					eventProfile.putExtra("event_id", event_id);
 					eventProfile.putExtra("session_id", session_id);
-
+					
+					//EvenProfile is run
 					startActivity(eventProfile);
 				}
 			});
-		ListAdapter adapter = new CustomListAdapter(this, sessionList);
-		
-		
-//			ListAdapter adapter = new SimpleAdapter( Schedule.this,sessionList, 
-//					R.layout.event_single, new String[] { "event_id","event_name",
-//					"event_time", "author_name", "event_location"}, new int[] {R.id.eventId,
-//					R.id.eventName,R.id.eventTime, R.id.authorName, R.id.eventLocation});
-//				
-//			eventListView.setAdapter(adapter);
 			
+			//The list of event information is sent to the CustomListAdapter class I created
+			//This class creates each individual tile that shows up in the ListView
+			ListAdapter adapter = new CustomListAdapter(this, sessionList);
+		
+			//Displays the ListView 
 			eventListView.setAdapter(adapter);
 
 	}
@@ -131,35 +145,49 @@ public class Schedule extends Activity {
 		Intent theIntent = getIntent();
 		Bundle extras = theIntent.getExtras();
 		
+		//Get the event_date and keyword many extra sent from another class
 		String authorName = extras.getString("author");
 		String many = extras.getString("many");
 		
+		//Gather an ArrayList of HashMaps filled with all information from the database, uses the keyword many to determine
+		//which type of sql query is ran
 		ArrayList<HashMap<String, String>> authorList = dbTools.getAuthorList(authorName, many);
+		
+		//Get a reference to the ListView on screen
 		final ListView eventListView = (ListView) findViewById(R.id.eventList);
+		
+		//Set a click listener for the ListView. This will allow users to click 
+		//individual tiles in the listview
 		eventListView.setOnItemClickListener(new OnItemClickListener() {
 
 				@Override
 				public void onItemClick(AdapterView<?> parent, View view,
 						int position, long id) {
+		
+					//Gets the HashMap stored in the tile at the selected position
 					HashMap eventId = (HashMap) (eventListView.
 							getItemAtPosition(position));
 					String event_id =  eventId.get("event_id").toString();
+					String session_id = eventId.get("session_id").toString();
+					
+					//Creates an intent which starts EventProfile
 					Intent eventProfile = new Intent(Schedule.this,
 							EventProfile.class);
-					String session_id = eventId.get("session_id").toString();
+					
+					//Stores two strings in the intent created
+					//these two strings are sent to EventProfile
 					eventProfile.putExtra("session_id", session_id);
 					eventProfile.putExtra("event_id", event_id);
-
+					
+					//EvenProfile is run
 					startActivity(eventProfile);
 				}
 			});
+			//The list of event information is sent to the CustomListAdapter class I created
+			//This class creates each individual tile that shows up in the ListView
 			ListAdapter adapter = new CustomListAdapter(this, authorList);
 		
-//			ListAdapter adapter = new SimpleAdapter( Schedule.this,authorList, 
-//					R.layout.event_single, new String[] { "event_id","event_name",
-//					"event_time", "event_location","event_date"}, new int[] {R.id.eventId,
-//					R.id.eventName,R.id.eventTime, R.id.eventLocationAuthor,R.id.eventDate});
-//			
+			//Displays the ListView 
 			eventListView.setAdapter(adapter);
 		
 	}
@@ -167,34 +195,48 @@ public class Schedule extends Activity {
 		Intent theIntent = getIntent();
 		Bundle extras = theIntent.getExtras();
 		
+		//Get the room extra sent from another class
 		String roomNum = extras.getString("room");
 		
+		//Gather an ArrayList of HashMaps filled with all information from the database
 		ArrayList<HashMap<String, String>> roomList = dbTools.getRoomListing(roomNum);
+		
+		//Get a reference to the ListView on screen
 		final ListView eventListView = (ListView) findViewById(R.id.eventList);
+		
+		//Set a click listener for the ListView. This will allow users to click 
+		//individual tiles in the listview
 		eventListView.setOnItemClickListener(new OnItemClickListener() {
 
 				@Override
 				public void onItemClick(AdapterView<?> parent, View view,
 						int position, long id) {
+					
+					//Gets the HashMap stored in the tile at the selected position
 					HashMap eventId = (HashMap) (eventListView.
 							getItemAtPosition(position));
 					String event_id =  eventId.get("event_id").toString();
+					String session_id = eventId.get("session_id").toString();
+					
+					//Creates an intent which starts EventProfile
 					Intent eventProfile = new Intent(Schedule.this,
 							EventProfile.class);
-					String session_id = eventId.get("session_id").toString();
+					
+					//Stores two strings in the intent created
+					//these two strings are sent to EventProfile
 					eventProfile.putExtra("session_id", session_id);
 					eventProfile.putExtra("event_id", event_id);
-
+					
+					//EvenProfile is run
 					startActivity(eventProfile);
 				}
 			});
-
+			
+			//The list of event information is sent to the CustomListAdapter class I created
+			//This class creates each individual tile that shows up in the ListView
 			ListAdapter adapter = new CustomListAdapter(this, roomList);
-//			ListAdapter adapter = new SimpleAdapter( Schedule.this,roomList, 
-//					R.layout.event_single, new String[] { "event_id","event_name",
-//					"event_time","author_name", "event_date"}, new int[] {R.id.eventId,
-//					R.id.eventName,R.id.eventTime, R.id.authorName, R.id.eventDate});
-//			
+			
+			//Displays the ListView
 			eventListView.setAdapter(adapter);
 		
 	}
@@ -203,37 +245,52 @@ public class Schedule extends Activity {
 		Intent theIntent = getIntent();
 		Bundle extras = theIntent.getExtras();
 		
+		//Get the event_date, filterBy keyword, and type keyword extra sent from another class
 		String eventDate = extras.getString("event_date");
 		String filterBy = extras.getString("key");
 		String type = extras.getString("type");
 		
+		//Gather an ArrayList of HashMaps filled with all information from the database
 		ArrayList<HashMap<String, String>> sessionList = 
-					dbTools.getFilteredSessions(eventDate, filterBy);
+					dbTools.getFilteredSessions(eventDate, filterBy, type);
+		
+		//Get a reference to the ListView on screen
 		final ListView eventListView = (ListView) findViewById(R.id.eventList);
+		
+		//Set a click listener for the ListView. This will allow users to click 
+		//individual tiles in the listview
 		eventListView.setOnItemClickListener(new OnItemClickListener() {
 
 				@Override
 				public void onItemClick(AdapterView<?> parent, View view,
 						int position, long id) {
+					
+					//Gets the HashMap stored in the tile at the selected position
 					HashMap eventId = (HashMap) (eventListView.
 							getItemAtPosition(position));
+					
 					String event_id =  eventId.get("event_id").toString();
+					String session_id = eventId.get("session_id").toString();
+					
+					//Creates an intent which starts EventProfile
 					Intent eventProfile = new Intent(Schedule.this,
 							EventProfile.class);
-					String session_id = eventId.get("session_id").toString();
+					
+					//Stores two strings in the intent created
+					//these two strings are sent to EventProfile
 					eventProfile.putExtra("session_id", session_id);
 					eventProfile.putExtra("event_id", event_id);
-
+					
+					//EvenProfile is run
 					startActivity(eventProfile);
 				}
 			});
-
-//			ListAdapter adapter = new SimpleAdapter( Schedule.this,sessionList, 
-//					R.layout.event_single, new String[] { "event_id","event_name",
-//					"event_time", "author_name", "event_location"}, new int[] {R.id.eventId,
-//					R.id.eventName,R.id.eventTime, R.id.authorName, R.id.eventLocation});
-//				
+			
+			//The list of event information is sent to the CustomListAdapter class I created
+			//This class creates each individual tile that shows up in the ListView
 			ListAdapter adapter = new CustomListAdapter(this, sessionList);
+			
+			//Displays the ListView
 			eventListView.setAdapter(adapter);
 		
 	}
@@ -241,38 +298,51 @@ public class Schedule extends Activity {
 	private void peronsalFilteredListing() {
 		Intent theIntent = getIntent();
 		Bundle extras = theIntent.getExtras();
+		
+		//Get the event_date, filterBy keyword, and type keyword extra sent from another class
 		String eventDate = extras.getString("event_date");
 		String filterBy = extras.getString("key");
-//		String type = extras.getString("type");
+		String type = extras.getString("type");
 		
+		//Gather an ArrayList of HashMaps filled with all information from the database
 		ArrayList<HashMap<String, String>> sessionList = 
-					dbTools.getFilteredFavorite(eventDate, filterBy);
+					dbTools.getFilteredFavorite(eventDate, filterBy, type);
+		
+		//Get a reference to the ListView on screen
 		final ListView eventListView = (ListView) findViewById(R.id.eventList);
+		
+		//Set a click listener for the ListView. This will allow users to click 
+		//individual tiles in the listview
 		eventListView.setOnItemClickListener(new OnItemClickListener() {
 
 				@Override
 				public void onItemClick(AdapterView<?> parent, View view,
 						int position, long id) {
+					
+					//Gets the HashMap stored in the tile at the selected position
 					HashMap eventId = (HashMap) (eventListView.
 							getItemAtPosition(position));
 					
 					String event_id =  eventId.get("event_id").toString();
+					String session_id = eventId.get("session_id").toString();
+					
+					//Creates an intent which starts EventProfile
 					Intent eventProfile = new Intent(Schedule.this,
 							EventProfile.class);
-					String session_id = eventId.get("session_id").toString();
+					
+					//Stores two strings in the intent created
+					//these two strings are sent to EventProfile
 					eventProfile.putExtra("session_id", session_id);
 					eventProfile.putExtra("event_id", event_id);
-
+					//EvenProfile is run
 					startActivity(eventProfile);
 				}
 			});
+			//The list of event information is sent to the CustomListAdapter class I created
+			//This class creates each individual tile that shows up in the ListView
 			ListAdapter adapter = new CustomListAdapter(this, sessionList);
-			
-//			ListAdapter adapter = new SimpleAdapter( Schedule.this,sessionList, 
-//					R.layout.event_single, new String[] { "event_id","event_name",
-//					"event_time", "author_name", "event_location"}, new int[] {R.id.eventId,
-//					R.id.eventName,R.id.eventTime, R.id.authorName, R.id.eventLocation});
-//				
+
+			//Displays the ListView
 			eventListView.setAdapter(adapter);
 		
 	}

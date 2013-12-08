@@ -5,13 +5,6 @@
         android:id="@+id/action_refresh"
         android:orderInCategory="100"
         android:showAsAction="always"
-        android:icon="@drawable/ic_launcher"
-        android:title="Refresh"/>
-    <item
-        android:id="@+id/action_settings"
-        android:title="Settings"
-        android:showAsAction="never"
-        >
-    </item>
+        android:title="Home"/>
 
 </menu> 

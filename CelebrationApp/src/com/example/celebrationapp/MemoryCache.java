@@ -9,7 +9,8 @@ import android.graphics.Bitmap;
  
 public class MemoryCache {
    private Map<String, SoftReference<Bitmap>> cache=Collections.synchronizedMap(new HashMap<String, SoftReference<Bitmap>>());
- 
+   
+   //Stores map into cache
    public Bitmap get(String id){
        if(!cache.containsKey(id))
            return null;

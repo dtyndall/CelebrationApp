@@ -13,10 +13,14 @@ public class JSONParser {
 	
 	public ArrayList<HashMap<String, String>> getParsedJson(JSONObject request, String key){
 		
+		//Create an ArrayList of HashMaps which will get filled with parsed JSON
+		//and sent back to the main class
 		ArrayList<HashMap<String, String>> response = new ArrayList<HashMap<String, String>>();
 		
+		//Depending on the key sent over from the main class, one of three operations are run
 		if(key.equals("event")){
 			
+			//Creates a JSONArray object
 			JSONArray events = null;
 			
 			final String AUTHOR_NAME = "author_name";
@@ -28,17 +32,22 @@ public class JSONParser {
 			final String TRACK = "track";
 			final String CONFYEAR = "Conf_year";
 			
-			
+			//Whenever JSON data is extracted the code must be run in a try/catch field
 			try {
+				//Takes the JSON data sent from MainActivity and grabs the events JSONArray 
 				events = request.getJSONArray("events");
 				
-	
+				//The events JSONArray is filled with JSONObjects, each object is filled with HashMaps
+				//We have to iterate over the JSONObjects and grab all pertinent HashMaps from each object
 				for(int i = 0; i < events.length(); i++)
 				{
+					//Create empty HashMap
 					HashMap<String, String> map = new HashMap<String, String>();
-	
+					
+					//Get the i'th JSONObject in the events JSONArray
 					JSONObject e = events.getJSONObject(i);
 					
+					//Get the value from HashMap using keys created already
 					String eventId = (String) e.get(EVENT_ID);
 					String eventName = (String) e.get(EVENT_NAME);
 					String authorName = (String) e.get(AUTHOR_NAME);
@@ -48,7 +57,7 @@ public class JSONParser {
 					String track = (String) e.get(TRACK).toString();
 					String confYear = (String) e.get(CONFYEAR).toString();
 					
-					
+					//Puts each key/value pair into the local HashMap created above
 					map.put(EVENT_ID, eventId);
 					map.put(EVENT_NAME, eventName);
 					map.put(AUTHOR_NAME, authorName);
@@ -57,6 +66,8 @@ public class JSONParser {
 					map.put(SURVEY, survey);
 					map.put(TRACK, track);
 					map.put(CONFYEAR, confYear);
+					
+					//Response is an ArrayList of HashMaps created already. Each local HashMap created is stored in the ArrayList
 					response.add(map);
 					
 				}
@@ -65,6 +76,7 @@ public class JSONParser {
 				e.printStackTrace();
 			}
 		}else if(key.equals("session")){
+			//The same process is done for this condition as the first one
 			JSONArray session = null;
 			
 			final String LOCATION = "Location";
@@ -103,6 +115,7 @@ public class JSONParser {
 				e.printStackTrace();
 			}
 		}else if(key.equals("conference")){
+			//The same process is done for this condition as the first one
 			JSONArray conference = null;
 			final String CONF_ID = "Conf_Id";
 			final String CONF_NAME = "Conf_Name";
@@ -138,8 +151,7 @@ public class JSONParser {
 				e.printStackTrace();
 			}
 		}
-		
-		//System.out.println(response);
+		//Return the ArrayList response back to MainActiity after it is filled with parsed HashMaps
 		return response;
 		
 	}

@@ -25,7 +25,7 @@ public class MyTextView extends TextView{
 	    }
 
 	    private void rotate() {
-	        // TODO Auto-generated method stub
+	        //Sets the textview as selected, this allows the text to rotate
 	        setSelected(true);
 	    }
 

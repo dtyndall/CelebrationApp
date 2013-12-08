@@ -30,12 +30,14 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		//clearData();
+		clearData();
+		
+		//Runs the method to gather data from STARS database
 		getData();
 		
-		
+		//Creates button for map and starts intent
+		//to run the viewMap class
 		final Button map = (Button) findViewById(R.id.getMap);
-		
 		map.setOnClickListener(new OnClickListener() {
 			public void onClick(View view) {
 				Intent viewMap = new Intent(MainActivity.this,
@@ -47,7 +49,8 @@ public class MainActivity extends Activity {
 			
 		});
 		
-		
+		//Creates the button for the daily schedule 
+		//and starts intent to run TabbedSchedule
 		final Button Tabbed = (Button) findViewById(R.id.scheduleTabbedButton);
 		Tabbed.setOnClickListener(new OnClickListener() {
 			public void onClick(View view) {
@@ -57,6 +60,9 @@ public class MainActivity extends Activity {
 				startActivity(eventList);
 			}
 		});
+		
+		//Creates the button for the daily schedule 
+		//and starts intent to run TabbedPersonal
 		final Button showPersonalSchedule = (Button) findViewById(R.id.showPersonalSchedule);
 		showPersonalSchedule.setOnClickListener(new OnClickListener() {
 			public void onClick(View view) {
@@ -70,11 +76,14 @@ public class MainActivity extends Activity {
 		
 	}
 
-
+	//This method is unfinished, will be implemented prior to final presentation
 	private void clearData(){
+		//Will check if the phone has an Internet connection 
 		ConnectionDetector cd = new ConnectionDetector(getApplicationContext());
 		Boolean isInternetPresent = cd.isConnectingToInternet();
 
+		//If Internet connection is present the phone will attempt to 
+		//download data from the STARS database
 		if (isInternetPresent) {
 			final DBTools dbTools = new DBTools(this);
 			
@@ -83,6 +92,8 @@ public class MainActivity extends Activity {
 		}
 		
 	}
+	
+	//The following method is unfinished, will be implemented by the time of presentation
 	private void checkFavorite() {
 		final DBTools dbTools = new DBTools(this);
 		
@@ -95,23 +106,25 @@ public class MainActivity extends Activity {
 //		}
 		
 	}
+	
 	private void getData() {
-		
+		//Will check if the phone has an Internet connection 
 		ConnectionDetector cd = new ConnectionDetector(getApplicationContext());
 		Boolean isInternetPresent = cd.isConnectingToInternet();
-
+		
+		//If Internet connection is present the phone will attempt to 
+		//download data from the STARS database
 		if (isInternetPresent) {
-			//final DBTools dbTools = new DBTools(this);
 			
+			//Creating the links which will get the data from the database
 			RequestQueue queue = Volley.newRequestQueue(this);
-			final String urlEvent = "http://192.168.162.113/getAllEvents.php";
-			final String urlSession = "http://192.168.162.113/getAllSession.php";
-			final String urlConference = "http://192.168.162.113/getConference.php";
+			final String urlEvent = "http://192.168.172.239/getAllEvents.php";
+			final String urlSession = "http://192.168.172.239/getAllSession.php";
+			final String urlConference = "http://192.168.172.239/getConference.php";
 			
-			
-			
-			// prepare the Request
-
+			//The three requests to gather data are prepared below and 
+			//will handle gathering the data from the appropriate url
+			//before storing them into the database
 			JsonObjectRequest getEvent = new JsonObjectRequest(
 					Request.Method.GET, urlEvent, null,
 					new Response.Listener<JSONObject>() {
@@ -175,7 +188,9 @@ public class MainActivity extends Activity {
 
 						}
 					});
-			// add it to the RequestQueue
+			
+			//Adds the three requests detailed above to the RequestQueue
+			//These three lines are what causes the requests above to run
 			queue.add(getEvent);
 			queue.add(getSession);
 			queue.add(getConference);
@@ -185,9 +200,11 @@ public class MainActivity extends Activity {
 
 	}
 
+	//The following two methods create a menu for the phone
+	//but the menu for the start page has been disabled
 	public boolean onCreateOptionsMenu(Menu menu) {
 	    MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.mainmenu, menu);
+	    //inflater.inflate(R.menu.mainmenu, menu);
 	    return true;
 	  }
 	  

@@ -11,7 +11,8 @@ public class ConnectionDetector {
    public ConnectionDetector(Context context){
        this._context = context;
    }
-
+   //This method will determine if the phone is connected to the internet
+   //by checking the phones NetworkInfo.State
    public boolean isConnectingToInternet(){
        ConnectivityManager connectivity = (ConnectivityManager) _context.getSystemService(Context.CONNECTIVITY_SERVICE);
          if (connectivity != null) 
