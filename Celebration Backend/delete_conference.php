@@ -30,6 +30,8 @@
 				 
 				<?php
 				//open database connection 
+include 'dbconnect.php';
+/*
 				$username="root";
                 $password="";
                 $database="test";
@@ -37,6 +39,7 @@
                      
 					 //select the conferance information and display it in a table. 
 					@mysql_select_db($database) or die( "Unable to select database");
+*/
 					$query="SELECT Conf_Id, Conf_Name, Conf_year FROM  conference " ;
 				
                      			

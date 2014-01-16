@@ -9,10 +9,11 @@
 $response = array();
  
 // include db connect class
- 
+include 'dbconnect.php';
+/*
 mysql_connect('localhost', 'root', 'root') or die("Did not connect");
 mysql_select_db("test") or die("Did not find DB");
- 
+ */
 // get all room from room table
 $result = mysql_query("SELECT * FROM session") or die(mysql_error());
  

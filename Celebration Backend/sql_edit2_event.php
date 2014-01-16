@@ -29,9 +29,7 @@
 				<div class="content">
 		         <br><br>
 <?
-$username="root";
-$password="";
-$database="test";
+
 
 $EventId= (int)$_POST['event_id'];
 $Year=mysql_real_escape_string($_POST['Conf_year']);
@@ -41,10 +39,15 @@ $EventDescription= mysql_real_escape_string ($_POST['event_description']);
 $EventCategory= mysql_real_escape_string ($_POST['event_category']);
 $survey= mysql_real_escape_string ($_POST['survey']);
 
-
+include 'dbconnect.php';
+/*
+$username="root";
+$password="";
+$database="test";
 // save the new event information after the change 
 mysql_connect('localhost',$username,$password);
 @mysql_select_db($database) or die( "Unable to select database");
+*/
 $query = "UPDATE event  SET Conf_year = '$Year', event_name = '$EventName' ,author_name = '$AuthorName' ,event_description = '$EventDescription' ,event_category = '$EventCategory', survey = '$survey' 
  WHERE event_id= $EventId";
 

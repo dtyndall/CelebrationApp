@@ -28,6 +28,8 @@
 			<div class="content">
 			   <br><br>
 				<?php
+include 'dbconnect.php';
+/*
 				$username="root";
                 $password="";
                 $database="test";
@@ -37,6 +39,7 @@
 
 					  // get the event information that has the same id selected in edit_event.php
 					@mysql_select_db($database) or die( "Unable to select database");
+*/
 			
                     $Id = $_GET['id'];
                     $Q1 = "Select Conf_year, event_name, author_name, event_description, event_category, survey from event  WHERE  event_id = ".$_GET['id'];

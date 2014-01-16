@@ -28,6 +28,8 @@
 			<div class="content">
 			   <br><br>
 				<?php
+include 'dbconnect.php';
+/*
 				$username="root";
                 $password="";
                 $database="test";
@@ -36,6 +38,7 @@
 					 mysql_connect('localhost',$username,$password);
 
 					@mysql_select_db($database) or die( "Unable to select database");
+*/
 			
                     $Id = $_GET['id'];
                     $Q1 = "Select Conf_Name, Conf_year, Conf_location, Conf_phone, Conf_map FROM conference WHERE  Conf_Id = ".$_GET['id'];

@@ -30,7 +30,10 @@
 		<div class="content">
 		         <br><br>
 				<?php
-				$username="root";
+				
+include 'dbconnect.php';
+/*
+$username="root";
                 $password="";
                 $database="test";
 			    
@@ -38,6 +41,7 @@
 					 mysql_connect('localhost',$username,$password);
 
 					@mysql_select_db($database) or die( "Unable to select database");
+*/
 			        // delete the conference that selected in delete_Conference.php 
  
                     $query = "DELETE FROM conference WHERE  Conf_Id = ".$_GET['id'];

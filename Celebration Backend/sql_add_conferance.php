@@ -30,10 +30,6 @@
 		         <br><br>
 
 <?
-$username="root";
-$password="";
-$database="test";
-
 
 $ConfName=$_POST['Conference_name'];
 $ConfDate=$_POST['Conference_Year'];
@@ -41,9 +37,15 @@ $ConfLoaction=$_POST['Conference_Location'];
 $ConfPhone=$_POST['Conference_Phone'];
 $ConfMap= $_POST['Conference_Map'];
 
+include 'dbconnect.php';
+/*
+$username="root";
+$password="";
+$database="test";
 // insert the conference information in the database table 
 mysql_connect('localhost',$username,$password);
 @mysql_select_db($database) or die( "Unable to select database");
+*/
 $query = "INSERT INTO conference (Conf_Name,Conf_year,Conf_location,Conf_phone,Conf_map)
  VALUES ('$ConfName','$ConfDate','$ConfLoaction','$ConfPhone','$ConfMap')";
 

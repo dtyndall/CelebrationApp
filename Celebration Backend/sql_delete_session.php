@@ -30,6 +30,8 @@
 		<div class="content">
 		         <br><br>
 				<?php
+include 'dbconnect.php';
+/*
 				$username="root";
                 $password="";
                 $database="test";
@@ -39,6 +41,7 @@
                      
 					 // delete the session from the database session table
 					@mysql_select_db($database) or die( "Unable to select database");
+*/
 					$query3 =" SELECT  event_name FROM  event WHERE  event_id = " .$_GET['id'];
 					$name=  mysql_query($query3);
 					$event_name = mysql_query($query3);

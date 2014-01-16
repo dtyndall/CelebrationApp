@@ -31,12 +31,15 @@
 				  <!-- php code connect the web to the database -->
 				 <!-- select all the sessions information from the sessions table -->
 				<?php
+include 'dbconnect.php';
+/*
 				$username="root";
                 $password="";
                 $database="test";
 					 mysql_connect('localhost',$username,$password);
 
 					@mysql_select_db($database) or die( "Unable to select database");
+*/
 					$query="SELECT e.event_id, e.event_name,s.Location, s.Date, s.Time, s.session_id FROM  event as e JOIN session as s ON e.event_id = s.event_id " ;
                      			
 					$result = mysql_query($query);

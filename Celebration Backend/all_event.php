@@ -33,12 +33,17 @@
 				 <!-- php code connect the web to the database -->
 				 <!-- Get all the events from the event table -->
 				<?php
-				$username="root";
+
+include 'dbconnect.php';
+
+/*				$username="root";
                 $password="";
                 $database="test";
 					 mysql_connect('localhost',$username,$password);
 
 					@mysql_select_db($database) or die( "Unable to select database");
+
+*/
 					$query="SELECT event_id, event_name FROM  event  " ;
                      			
 					$result = mysql_query($query);

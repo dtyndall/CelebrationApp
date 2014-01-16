@@ -29,20 +29,23 @@
 				<div class="content">
 		         <br><br>
 <?
-$username="root";
-$password="";
-$database="test";
+
 
 $SessionId= (int)$_POST['session_id'];
 $Location= mysql_real_escape_string($_POST['Location']);
 $Date= mysql_real_escape_string ($_POST['Date']);
 $Time= mysql_real_escape_string ($_POST['Time']);
 
-
+include 'dbconnect.php';
+/*
+$username="root";
+$password="";
+$database="test";
 // save the new session information after the change 
 
 mysql_connect('localhost',$username,$password);
 @mysql_select_db($database) or die( "Unable to select database");
+*/
 $query = "UPDATE session  SET Location = '$Location' , Date = '$Date' , Time = '$Time' 
  WHERE event_id= $SessionId";
 

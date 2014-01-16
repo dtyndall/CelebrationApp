@@ -28,9 +28,7 @@
 				<div class="content">
 		         <br><br>
 <?
-$username="root";
-$password="";
-$database="test";
+
 
 $Year=$_POST['Conf_year'];
 $EventName=$_POST['event_name'];
@@ -39,11 +37,17 @@ $Description=$_POST['event_description'];
 $Category=$_POST['event_category'];
 $survey=$_POST['survey'];
 
-
+include 'dbconnect.php';
+/*
+$username="root";
+$password="";
+$database="test";
 // add the event information in the event table
 // add the session information in the session table with event id 
 mysql_connect('localhost',$username,$password);
 @mysql_select_db($database) or die( "Unable to select database");
+*/
+
 $query = "INSERT INTO event (Conf_year, event_name,author_name,event_description,event_category, survey)
  VALUES ('$Year', '$EventName','$Authoer','$Description','$Category', '$survey')";
 mysql_query($query);

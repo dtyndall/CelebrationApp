@@ -29,9 +29,6 @@
 				<div class="content">
 		         <br><br>
 <?
-$username="root";
-$password="";
-$database="test";
 
 $ConfId= (int)$_POST['Conference_Id'];
 $ConfName= mysql_real_escape_string($_POST['Conference_name']);
@@ -40,9 +37,17 @@ $ConfLoaction= mysql_real_escape_string ($_POST['Conference_Location']);
 $ConfPhone= mysql_real_escape_string ($_POST['Conference_Phone']);
 $ConfMap= mysql_real_escape_string ($_POST['Conference_Map']);
 
+include 'dbconnect.php';
+/*
+$username="root";
+$password="";
+$database="test";
+
 // save the new conference information after the change 
 mysql_connect('localhost',$username,$password);
 @mysql_select_db($database) or die( "Unable to select database");
+*/
+
 $query = "UPDATE conference  SET Conf_Name = '$ConfName' ,Conf_year = '$ConfDate' ,Conf_location = '$ConfLoaction' ,Conf_phone = '$ConfPhone' ,Conf_map = '$ConfMap' 
  WHERE Conf_Id = $ConfId";
 
