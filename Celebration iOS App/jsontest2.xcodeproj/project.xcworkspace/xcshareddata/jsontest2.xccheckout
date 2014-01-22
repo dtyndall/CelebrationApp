@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DDDB0240-D030-43DC-8F2F-18124D8C7438</string>
+	<key>IDESourceControlProjectName</key>
+	<string>jsontest2</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8FC8DD42-6D0B-45FF-BD87-9E4D6DA783CF</key>
+		<string>https://github.com/cpatel36/CelebrationApp.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Celebration iOS App/jsontest2.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8FC8DD42-6D0B-45FF-BD87-9E4D6DA783CF</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/cpatel36/CelebrationApp.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8FC8DD42-6D0B-45FF-BD87-9E4D6DA783CF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8FC8DD42-6D0B-45FF-BD87-9E4D6DA783CF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CelebrationApp</string>
+		</dict>
+	</array>
+</dict>
+</plist>
