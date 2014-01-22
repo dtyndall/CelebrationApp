@@ -54,8 +54,8 @@
 		F5379CC81888D7630009908E /* jsontest2Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "jsontest2Tests-Info.plist"; sourceTree = "<group>"; };
 		F5379CCA1888D7630009908E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F5379CCC1888D7630009908E /* jsontest2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jsontest2Tests.m; sourceTree = "<group>"; };
-		F5379CD61888D8260009908E /* eventByNameTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eventByNameTableViewController.h; path = ../eventByNameTableViewController.h; sourceTree = "<group>"; };
-		F5379CD71888D8260009908E /* eventByNameTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = eventByNameTableViewController.m; path = ../eventByNameTableViewController.m; sourceTree = "<group>"; };
+		F5379CD61888D8260009908E /* eventByNameTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = eventByNameTableViewController.h; sourceTree = "<group>"; };
+		F5379CD71888D8260009908E /* eventByNameTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = eventByNameTableViewController.m; sourceTree = "<group>"; };
 		F5379CD91888D8EF0009908E /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		F5379CDA1888D8EF0009908E /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		F5379CDC1888DB310009908E /* TableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCell.h; sourceTree = "<group>"; };
