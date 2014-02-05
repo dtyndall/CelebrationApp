@@ -37,21 +37,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F5379C9E1888D7630009908E /* jsontest2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jsontest2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5379C9E1888D7630009908E /* jsontest2 -- Obsolete.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "jsontest2 -- Obsolete.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5379CA11888D7630009908E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F5379CA31888D7630009908E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		F5379CA51888D7630009908E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		F5379CA91888D7630009908E /* jsontest2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "jsontest2-Info.plist"; sourceTree = "<group>"; };
+		F5379CA91888D7630009908E /* jsontest2 -- Obsolete-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "jsontest2 -- Obsolete-Info.plist"; sourceTree = "<group>"; };
 		F5379CAB1888D7630009908E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F5379CAD1888D7630009908E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		F5379CAF1888D7630009908E /* jsontest2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "jsontest2-Prefix.pch"; sourceTree = "<group>"; };
+		F5379CAF1888D7630009908E /* jsontest2 -- Obsolete-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "jsontest2 -- Obsolete-Prefix.pch"; sourceTree = "<group>"; };
 		F5379CB01888D7630009908E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F5379CB11888D7630009908E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F5379CB41888D7630009908E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F5379CB91888D7630009908E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		F5379CBF1888D7630009908E /* jsontest2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = jsontest2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5379CBF1888D7630009908E /* jsontest2 -- ObsoleteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "jsontest2 -- ObsoleteTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5379CC01888D7630009908E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		F5379CC81888D7630009908E /* jsontest2Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "jsontest2Tests-Info.plist"; sourceTree = "<group>"; };
+		F5379CC81888D7630009908E /* jsontest2 -- ObsoleteTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "jsontest2 -- ObsoleteTests-Info.plist"; sourceTree = "<group>"; };
 		F5379CCA1888D7630009908E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F5379CCC1888D7630009908E /* jsontest2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jsontest2Tests.m; sourceTree = "<group>"; };
 		F5379CD61888D8260009908E /* eventByNameTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = eventByNameTableViewController.h; sourceTree = "<group>"; };
@@ -101,8 +101,8 @@
 		F5379C9F1888D7630009908E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F5379C9E1888D7630009908E /* jsontest2.app */,
-				F5379CBF1888D7630009908E /* jsontest2Tests.xctest */,
+				F5379C9E1888D7630009908E /* jsontest2 -- Obsolete.app */,
+				F5379CBF1888D7630009908E /* jsontest2 -- ObsoleteTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -141,10 +141,10 @@
 		F5379CA81888D7630009908E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F5379CA91888D7630009908E /* jsontest2-Info.plist */,
+				F5379CA91888D7630009908E /* jsontest2 -- Obsolete-Info.plist */,
 				F5379CAA1888D7630009908E /* InfoPlist.strings */,
 				F5379CAD1888D7630009908E /* main.m */,
-				F5379CAF1888D7630009908E /* jsontest2-Prefix.pch */,
+				F5379CAF1888D7630009908E /* jsontest2 -- Obsolete-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -161,7 +161,7 @@
 		F5379CC71888D7630009908E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F5379CC81888D7630009908E /* jsontest2Tests-Info.plist */,
+				F5379CC81888D7630009908E /* jsontest2 -- ObsoleteTests-Info.plist */,
 				F5379CC91888D7630009908E /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -170,9 +170,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F5379C9D1888D7630009908E /* jsontest2 */ = {
+		F5379C9D1888D7630009908E /* jsontest2 -- Obsolete */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F5379CD01888D7630009908E /* Build configuration list for PBXNativeTarget "jsontest2" */;
+			buildConfigurationList = F5379CD01888D7630009908E /* Build configuration list for PBXNativeTarget "jsontest2 -- Obsolete" */;
 			buildPhases = (
 				F5379C9A1888D7630009908E /* Sources */,
 				F5379C9B1888D7630009908E /* Frameworks */,
@@ -182,14 +182,14 @@
 			);
 			dependencies = (
 			);
-			name = jsontest2;
+			name = "jsontest2 -- Obsolete";
 			productName = jsontest2;
-			productReference = F5379C9E1888D7630009908E /* jsontest2.app */;
+			productReference = F5379C9E1888D7630009908E /* jsontest2 -- Obsolete.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F5379CBE1888D7630009908E /* jsontest2Tests */ = {
+		F5379CBE1888D7630009908E /* jsontest2 -- ObsoleteTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F5379CD31888D7630009908E /* Build configuration list for PBXNativeTarget "jsontest2Tests" */;
+			buildConfigurationList = F5379CD31888D7630009908E /* Build configuration list for PBXNativeTarget "jsontest2 -- ObsoleteTests" */;
 			buildPhases = (
 				F5379CBB1888D7630009908E /* Sources */,
 				F5379CBC1888D7630009908E /* Frameworks */,
@@ -200,9 +200,9 @@
 			dependencies = (
 				F5379CC51888D7630009908E /* PBXTargetDependency */,
 			);
-			name = jsontest2Tests;
+			name = "jsontest2 -- ObsoleteTests";
 			productName = jsontest2Tests;
-			productReference = F5379CBF1888D7630009908E /* jsontest2Tests.xctest */;
+			productReference = F5379CBF1888D7630009908E /* jsontest2 -- ObsoleteTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -222,7 +222,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F5379C991888D7630009908E /* Build configuration list for PBXProject "jsontest2" */;
+			buildConfigurationList = F5379C991888D7630009908E /* Build configuration list for PBXProject "jsontest2 -- Obsolete" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -235,8 +235,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F5379C9D1888D7630009908E /* jsontest2 */,
-				F5379CBE1888D7630009908E /* jsontest2Tests */,
+				F5379C9D1888D7630009908E /* jsontest2 -- Obsolete */,
+				F5379CBE1888D7630009908E /* jsontest2 -- ObsoleteTests */,
 			);
 		};
 /* End PBXProject section */
@@ -289,7 +289,7 @@
 /* Begin PBXTargetDependency section */
 		F5379CC51888D7630009908E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F5379C9D1888D7630009908E /* jsontest2 */;
+			target = F5379C9D1888D7630009908E /* jsontest2 -- Obsolete */;
 			targetProxy = F5379CC41888D7630009908E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -402,9 +402,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "jsontest2/jsontest2-Prefix.pch";
-				INFOPLIST_FILE = "jsontest2/jsontest2-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "jsontest2/jsontest2 -- Obsolete-Prefix.pch";
+				INFOPLIST_FILE = "jsontest2/jsontest2 -- Obsolete-Info.plist";
+				PRODUCT_NAME = "jsontest2 -- Obsolete";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -418,9 +418,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "jsontest2/jsontest2-Prefix.pch";
-				INFOPLIST_FILE = "jsontest2/jsontest2-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "jsontest2/jsontest2 -- Obsolete-Prefix.pch";
+				INFOPLIST_FILE = "jsontest2/jsontest2 -- Obsolete-Info.plist";
+				PRODUCT_NAME = "jsontest2 -- Obsolete";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -442,8 +442,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "jsontest2Tests/jsontest2Tests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "jsontest2Tests/jsontest2 -- ObsoleteTests-Info.plist";
+				PRODUCT_NAME = "jsontest2 -- ObsoleteTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -461,8 +461,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "jsontest2/jsontest2-Prefix.pch";
-				INFOPLIST_FILE = "jsontest2Tests/jsontest2Tests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "jsontest2Tests/jsontest2 -- ObsoleteTests-Info.plist";
+				PRODUCT_NAME = "jsontest2 -- ObsoleteTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -471,7 +471,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F5379C991888D7630009908E /* Build configuration list for PBXProject "jsontest2" */ = {
+		F5379C991888D7630009908E /* Build configuration list for PBXProject "jsontest2 -- Obsolete" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F5379CCE1888D7630009908E /* Debug */,
@@ -480,7 +480,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F5379CD01888D7630009908E /* Build configuration list for PBXNativeTarget "jsontest2" */ = {
+		F5379CD01888D7630009908E /* Build configuration list for PBXNativeTarget "jsontest2 -- Obsolete" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F5379CD11888D7630009908E /* Debug */,
@@ -489,7 +489,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F5379CD31888D7630009908E /* Build configuration list for PBXNativeTarget "jsontest2Tests" */ = {
+		F5379CD31888D7630009908E /* Build configuration list for PBXNativeTarget "jsontest2 -- ObsoleteTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F5379CD41888D7630009908E /* Debug */,
