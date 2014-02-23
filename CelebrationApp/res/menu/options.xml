@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/filter"
+        android:showAsAction="always"
+        android:title="Filter">
+        <menu>
+            <item
+                android:id="@+id/time"
+                android:title="Times"/>
+            <item
+                android:id="@+id/author"
+                android:title="Author"/>
+            <item
+                android:id="@+id/track"
+                android:title="Track"
+                >
+                <menu>
+                    <item
+                        android:id="@+id/leader"
+                        android:icon="@drawable/red"
+                        android:title="Leadership"/>
+                    <item
+                        android:id="@+id/technical"
+                        android:icon="@drawable/green"
+                        android:title="Technical Experience"/>
+                    <item
+                        android:id="@+id/civic"
+                        android:icon="@drawable/magenta"
+                        android:title="Civic Engagement"/>
+                    <item
+                        android:id="@+id/corps"
+                        android:icon="@drawable/blue"
+                        android:title="Corps Practices"/>
+                    </menu>
+            </item>
+        </menu>
+    </item>
+
+</menu>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+	<item
+        android:id="@+id/filter"
+        android:orderInCategory="3"
+        android:showAsAction="always|withText"
+        android:title="filter">
+        <menu>
+            <item
+                android:id="@+id/type"
+                android:title="filter">
+                <menu>
+                    <item
+                        android:id="@+id/music"
+                        android:title="track"/>
+                    <item
+                        android:id="@+id/sport"
+                        android:title="author"/>
+                    <item
+                        android:id="@+id/academic"
+                        android:title="room"/>
+                </menu>
+            </item>
+        </menu>
+    </item>
+</menu>

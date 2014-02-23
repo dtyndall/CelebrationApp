@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="leadership">#FF0000</color>
+    <color name="corps">#0000FF</color>
+    <color name="technical">#006400</color>
+    <color name="civic">#FF1493</color>
+</resources>
