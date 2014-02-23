@@ -18,7 +18,7 @@ public class ViewMap extends Activity {
 		 int loader = R.drawable.ic_launcher;
          
 	        // Imageview to show
-	        ImageView image = (ImageView) findViewById(R.id.image);
+	        TouchImageView image = (TouchImageView) findViewById(R.id.image);
 	         
 	        // Image url
 	        String image_url = url;

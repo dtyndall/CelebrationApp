@@ -239,7 +239,7 @@ public class EventProfile extends Activity {
 			eventName.setText("did not pull from database");
 		}
 		
-		
+
 		
 		
 	}

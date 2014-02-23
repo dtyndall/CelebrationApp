@@ -31,11 +31,12 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/event_name"
         android:layout_below="@+id/event_name"
-        android:layout_marginTop="143dp"
+        android:layout_marginTop="154dp"
         android:maxLines="15"
         android:paddingRight="@dimen/activity_margin"
         android:scrollbars="vertical"
         android:textStyle="bold"
+        android:textSize="13dp"
         android:text="TextView" />
 
     <TextView
@@ -46,6 +47,7 @@
         android:layout_alignBottom="@+id/event_location"
         android:layout_alignLeft="@+id/event_description"
         android:textStyle="bold"
+        android:textSize="17dp"
         android:text="TextView" />
 
     <HorizontalScrollView
@@ -72,22 +74,22 @@
         android:id="@+id/author_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-		android:textColor="@android:color/holo_blue_light"
         android:layout_alignBaseline="@+id/event_category"
         android:layout_alignBottom="@+id/event_category"
         android:layout_alignLeft="@+id/event_name"
         android:textStyle="bold"
+        android:textSize="17dp"
         android:text="TextView" />
 
     <TextView
         android:id="@+id/event_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/holo_blue_light"
         android:layout_alignLeft="@+id/event_category"
         android:layout_below="@+id/event_category"
         android:layout_marginTop="28dp"
         android:textStyle="bold"
+        android:textSize="17dp"
         android:text="TextView" />
 		
     <TextView
@@ -97,6 +99,7 @@
         android:layout_alignLeft="@+id/event_date"
         android:layout_below="@+id/event_date"
         android:layout_marginTop="19dp"
+        android:textSize="17dp"
         android:textStyle="bold"
         android:text="TextView" />
 
@@ -107,6 +110,7 @@
         android:layout_alignLeft="@+id/storeFavorite"
         android:layout_below="@+id/event_name"
         android:layout_marginTop="22dp"
+        android:textSize="17dp"
         android:textStyle="bold"
         android:text="TextView" />
 
@@ -127,6 +131,7 @@
         android:layout_alignBottom="@+id/event_time"
         android:layout_alignLeft="@+id/event_location"
         android:textStyle="bold"
+        android:textSize="17dp"
         android:text="TextView" />
 
 
