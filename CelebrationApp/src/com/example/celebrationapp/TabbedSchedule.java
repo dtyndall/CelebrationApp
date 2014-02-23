@@ -1,20 +1,58 @@
 package com.example.celebrationapp;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import android.app.TabActivity;
-import android.content.Intent;
+import android.app.ActionBar;
+import android.app.ActionBar.TabListener;
+import android.app.FragmentTransaction;
+import android.app.ActionBar.Tab;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.TabHost;
-import android.widget.TabHost.TabSpec;
+import android.support.v4.app.Fragment;
 
-@SuppressWarnings("deprecation")
-public class TabbedSchedule extends TabActivity {
+public class TabbedSchedule extends Fragment implements TabListener {
+
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onActivityCreated(savedInstanceState);
+		ActionBar a = getActivity().getActionBar();
+		a.show();
+		a.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		a.setDisplayShowTitleEnabled(true);
+
+		Tab tab = a.newTab().setText("hello").setTabListener(this);
+		a.addTab(tab);
+		tab = a.newTab().setText("goodbye").setTabListener(this);
+		a.addTab(tab);
+	}
+
+	@Override
+	public void onDestroy() {
+		
+		super.onDestroy();
+		getActivity().getActionBar().removeAllTabs();
+		getActivity().getActionBar().hide();
+	}
+
+	@Override
+	public void onTabReselected(Tab tab, FragmentTransaction ft) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onTabSelected(Tab tab, FragmentTransaction ft) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+		// TODO Auto-generated method stub
+		
+	}
 	
+	
+	
+	/*
 	
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
@@ -26,6 +64,8 @@ public class TabbedSchedule extends TabActivity {
 		String author = extra.getString("author");
 		String roomNum = extra.getString("room");
 		String many = extra.getString("many");
+		
+		
 		
 		DBTools dbTools = new DBTools(this);
 		
@@ -177,7 +217,7 @@ public class TabbedSchedule extends TabActivity {
 
 	    return true;
 	  }
-	  
+	  */
 	  
 	  
 	 
