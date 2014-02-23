@@ -119,9 +119,9 @@ public class MainActivity extends Activity {
 			
 			//Creating the links which will get the data from the database
 			RequestQueue queue = Volley.newRequestQueue(this);
-			final String urlEvent = "http://192.168.172.239/getAllEvents.php";
-			final String urlSession = "http://192.168.172.239/getAllSession.php";
-			final String urlConference = "http://192.168.172.239/getConference.php";
+			final String urlEvent = "http://starscomputingcorps.org/celebrationApp/getAllEvents.php";
+			final String urlSession = "http://starscomputingcorps.org/celebrationApp/getAllSession.php";
+			final String urlConference = "http://starscomputingcorps.org/celebrationApp/getConference.php";
 			
 			//The three requests to gather data are prepared below and 
 			//will handle gathering the data from the appropriate url
@@ -205,7 +205,7 @@ public class MainActivity extends Activity {
 	//but the menu for the start page has been disabled
 	public boolean onCreateOptionsMenu(Menu menu) {
 	   // MenuInflater inflater = getMenuInflater();
-	    //inflater.inflate(R.menu.mainmenu, menu);
+	   //inflater.inflate(R.menu.mainmenu, menu);
 	    return true;
 	  }
 	  
