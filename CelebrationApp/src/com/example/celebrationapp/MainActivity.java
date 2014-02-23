@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -204,7 +203,7 @@ public class MainActivity extends Activity {
 	//The following two methods create a menu for the phone
 	//but the menu for the start page has been disabled
 	public boolean onCreateOptionsMenu(Menu menu) {
-	    MenuInflater inflater = getMenuInflater();
+	    //MenuInflater inflater = getMenuInflater();
 	    //inflater.inflate(R.menu.mainmenu, menu);
 	    return true;
 	  }

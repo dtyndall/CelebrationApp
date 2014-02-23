@@ -36,7 +36,7 @@ public class Days extends Activity {
 				public void onItemClick(AdapterView<?> parent, View view,
 						int position, long id) {
 					
-					HashMap eventDate = (HashMap) (dayListView.
+					HashMap<?, ?> eventDate = (HashMap<?, ?>) (dayListView.
 							getItemAtPosition(position));
 					String event_date =  eventDate.get("date").toString();
 					Bundle extras = new Bundle();

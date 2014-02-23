@@ -19,7 +19,6 @@ import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class EventProfile extends Activity {
 	

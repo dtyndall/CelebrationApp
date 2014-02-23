@@ -7,14 +7,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 
 public class Schedule extends Activity {
 
@@ -67,7 +65,7 @@ public class Schedule extends Activity {
 				public void onItemClick(AdapterView<?> parent, View view,
 						int position, long id) {
 					//Gets the HashMap stored in the tile at the selected position
-					HashMap eventId = (HashMap) (eventListView.
+					HashMap<?, ?> eventId = (HashMap<?, ?>) (eventListView.
 							getItemAtPosition(position));
 					String event_id =  eventId.get("event_id").toString();
 					String session_id = eventId.get("session_id").toString();
@@ -112,7 +110,7 @@ public class Schedule extends Activity {
 						int position, long id) {
 					
 					//Gets the HashMap stored in the tile at the selected position
-					HashMap eventId = (HashMap) (eventListView.
+					HashMap<?, ?> eventId = (HashMap<?, ?>) (eventListView.
 							getItemAtPosition(position));
 					
 					String event_id =  eventId.get("event_id").toString();
@@ -165,7 +163,7 @@ public class Schedule extends Activity {
 						int position, long id) {
 		
 					//Gets the HashMap stored in the tile at the selected position
-					HashMap eventId = (HashMap) (eventListView.
+					HashMap<?, ?> eventId = (HashMap<?, ?>) (eventListView.
 							getItemAtPosition(position));
 					String event_id =  eventId.get("event_id").toString();
 					String session_id = eventId.get("session_id").toString();
@@ -213,7 +211,7 @@ public class Schedule extends Activity {
 						int position, long id) {
 					
 					//Gets the HashMap stored in the tile at the selected position
-					HashMap eventId = (HashMap) (eventListView.
+					HashMap<?, ?> eventId = (HashMap<?, ?>) (eventListView.
 							getItemAtPosition(position));
 					String event_id =  eventId.get("event_id").toString();
 					String session_id = eventId.get("session_id").toString();
@@ -266,7 +264,7 @@ public class Schedule extends Activity {
 						int position, long id) {
 					
 					//Gets the HashMap stored in the tile at the selected position
-					HashMap eventId = (HashMap) (eventListView.
+					HashMap<?, ?> eventId = (HashMap<?, ?>) (eventListView.
 							getItemAtPosition(position));
 					
 					String event_id =  eventId.get("event_id").toString();
@@ -320,7 +318,7 @@ public class Schedule extends Activity {
 						int position, long id) {
 					
 					//Gets the HashMap stored in the tile at the selected position
-					HashMap eventId = (HashMap) (eventListView.
+					HashMap<?, ?> eventId = (HashMap<?, ?>) (eventListView.
 							getItemAtPosition(position));
 					
 					String event_id =  eventId.get("event_id").toString();
@@ -348,7 +346,7 @@ public class Schedule extends Activity {
 	}
 	
 	public boolean onCreateOptionsMenu(Menu menu) {
-	    MenuInflater inflater = getMenuInflater();
+	    
 	    return true;
 	  }
 	  

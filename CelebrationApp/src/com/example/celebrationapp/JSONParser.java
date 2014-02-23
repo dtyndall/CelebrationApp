@@ -7,8 +7,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.util.Log;
-
 public class JSONParser {
 	
 	public ArrayList<HashMap<String, String>> getParsedJson(JSONObject request, String key){
