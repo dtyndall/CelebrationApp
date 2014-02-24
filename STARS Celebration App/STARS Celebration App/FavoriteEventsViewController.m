@@ -1,25 +1,22 @@
 //
-//  EventByNameViewController.m
+//  FavoriteEventsViewController.m
 //  STARS Celebration App
 //
-//  Created by Chirag Patel on 2/3/14.
+//  Created by Chirag Patel on 2/17/14.
 //  Copyright (c) 2014 STARS Computing Corps. All rights reserved.
 //
 
-#import "EventByNameViewController.h"
+#import "FavoriteEventsViewController.h"
+#import "FavoritesCell.h"
 #import "Event.h"
-#import "EventDetailsViewController.h"
-#import "EventsByNameCell.h"
 #import "AppDelegate.h"
 
-@interface EventByNameViewController ()
+@interface FavoriteEventsViewController ()
 
 @end
 
-@implementation EventByNameViewController
-
-//Allows var usage without "_" prefix
-@synthesize json, eventsArray;
+@implementation FavoriteEventsViewController
+@synthesize favoritedEvents;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -30,21 +27,14 @@
     return self;
 }
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    //Initializes relationship with AppDelegate
     AppDelegate *delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-    eventsArray = delegate.eventsArrayAD;
-    
-    NSSortDescriptor *sorter = [[NSSortDescriptor alloc] initWithKey:@"eventName" ascending:YES];
-    [eventsArray sortUsingDescriptors:[NSArray arrayWithObject:sorter]];
-    
-    //Moved to AppDelegate
-    //[self retrieveData];
+    favoritedEvents = delegate.favoritedEvents;
 
+    [self.tableView reloadData];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -61,50 +51,33 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{    // Return the number of sections.
+{
+    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return eventsArray.count;
+    return favoritedEvents.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"EventsByNameCell";
-    EventsByNameCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"FavoritesCell";
+    FavoritesCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     if (cell == nil) {
-        cell = [[EventsByNameCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[FavoritesCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     // Configure the cell...
-    Event *temp = eventsArray[indexPath.row];
+    Event *temp = favoritedEvents[indexPath.row];
     cell.textLabel.text = temp.eventName;
     
     return cell;
 }
-
-
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    
-    if ([[segue identifier] isEqualToString:@"eventselected"]) {
-        EventDetailsViewController *detailviewcontroller = [segue destinationViewController];
-        
-        NSIndexPath *myIndexPath = [self.tableView indexPathForSelectedRow];
-        int row = [myIndexPath row];
-        detailviewcontroller.SelectedEvent = [eventsArray objectAtIndex:row];
-    }
+- (IBAction)reload:(id)sender {
+    [self.tableView reloadData];
 }
-
-#pragma Navigation
-
 
 /*
 // Override to support conditional editing of the table view.
@@ -144,4 +117,17 @@
     return YES;
 }
 */
+
+/*
+#pragma mark - Navigation
+
+// In a story board-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+
+ */
+
 @end

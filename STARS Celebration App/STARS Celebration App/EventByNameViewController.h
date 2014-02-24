@@ -13,7 +13,6 @@
 
 @property (nonatomic, strong) NSMutableArray *eventsArray;
 @property (strong, nonatomic) NSMutableArray *json;
-#pragma mark - Methods
-- (void) retrieveData;
+
 
 @end

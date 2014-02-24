@@ -7,12 +7,16 @@
 //
 
 #import "AppDelegate.h"
+#import "Event.h"
 
 @implementation AppDelegate
+@synthesize eventsArrayAD, favoritedEvents;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    self.favoritedEvents = [[NSMutableArray alloc] init];
+    [self retrieveData];
     return YES;
 }
 							
@@ -41,6 +45,36 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void) retrieveData
+{
+    NSMutableArray *json;
+    NSString *getAllEventsURL = @"http://starscomputingcorps.org/celebrationApp/getAllEvents.php";
+    NSURL * url = [NSURL URLWithString:getAllEventsURL];
+    NSData * data = [NSData dataWithContentsOfURL:url];
+    NSDictionary *temp = [[NSDictionary alloc] init];
+    
+    temp = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    json = [temp objectForKey:@"events"];
+    eventsArrayAD = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < json.count; i++) {
+        //Create event objects
+        NSString * eID = [[json objectAtIndex:i] objectForKey:@"event_id"];
+        NSString * eName = [[json objectAtIndex:i] objectForKey:@"event_name"];
+        NSString * eAuthor = [[json objectAtIndex:i] objectForKey:@"author_name"];
+        NSString * eDesc = [[json objectAtIndex:i] objectForKey:@"event_description"];
+        NSString * eCat = [[json objectAtIndex:i] objectForKey:@"event_category"];
+        NSString * eSurvey = [[json objectAtIndex:i] objectForKey:@"survey"];
+        NSString * eTrack = [[json objectAtIndex:i] objectForKey:@"track"];
+        
+        Event * myEvent = [[Event alloc] initWithEventID:eID andEventName:eName andEventAuthor:eAuthor andEventCategory:eCat andEventTrack:eTrack andEventSurvey:eSurvey andEventDesc:eDesc];
+        
+        //Adds event to events array
+        [eventsArrayAD addObject:myEvent];
+    }
+    
 }
 
 @end

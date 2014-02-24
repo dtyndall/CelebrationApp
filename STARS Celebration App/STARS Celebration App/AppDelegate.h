@@ -11,5 +11,9 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) NSMutableArray *eventsArrayAD;
+@property (strong, nonatomic) NSMutableArray *favoritedEvents;
+
+- (void) retrieveData;
 
 @end

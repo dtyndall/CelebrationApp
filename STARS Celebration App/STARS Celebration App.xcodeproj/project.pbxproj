@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		463F185D18B2B1EC00B77C12 /* FavoriteEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 463F185C18B2B1EC00B77C12 /* FavoriteEventsViewController.m */; };
+		4692678918BBE6C600C2025F /* FavoritesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4692678818BBE6C600C2025F /* FavoritesCell.m */; };
 		46E9000018A033DA00E01CF2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E9FFFF18A033DA00E01CF2 /* UIKit.framework */; };
 		46E9000618A033DA00E01CF2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46E9000418A033DA00E01CF2 /* InfoPlist.strings */; };
 		46E9000818A033DA00E01CF2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E9000718A033DA00E01CF2 /* main.m */; };
@@ -37,6 +39,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		463F185B18B2B1EC00B77C12 /* FavoriteEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteEventsViewController.h; sourceTree = "<group>"; };
+		463F185C18B2B1EC00B77C12 /* FavoriteEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteEventsViewController.m; sourceTree = "<group>"; };
+		4692678718BBE6C600C2025F /* FavoritesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesCell.h; sourceTree = "<group>"; };
+		4692678818BBE6C600C2025F /* FavoritesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesCell.m; sourceTree = "<group>"; };
 		46E9000318A033DA00E01CF2 /* STARS Celebration App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "STARS Celebration App-Info.plist"; sourceTree = "<group>"; };
 		46E9000518A033DA00E01CF2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		46E9000718A033DA00E01CF2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -138,6 +144,8 @@
 				46E9003218A0357500E01CF2 /* EventByNameViewController.m */,
 				46E9003818A03A6000E01CF2 /* EventDetailsViewController.h */,
 				46E9003918A03A6000E01CF2 /* EventDetailsViewController.m */,
+				463F185B18B2B1EC00B77C12 /* FavoriteEventsViewController.h */,
+				463F185C18B2B1EC00B77C12 /* FavoriteEventsViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -149,6 +157,8 @@
 				46E9003618A035B700E01CF2 /* Event.m */,
 				46EDC3E518A1D4F100480D5A /* EventsByNameCell.h */,
 				46EDC3E618A1D4F100480D5A /* EventsByNameCell.m */,
+				4692678718BBE6C600C2025F /* FavoritesCell.h */,
+				4692678818BBE6C600C2025F /* FavoritesCell.m */,
 			);
 			name = DataStructures;
 			sourceTree = "<group>";
@@ -292,9 +302,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				46E9000C18A033DA00E01CF2 /* AppDelegate.m in Sources */,
+				463F185D18B2B1EC00B77C12 /* FavoriteEventsViewController.m in Sources */,
 				46E9003A18A03A6000E01CF2 /* EventDetailsViewController.m in Sources */,
 				46EDC3E718A1D4F100480D5A /* EventsByNameCell.m in Sources */,
 				46E9003718A035B700E01CF2 /* Event.m in Sources */,
+				4692678918BBE6C600C2025F /* FavoritesCell.m in Sources */,
 				46E9000818A033DA00E01CF2 /* main.m in Sources */,
 				46E9003318A0357500E01CF2 /* EventByNameViewController.m in Sources */,
 			);

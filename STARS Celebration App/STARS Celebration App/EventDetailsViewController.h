@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Event.h"
+#import "AppDelegate.h"
 
 @interface EventDetailsViewController : UIViewController
 
@@ -21,5 +22,6 @@
 @property (nonatomic, strong) NSMutableArray *EventModal;
 
 @property (nonatomic, strong) Event *SelectedEvent;
+@property (nonatomic, strong) AppDelegate *delegate;
 
 @end

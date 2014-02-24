@@ -29,4 +29,31 @@
     return self;
 }
 
+- (void)encodeWithCoder:(NSCoder *)coder
+{
+    [coder encodeObject:eventID forKey:@"eventID"];
+    [coder encodeObject:eventAuthor forKey:@"eventAuthor"];
+    [coder encodeObject:eventName forKey:@"eventName"];
+    [coder encodeObject:eventDesc forKey:@"eventDesc"];
+    [coder encodeObject:eventCategory forKey:@"eventCategory"];
+    [coder encodeObject:eventSurvey forKey:@"eventSurvey"];
+    [coder encodeObject:eventTrack forKey:@"eventTrack"];
+}
+
+- (id)initWithCoder:(NSCoder *)coder
+{
+    self = [[Event alloc] init];
+    if (self != nil)
+    {
+        eventID = [coder decodeObjectForKey:@"eventID"];
+        eventAuthor = [coder decodeObjectForKey:@"eventAuthor"];
+        eventName = [coder decodeObjectForKey:@"eventName"];
+        eventDesc = [coder decodeObjectForKey:@"eventDesc"];
+        eventCategory = [coder decodeObjectForKey:@"eventCategory"];
+        eventSurvey = [coder decodeObjectForKey:@"eventSurvey"];
+        eventTrack = [coder decodeObjectForKey:@"eventTrack"];
+    }
+    return self;
+}
+
 @end

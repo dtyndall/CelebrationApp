@@ -9,6 +9,7 @@
 #import "EventDetailsViewController.h"
 #import "Event.h"
 #import "EventByNameViewController.h"
+#import "AppDelegate.h"
 
 @interface EventDetailsViewController ()
 
@@ -17,7 +18,7 @@
 @implementation EventDetailsViewController
 
 //Allows var usage without "_" prefix
-@synthesize NameLabel, AuthorLabel, DescLabel, CategoryLabel, TrackLabel, SurveyLabel, EventModal, SelectedEvent;
+@synthesize NameLabel, AuthorLabel, DescLabel, CategoryLabel, TrackLabel, SurveyLabel, EventModal, SelectedEvent, delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,7 +40,10 @@
     SurveyLabel.text = [SelectedEvent eventSurvey];
     TrackLabel.text = [SelectedEvent eventTrack];
     
+    delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+    
     self.navigationItem.title = [SelectedEvent eventName];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,4 +52,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)favorited:(id)sender {
+    if (![delegate.favoritedEvents containsObject:SelectedEvent]) {
+    [delegate.favoritedEvents addObject:SelectedEvent];
+    }
+    else {
+    NSLog(@"Object exists");
+    }
+}
 @end
