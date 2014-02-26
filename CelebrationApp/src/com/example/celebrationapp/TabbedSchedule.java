@@ -1,27 +1,38 @@
 package com.example.celebrationapp;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import android.app.ActionBar;
+import android.app.ActionBar.Tab;
 import android.app.ActionBar.TabListener;
 import android.app.FragmentTransaction;
-import android.app.ActionBar.Tab;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 public class TabbedSchedule extends Fragment implements TabListener {
 
+	
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
+		
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
+		DBTools dbTools = new DBTools(getActivity().getBaseContext());
 		ActionBar a = getActivity().getActionBar();
 		a.show();
 		a.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		a.setDisplayShowTitleEnabled(true);
 
-		Tab tab = a.newTab().setText("hello").setTabListener(this);
-		a.addTab(tab);
-		tab = a.newTab().setText("goodbye").setTabListener(this);
-		a.addTab(tab);
+		Tab tab;
+		ArrayList<HashMap<String, String>> days = dbTools.getDays();
+		
+		for (HashMap<String, String> date : days) {
+			tab = a.newTab().setText(date.get("public")).setTabListener(this);
+			a.addTab(tab);
+				
+		}
+		
 	}
 
 	@Override
@@ -29,7 +40,7 @@ public class TabbedSchedule extends Fragment implements TabListener {
 		
 		super.onDestroy();
 		getActivity().getActionBar().removeAllTabs();
-		getActivity().getActionBar().hide();
+		//getActivity().getActionBar().hide();
 	}
 
 	@Override

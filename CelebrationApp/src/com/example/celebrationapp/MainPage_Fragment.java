@@ -5,13 +5,7 @@ import java.util.HashMap;
 
 import org.json.JSONObject;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,6 +19,13 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
 public class MainPage_Fragment extends Fragment {
 
 	DBTools dbTools;
@@ -36,7 +37,10 @@ public class MainPage_Fragment extends Fragment {
 		super.onActivityCreated(savedInstanceState);
 
 		dbTools = new DBTools(getActivity().getBaseContext());
-
+		ActionBar a = getActivity().getActionBar();
+		a.show();
+		a.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+		a.setDisplayShowTitleEnabled(true);
 
 		clearData();
 

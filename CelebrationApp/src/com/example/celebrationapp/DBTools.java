@@ -791,6 +791,7 @@ public class DBTools extends SQLiteOpenHelper{
 		db.execSQL(query1);
 		db.execSQL(query3);
 		onCreate(db);
+		db.close();
 		
 	}
 
