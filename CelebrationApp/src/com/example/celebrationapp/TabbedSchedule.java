@@ -40,7 +40,7 @@ public class TabbedSchedule extends Fragment implements TabListener {
 		
 		super.onDestroy();
 		getActivity().getActionBar().removeAllTabs();
-		//getActivity().getActionBar().hide();
+		getActivity().getActionBar().hide();
 	}
 
 	@Override
