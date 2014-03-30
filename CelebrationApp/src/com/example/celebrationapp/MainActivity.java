@@ -6,7 +6,10 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
-public class MainActivity extends FragmentActivity implements OnButtonClick{
+public class MainActivity extends FragmentActivity implements OnButtonClick, Listener{
+	
+	String parent;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
@@ -42,6 +45,14 @@ public class MainActivity extends FragmentActivity implements OnButtonClick{
 		fragmentTransaction.addToBackStack(null);
 		fragmentTransaction.commit();
 	}
-
+	public void setVar(String var, String val) {
+		if (var.equals("parent"))
+			parent = val;
+	}
+	public String getVal(String var) {
+		if (var.equals("parent"))
+			return parent;
+		return null;
+	}
 
 }

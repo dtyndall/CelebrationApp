@@ -30,6 +30,7 @@ public class MainPage_Fragment extends Fragment {
 
 	DBTools dbTools;
 	OnButtonClick buttonClick;
+	Listener listener;
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
@@ -66,13 +67,10 @@ public class MainPage_Fragment extends Fragment {
 				R.id.scheduleTabbedButton);
 		Tabbed.setOnClickListener(new OnClickListener() {
 			public void onClick(View view) {
-				 
-				 buttonClick.LoadNextFragmentWithBackstack(new TabbedSchedule());
 
-				//Intent eventList = new Intent(getActivity(),
-				//		TabbedSchedule.class);
-				//eventList.putExtra("parent", "1");
-				//startActivity(eventList);
+				listener.setVar("parent", "1");
+				buttonClick.LoadNextFragmentWithBackstack(new TabbedSchedule());
+
 			}
 		});
 
@@ -226,14 +224,6 @@ public class MainPage_Fragment extends Fragment {
 
 	}
 
-	// The following two methods create a menu for the phone
-	// but the menu for the start page has been disabled
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// MenuInflater inflater = getMenuInflater();
-		// inflater.inflate(R.menu.mainmenu, menu);
-		return true;
-	}
-
 	// NEW
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -254,7 +244,7 @@ public class MainPage_Fragment extends Fragment {
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
 		buttonClick = (OnButtonClick) activity;
+		listener = (Listener) activity;
 	}
-
 
 }
