@@ -400,7 +400,8 @@ public class DBTools extends SQLiteOpenHelper{
 		ArrayList<HashMap<String, String>> sessionArrayList = new ArrayList<HashMap<String, String>>();
 		
 		String selectAllQuery = "Select * from session inner join event where " +
-				"session.sevent_id=event.event_id and date ='" + eventDate + "'ORDER BY time ASC";
+				"session.sevent_id=event.event_id and date ='" + eventDate + "'" +
+						"AND event.event_category <> 'Poster' ORDER BY time ASC ";
 		
 		
 		SQLiteDatabase database = this.getWritableDatabase();
@@ -670,7 +671,8 @@ public class DBTools extends SQLiteOpenHelper{
 			System.out.println(type);
 			selectAllQuery = "Select * from session inner join event where " +
 					"session.sevent_id=event.event_id and date ='" + eventDate + "' and " +
-							"track = '" + type + "' ORDER BY time  ASC";
+							"track = '" + type + "' " +
+									"AND event.event_category <> 'Poster' ORDER BY time  ASC";
 			
 		}else{
 			selectAllQuery = "Select * from session inner join event where " +
@@ -734,7 +736,8 @@ public class DBTools extends SQLiteOpenHelper{
 			System.out.println(type);
 			selectAllQuery = "Select * from session inner join favorite where " +
 					"session.sevent_id=favorite.event_id and date ='" + eventDate + "' and " +
-							"track = '" + type + "' ORDER BY time  ASC";
+							"track = '" + type + "' AND event.event_category <> 'Poster' " +
+									"ORDER BY time  ASC";
 			
 		}else{
 			selectAllQuery = "Select * from session inner join favorite where " +

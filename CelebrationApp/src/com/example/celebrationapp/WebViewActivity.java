@@ -28,7 +28,7 @@ public class WebViewActivity extends Activity {
 		
 		//Loads URL gotten earlier onto the webview. This makes the surveys that the 
 		//users think the survey is taken from inside the application 
-		webView.loadUrl(eventURL);
+		webView.loadUrl("http://www.starscomputingcorps.org/survey?sid=" + eventURL);
 
 	}
 

@@ -5,8 +5,8 @@ import java.util.HashMap;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -119,7 +119,7 @@ public class Schedule extends Fragment implements OnItemClickListener {
 		String session_id = eventId.get("session_id").toString();
 
 		// Creates an intent which starts EventProfile
-		// Intent eventProfile = new Intent(Schedule.this, EventProfile.class);
+		 //Intent eventProfile = new Intent(Schedule.this, EventProfile.class);
 
 		// Stores two strings in the intent created
 		// these two strings are sent to EventProfile

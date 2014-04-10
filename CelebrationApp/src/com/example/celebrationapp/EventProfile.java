@@ -196,6 +196,7 @@ public class EventProfile extends Activity {
 			
 			//An onClickListener for the favorite star
 			storeFavorite.setOnClickListener(new OnClickListener() {
+				@Override
 				public void onClick(View view) {
 					
 					//All of the information needed to store an event in the favorite table
@@ -220,6 +221,7 @@ public class EventProfile extends Activity {
 			});
 
 			//Setting on onClickListener for the survey button
+			if(eventList.get("event_category") != "Poster"){
 			showSurvey.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View view) {
@@ -232,6 +234,9 @@ public class EventProfile extends Activity {
 					
 				}
 			});
+		}else{
+			showSurvey.setVisibility(View.INVISIBLE);
+		}
 		}
 		else{
 			//If the event profile could not display for any reason then this message will appear
@@ -247,6 +252,7 @@ public class EventProfile extends Activity {
 	//the event profile is only a single button at the top right of the screen called refresh
 	//When clicking refresh the user is taken back to the main activity, if an internet connection
 	//is present then the data will also be refreshed
+	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 	    MenuInflater inflater = getMenuInflater();
 	    inflater.inflate(R.menu.mainmenu, menu);
