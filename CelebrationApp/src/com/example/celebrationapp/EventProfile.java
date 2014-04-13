@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 
 import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -43,6 +44,7 @@ public class EventProfile extends Fragment {
 	
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
+		
 		super.onActivityCreated(savedInstanceState);
 		dbTools = new DBTools(getActivity());
 		
@@ -84,7 +86,6 @@ public class EventProfile extends Fragment {
 
 					eventCat.setText(eventList.get("event_category"));
 					eventName.setText(eventList.get("event_name"));
-
 					if (eventList.get("author_name").contains(",")) {
 
 						authorName.setVisibility(View.INVISIBLE);
@@ -241,7 +242,12 @@ public class EventProfile extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		ActionBar a = getActivity().getActionBar();
+		a.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+		a.setDisplayShowTitleEnabled(true);
+		
 		return inflater.inflate(R.layout.event_profile, container, false);
+		
 	}
 
 

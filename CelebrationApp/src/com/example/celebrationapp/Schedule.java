@@ -3,9 +3,11 @@ package com.example.celebrationapp;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -98,9 +100,47 @@ public class Schedule extends android.app.Fragment implements OnItemClickListene
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		//TODO:ADD CHECK FOR ACTUAL ITEM CLICK
-		extras.remove("parent");
-		extras.putString("parent", "room");
-		extras.putString("room", "Room 404");
+		
+		switch (item.getItemId()) {
+	    case R.id.time:
+	    	System.out.println("SOMOWETNIONGS");
+	    	extras.remove("parent");
+	    	extras.putString("parent", "1");
+	    	
+	      break;
+	    case R.id.author: 
+	    	extras.remove("parent");
+	    	extras.putString("parent", "filter");
+	    	extras.putString("filter", "author_name");
+	    	break;
+	    case R.id.leader:
+	    	extras.remove("parent");
+	    	extras.putString("parent", "filter");
+	    	extras.putString("filter", "track");
+	    	extras.putString("type", "Leadership");
+	    	break;
+	    case R.id.technical:
+	    	extras.remove("parent");
+	    	extras.putString("parent", "filter");
+	    	extras.putString("filter", "track");
+	    	extras.putString("type", "Technical Excellence");
+	    	break;
+	    case R.id.civic:
+	    	extras.remove("parent");
+	    	extras.putString("parent", "filter");
+	    	extras.putString("filter", "track");
+	    	extras.putString("type", "Civic Engagement");
+	    	break;
+	    case R.id.corps:
+	    	extras.remove("parent");
+	    	extras.putString("parent", "filter");
+	    	extras.putString("filter", "track");
+	    	extras.putString("type", "Corps Practices");
+	    	break;
+
+	    default:
+	      break;
+	    }
 
 		checkStuff();
 		return true;
@@ -118,6 +158,7 @@ public class Schedule extends android.app.Fragment implements OnItemClickListene
 		String session_id = eventId.get("session_id").toString();
 
 		Fragment fragment = new EventProfile(event_id, session_id);
+
 		listener.LoadNextFragmentWithBackstack(fragment);
 	}
 
