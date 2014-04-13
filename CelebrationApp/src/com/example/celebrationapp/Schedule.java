@@ -156,7 +156,7 @@ public class Schedule extends android.app.Fragment implements OnItemClickListene
 
 		String event_id = eventId.get("event_id").toString();
 		String session_id = eventId.get("session_id").toString();
-
+	
 		Fragment fragment = new EventProfile(event_id, session_id);
 
 		listener.LoadNextFragmentWithBackstack(fragment);

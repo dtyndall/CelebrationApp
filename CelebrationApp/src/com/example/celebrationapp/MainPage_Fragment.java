@@ -102,7 +102,7 @@ public class MainPage_Fragment extends Fragment {
 			public void onClick(View view) {
 
 				listener.setVar("parent", "personal");
-				listener.LoadNextFragmentWithBackstack(new TabbedPersonal());
+				listener.LoadNextFragmentWithBackstack(new TabbedSchedule());
 
 			}
 		});

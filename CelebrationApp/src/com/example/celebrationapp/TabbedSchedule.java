@@ -21,11 +21,27 @@ public class TabbedSchedule extends Fragment {
 		a.show();
 		a.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		a.setDisplayShowTitleEnabled(true);
-		String parent = "1";
-		Tab tab;
-		ArrayList<HashMap<String, String>> days = dbTools.getDays();
 
-		for (HashMap<String, String> date : days) {
+		Tab tab;
+
+		String parent = listener.getVal("parent");
+		ArrayList<HashMap<String,String>> list = null;
+		
+		if (parent.equals("1")){
+			list = dbTools.getDays();
+			//filter = generateFilterList\??;
+		}
+		else if (parent.equals("personal"))
+			list = dbTools.getFavoriteDays();
+		
+		
+		
+		
+		
+		
+		
+		
+		for (HashMap<String, String> date : list) {
 			tab = a.newTab()
 					.setText(date.get("public"))
 					.setTabListener(
@@ -39,10 +55,8 @@ public class TabbedSchedule extends Fragment {
 	
 	@Override
 	public void onDestroy() {
-
 		super.onDestroy();
 		getActivity().getActionBar().removeAllTabs();
-		getActivity().getActionBar().hide();
 	}
 
 	@Override
