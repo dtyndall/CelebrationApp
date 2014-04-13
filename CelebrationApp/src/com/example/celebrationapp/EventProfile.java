@@ -124,7 +124,7 @@ public class EventProfile extends Activity {
 							  //name he or she is interested in and see all of the events that author is
 							  //taking place in
 							  Intent authorList = new Intent(EventProfile.this,
-										TabbedSchedule.class);
+										Schedule.class);
 								authorList.putExtra("parent", "author");
 								authorList.putExtra("many", "many");
 								authorList.putExtra("author",list.get(index));
@@ -174,7 +174,7 @@ public class EventProfile extends Activity {
 					  //Yet another intent is created upon clicking the event location, same as 
 					  //when clicking author. Only two extras are packed a long this time though
 					  Intent roomList = new Intent(EventProfile.this,
-								TabbedSchedule.class);
+								Schedule.class);
 						roomList.putExtra("parent", "room");
 						roomList.putExtra("room", sessionList.get("event_location"));
 						startActivity(roomList);

@@ -12,16 +12,23 @@ import android.support.v4.app.Fragment;
 public class TabbedPersonal extends Fragment {
 	
 	Listener listener;
+	ActionBar a;
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		DBTools dbTools = new DBTools(getActivity().getBaseContext());
-		ActionBar a = getActivity().getActionBar();
+		a = getActivity().getActionBar();
 		a.show();
 		a.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		a.setDisplayShowTitleEnabled(true);
 
+	}
+
+	@Override
+	public void onResume(){
+		super.onResume();
+		DBTools dbTools = new DBTools(getActivity().getBaseContext());
+		a.removeAllTabs();
 		Tab tab;
 		ArrayList<HashMap<String, String>> days = dbTools.getFavoriteDays();
 
@@ -36,7 +43,6 @@ public class TabbedPersonal extends Fragment {
 			a.addTab(tab);
 		}
 	}
-
 	@Override
 	public void onDestroy() {
 

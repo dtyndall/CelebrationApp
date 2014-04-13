@@ -36,6 +36,7 @@ public class TabbedSchedule extends Fragment {
 		}
 	}
 
+	
 	@Override
 	public void onDestroy() {
 

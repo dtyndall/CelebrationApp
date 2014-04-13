@@ -109,7 +109,7 @@ public class MainPage_Fragment extends Fragment {
 			}
 		});
 		
-		downloadTweets();
+//		downloadTweets();
 	}
 
 	@Override
