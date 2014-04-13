@@ -25,12 +25,13 @@ public class TabbedPersonal extends Fragment {
 		Tab tab;
 		ArrayList<HashMap<String, String>> days = dbTools.getFavoriteDays();
 
+		String parent = listener.getVal("parent");
 		for (HashMap<String, String> date : days) {
 			tab = a.newTab()
 					.setText(date.get("public"))
 					.setTabListener(
 							new FragmentTabListener<Schedule>(getActivity(),
-									"tab", Schedule.class, date.get("date")));
+									"tab", Schedule.class, date.get("date"), parent));
 
 			a.addTab(tab);
 		}

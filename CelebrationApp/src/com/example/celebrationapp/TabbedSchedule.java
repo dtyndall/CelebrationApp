@@ -21,7 +21,7 @@ public class TabbedSchedule extends Fragment {
 		a.show();
 		a.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		a.setDisplayShowTitleEnabled(true);
-
+		String parent = "1";
 		Tab tab;
 		ArrayList<HashMap<String, String>> days = dbTools.getDays();
 
@@ -30,7 +30,7 @@ public class TabbedSchedule extends Fragment {
 					.setText(date.get("public"))
 					.setTabListener(
 							new FragmentTabListener<Schedule>(getActivity(),
-									"tab", Schedule.class, date.get("date")));
+									"tab", Schedule.class, date.get("date"), parent));
 
 			a.addTab(tab);
 		}
