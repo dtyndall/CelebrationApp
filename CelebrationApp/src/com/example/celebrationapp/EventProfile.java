@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 
 import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -241,6 +242,8 @@ public class EventProfile extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		getActivity().getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+		getActivity().invalidateOptionsMenu();
 		return inflater.inflate(R.layout.event_profile, container, false);
 	}
 
