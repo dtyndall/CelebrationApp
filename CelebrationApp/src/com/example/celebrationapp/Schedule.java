@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import android.app.Activity;
-import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,7 +17,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-public class Schedule extends Fragment implements OnItemClickListener {
+public class Schedule extends android.app.Fragment implements OnItemClickListener {
 
 	DBTools dbTools;
 	Bundle extras;
@@ -119,15 +117,8 @@ public class Schedule extends Fragment implements OnItemClickListener {
 		String event_id = eventId.get("event_id").toString();
 		String session_id = eventId.get("session_id").toString();
 
-		// Creates an intent which starts EventProfile
-		 Intent eventProfile = new Intent(getActivity().getBaseContext(), EventProfile.class);
-
-		// Stores two strings in the intent created
-		// these two strings are sent to EventProfile
-		 eventProfile.putExtra("session_id", session_id);
-		 eventProfile.putExtra("event_id", event_id);
-		// EvenProfile is run
-		 startActivity(eventProfile);
+		Fragment fragment = new EventProfile(event_id, session_id);
+		listener.LoadNextFragmentWithBackstack(fragment);
 	}
 
 	@Override

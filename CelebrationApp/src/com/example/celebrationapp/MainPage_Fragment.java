@@ -36,7 +36,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 import com.android.volley.Request;
@@ -50,7 +49,6 @@ import com.google.gson.Gson;
 public class MainPage_Fragment extends Fragment {
 
 	DBTools dbTools;
-	OnButtonClick buttonClick;
 	Listener listener;
 	final static String ScreenName = "episod";
 
@@ -91,7 +89,7 @@ public class MainPage_Fragment extends Fragment {
 			public void onClick(View view) {
 
 				listener.setVar("parent", "1");
-				buttonClick.LoadNextFragmentWithBackstack(new TabbedSchedule());
+				listener.LoadNextFragmentWithBackstack(new TabbedSchedule());
 
 			}
 		});
@@ -104,7 +102,7 @@ public class MainPage_Fragment extends Fragment {
 			public void onClick(View view) {
 
 				listener.setVar("parent", "personal");
-				buttonClick.LoadNextFragmentWithBackstack(new TabbedPersonal());
+				listener.LoadNextFragmentWithBackstack(new TabbedPersonal());
 
 			}
 		});
@@ -407,7 +405,6 @@ public class MainPage_Fragment extends Fragment {
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
-		buttonClick = (OnButtonClick) activity;
 		listener = (Listener) activity;
 	}
 

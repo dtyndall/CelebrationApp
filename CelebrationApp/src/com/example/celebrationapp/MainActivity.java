@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
-public class MainActivity extends FragmentActivity implements OnButtonClick, Listener{
+public class MainActivity extends FragmentActivity implements Listener{
 	
 	String parent;
 	
