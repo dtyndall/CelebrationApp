@@ -13,19 +13,18 @@ public class FragmentTabListener<T extends Fragment> implements TabListener {
     private final Activity mActivity;
     private final String mTag;
     private final Class<T> mClass;
-    private String date, parent;
+    private Bundle bundle;
 
     /** Constructor used each time a new tab is created.
       * @param activity  The host Activity, used to instantiate the fragment
       * @param tag  The identifier tag for the fragment
       * @param clz  The fragment's Class, used to instantiate the fragment
       */
-    public FragmentTabListener(Activity activity, String tag, Class<T> clz, String date, String parent) {
+    public FragmentTabListener(Activity activity, String tag, Class<T> clz, Bundle bundle) {
         mActivity = activity;
         mTag = tag;
         mClass = clz;
-        this.date = date;
-        this.parent = parent;
+        this.bundle = bundle;
     }
 
     /* The following are each of the ActionBar.TabListener callbacks */
@@ -37,10 +36,7 @@ public class FragmentTabListener<T extends Fragment> implements TabListener {
         if (mFragment == null) {
             // If not, instantiate and add it to the activity
             mFragment = Fragment.instantiate(mActivity, mClass.getName());
-            Bundle stuff = new Bundle();
-            stuff.putString("event_date", date);
-            stuff.putString("parent", parent);
-            mFragment.setArguments(stuff);
+            mFragment.setArguments(bundle);
             ft.add(android.R.id.content, mFragment, mTag);
             
         } else {
