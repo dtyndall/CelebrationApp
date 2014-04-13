@@ -44,6 +44,7 @@ public class EventProfile extends Fragment {
 	
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
+		
 		super.onActivityCreated(savedInstanceState);
 		dbTools = new DBTools(getActivity());
 		
@@ -85,7 +86,6 @@ public class EventProfile extends Fragment {
 
 					eventCat.setText(eventList.get("event_category"));
 					eventName.setText(eventList.get("event_name"));
-
 					if (eventList.get("author_name").contains(",")) {
 
 						authorName.setVisibility(View.INVISIBLE);
@@ -242,9 +242,11 @@ public class EventProfile extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+
 		getActivity().getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
 		getActivity().invalidateOptionsMenu();
 		return inflater.inflate(R.layout.event_profile, container, false);
+		
 	}
 
 

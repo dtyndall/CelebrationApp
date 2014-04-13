@@ -8,20 +8,28 @@ import android.app.ActionBar.Tab;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.MenuItem;
 
 public class TabbedSchedule extends Fragment {
 
 	Listener listener;
+	Bundle extras;
+	DBTools dbTools;
+	ActionBar a;
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		DBTools dbTools = new DBTools(getActivity().getBaseContext());
-		ActionBar a = getActivity().getActionBar();
+		dbTools = new DBTools(getActivity().getBaseContext());
+		a = getActivity().getActionBar();
 		a.show();
 		a.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		a.setDisplayShowTitleEnabled(true);
 
+		
+	}
+	
+	public void makeList(){
 		Tab tab;
 
 		String parent = listener.getVal("parent");
@@ -34,13 +42,6 @@ public class TabbedSchedule extends Fragment {
 		else if (parent.equals("personal"))
 			list = dbTools.getFavoriteDays();
 		
-		
-		
-		
-		
-		
-		
-		
 		for (HashMap<String, String> date : list) {
 			tab = a.newTab()
 					.setText(date.get("public"))
@@ -51,7 +52,56 @@ public class TabbedSchedule extends Fragment {
 			a.addTab(tab);
 		}
 	}
+	
+	
+	
+	
+	public boolean onOptionsItemSelected(MenuItem item) {
+		//TODO:ADD CHECK FOR ACTUAL ITEM CLICK
+		
+		switch (item.getItemId()) {
+	    case R.id.time:
+	    	System.out.println("SOMOWETNIONGS");
+	    	extras.remove("parent");
+	    	extras.putString("parent", "1");
+	    	
+	      break;
+	    case R.id.author: 
+	    	extras.remove("parent");
+	    	extras.putString("parent", "filter");
+	    	extras.putString("filter", "author_name");
+	    	break;
+	    case R.id.leader:
+	    	extras.remove("parent");
+	    	extras.putString("parent", "filter");
+	    	extras.putString("filter", "track");
+	    	extras.putString("type", "Leadership");
+	    	break;
+	    case R.id.technical:
+	    	extras.remove("parent");
+	    	extras.putString("parent", "filter");
+	    	extras.putString("filter", "track");
+	    	extras.putString("type", "Technical Excellence");
+	    	break;
+	    case R.id.civic:
+	    	extras.remove("parent");
+	    	extras.putString("parent", "filter");
+	    	extras.putString("filter", "track");
+	    	extras.putString("type", "Civic Engagement");
+	    	break;
+	    case R.id.corps:
+	    	extras.remove("parent");
+	    	extras.putString("parent", "filter");
+	    	extras.putString("filter", "track");
+	    	extras.putString("type", "Corps Practices");
+	    	break;
 
+	    default:
+	      break;
+	    }
+
+		return true;
+	}
 	
 	@Override
 	public void onDestroy() {
