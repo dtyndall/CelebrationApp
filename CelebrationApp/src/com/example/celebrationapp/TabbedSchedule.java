@@ -21,6 +21,7 @@ public class TabbedSchedule extends Fragment {
 		super.onActivityCreated(savedInstanceState);
 		dbTools = new DBTools(getActivity().getBaseContext());
 		a = getActivity().getActionBar();
+		a.removeAllTabs();
 		a.show();
 		a.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		a.setDisplayShowTitleEnabled(true);
