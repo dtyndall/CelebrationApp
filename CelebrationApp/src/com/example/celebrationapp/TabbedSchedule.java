@@ -8,6 +8,7 @@ import android.app.ActionBar.Tab;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.MenuItem;
 
 public class TabbedSchedule extends Fragment {
@@ -15,10 +16,19 @@ public class TabbedSchedule extends Fragment {
 	Listener listener;
 	DBTools dbTools;
 	ActionBar a;
-
+	Bundle bundle;
+	
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+		
+		bundle = getArguments();
+		
+		if(bundle!=null)
+			if(bundle.containsKey("author"))
+				Log.d("debug", "" + bundle.getString("author"));
+		
+		
 		dbTools = new DBTools(getActivity().getBaseContext());
 		a = getActivity().getActionBar();
 		a.removeAllTabs();
