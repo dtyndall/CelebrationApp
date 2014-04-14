@@ -18,10 +18,19 @@ public class TabbedSchedule extends Fragment {
 	Listener listener;
 	DBTools dbTools;
 	ActionBar a;
-
+	Bundle bundle;
+	
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+		
+		bundle = getArguments();
+		
+		if(bundle!=null)
+			if(bundle.containsKey("author"))
+				Log.d("debug", "" + bundle.getString("author"));
+		
+		
 		dbTools = new DBTools(getActivity().getBaseContext());
 		a = getActivity().getActionBar();
 		a.removeAllTabs();

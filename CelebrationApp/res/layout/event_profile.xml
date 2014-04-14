@@ -9,35 +9,24 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="24dp"
         android:textStyle="bold"
         android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <Button
-        android:id="@+id/storeFavorite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="50dp"
-        android:layout_marginRight="50dp"
-        />
 
     <TextView
         android:id="@+id/event_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/event_survey"
         android:layout_alignLeft="@+id/event_name"
-        android:layout_below="@+id/event_name"
-        android:layout_marginTop="154dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/event_track"
         android:maxLines="15"
         android:paddingRight="@dimen/activity_margin"
         android:scrollbars="vertical"
-        android:textStyle="bold"
+        android:text="TextView"
         android:textSize="13dp"
-        android:text="TextView" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/event_date"
@@ -82,57 +71,59 @@
         android:text="TextView" />
 
     <TextView
+        android:id="@+id/event_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/event_name"
+        android:text="TextView"
+        android:textSize="17dp"
+        android:textStyle="bold" />
+
+    <TextView
         android:id="@+id/event_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/event_category"
+        android:layout_alignParentRight="true"
         android:layout_below="@+id/event_category"
-        android:layout_marginTop="28dp"
-        android:textStyle="bold"
+        android:text="TextView"
         android:textSize="17dp"
-        android:text="TextView" />
-		
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/event_track"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/event_location"
+        android:text="TextView"
+        android:textSize="17dp"
+        android:textStyle="bold" />
+
     <TextView
         android:id="@+id/event_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/event_date"
+        android:layout_alignParentLeft="true"
         android:layout_below="@+id/event_date"
-        android:layout_marginTop="19dp"
+        android:text="TextView"
         android:textSize="17dp"
-        android:textStyle="bold"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/event_category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/storeFavorite"
-        android:layout_below="@+id/event_name"
-        android:layout_marginTop="22dp"
-        android:textSize="17dp"
-        android:textStyle="bold"
-        android:text="TextView" />
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/event_survey"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/event_description"
-        android:layout_alignTop="@+id/storeFavorite"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
         android:text="Survey" />
 
-    <TextView
-        android:id="@+id/event_track"
+    <Button
+        android:id="@+id/storeFavorite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/event_time"
-        android:layout_alignBottom="@+id/event_time"
-        android:layout_alignLeft="@+id/event_location"
-        android:textStyle="bold"
-        android:textSize="17dp"
-        android:text="TextView" />
-
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true" />
 
 </RelativeLayout>

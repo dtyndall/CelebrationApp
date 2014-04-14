@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -26,6 +27,15 @@ import android.widget.TextView;
 
 @SuppressLint("ValidFragment")
 public class EventProfile extends Fragment {
+
+	Listener listener;
+	
+	@Override
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+		listener = (Listener) activity;
+	}
+
 
 	TextView event_id;
 	TextView event_name;
@@ -108,13 +118,17 @@ public class EventProfile extends Fragment {
 							tv.setOnClickListener(new View.OnClickListener() {
 								@Override
 								public void onClick(View v) {
-									//TODO:
-									Intent authorList = new Intent(getActivity(),
-											Schedule.class);
-									authorList.putExtra("parent", "author");
-									authorList.putExtra("many", "many");
-									authorList.putExtra("author", list.get(index));
-									startActivity(authorList);
+									
+									Bundle bundle = new Bundle();
+									bundle.putString("parent", "author");
+									bundle.putString("many", "many");
+									bundle.putString("author", list.get(index));
+									
+									Fragment fragment = new TabbedSchedule();
+									fragment.setArguments(bundle);
+									
+									listener.LoadNextFragmentWithBackstack(fragment);
+									
 								}
 
 							});
@@ -129,13 +143,16 @@ public class EventProfile extends Fragment {
 						authorName.setOnClickListener(new View.OnClickListener() {
 							@Override
 							public void onClick(View v) {
-								//TODO:
-								Intent authorList = new Intent(getActivity(),
-										TabbedSchedule.class);
-								authorList.putExtra("parent", "author");
-								authorList.putExtra("author",
-										eventList.get("author_name"));
-								startActivity(authorList);
+
+								Bundle bundle = new Bundle();
+								bundle.putString("parent", "author");
+								bundle.putString("author", eventList.get("author_name"));
+								
+								Fragment fragment = new TabbedSchedule();
+								fragment.setArguments(bundle);
+								
+								listener.LoadNextFragmentWithBackstack(fragment);
+								
 							}
 
 						});
@@ -149,12 +166,15 @@ public class EventProfile extends Fragment {
 					eventLocation.setOnClickListener(new View.OnClickListener() {
 						@Override
 						public void onClick(View v) {
-							//TODO:
-							Intent roomList = new Intent(getActivity(),
-									Schedule.class);
-							roomList.putExtra("parent", "room");
-							roomList.putExtra("room", sessionList.get("event_location"));
-							startActivity(roomList);
+							
+							Bundle bundle = new Bundle();
+							bundle.putString("parent", "room");
+							bundle.putString("room", sessionList.get("event_location"));
+							
+							Fragment fragment = new TabbedSchedule();
+							fragment.setArguments(bundle);
+							
+							listener.LoadNextFragmentWithBackstack(fragment);
 						}
 
 					});
