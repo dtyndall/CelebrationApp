@@ -19,6 +19,7 @@ public class TabbedSchedule extends Fragment {
 	DBTools dbTools;
 	ActionBar a;
 	Bundle bundle;
+	String parent="";
 	
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
@@ -26,9 +27,8 @@ public class TabbedSchedule extends Fragment {
 		
 		bundle = getArguments();
 		
-		if(bundle!=null)
-			if(bundle.containsKey("author"))
-				Log.d("debug", "" + bundle.getString("author"));
+		if(bundle.containsKey("parent"))
+			parent = bundle.getString("parent");
 		
 		
 		dbTools = new DBTools(getActivity().getBaseContext());
@@ -45,7 +45,6 @@ public class TabbedSchedule extends Fragment {
 	
 	public void makeList(){
 		Tab tab;
-		String parent = listener.getVal("parent");
 		ArrayList<HashMap<String,String>> list = null;
 		
 		if (parent.equals("1")){
@@ -53,7 +52,8 @@ public class TabbedSchedule extends Fragment {
 		}
 		else if (parent.equals("personal")){
 			list = dbTools.getFavoriteDays();
-		}else if(parent.equals("filter")){
+		}else if(parent.equals("author")){
+			list = dbTools.getDays();
 		}
 		
 		for (HashMap<String, String> date : list) {
@@ -71,9 +71,8 @@ public class TabbedSchedule extends Fragment {
 	}
 	
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		Log.d("debug","not called");
-		String parent = listener.getVal("parent");
 		if (!parent.equals("author") && !parent.equals("room")){
+			Log.d("debug","called");
 			inflater.inflate(R.menu.options, menu);
 			super.onCreateOptionsMenu(menu,inflater);
 		}

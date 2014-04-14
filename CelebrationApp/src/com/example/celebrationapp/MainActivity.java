@@ -45,6 +45,7 @@ public class MainActivity extends FragmentActivity implements Listener{
 		fragmentTransaction.addToBackStack(null);
 		fragmentTransaction.commit();
 	}
+	
 	public void setVar(String var, String val) {
 		if (var.equals("parent"))
 			parent = val;

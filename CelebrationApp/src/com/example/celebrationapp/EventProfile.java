@@ -127,6 +127,7 @@ public class EventProfile extends Fragment {
 									Fragment fragment = new TabbedSchedule();
 									fragment.setArguments(bundle);
 									
+									getActivity().getSupportFragmentManager().popBackStack();
 									listener.LoadNextFragmentWithBackstack(fragment);
 									
 								}
@@ -151,6 +152,7 @@ public class EventProfile extends Fragment {
 								Fragment fragment = new TabbedSchedule();
 								fragment.setArguments(bundle);
 								
+								getActivity().getSupportFragmentManager().popBackStack();
 								listener.LoadNextFragmentWithBackstack(fragment);
 								
 							}
@@ -174,6 +176,7 @@ public class EventProfile extends Fragment {
 							Fragment fragment = new TabbedSchedule();
 							fragment.setArguments(bundle);
 							
+							getActivity().getSupportFragmentManager().popBackStack();
 							listener.LoadNextFragmentWithBackstack(fragment);
 						}
 

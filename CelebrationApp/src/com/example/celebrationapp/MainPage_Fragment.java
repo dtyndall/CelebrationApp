@@ -88,9 +88,12 @@ public class MainPage_Fragment extends Fragment {
 		Tabbed.setOnClickListener(new OnClickListener() {
 			public void onClick(View view) {
 
-				listener.setVar("parent", "1");
-				listener.LoadNextFragmentWithBackstack(new TabbedSchedule());
-
+				Bundle bundle = new Bundle();
+				bundle.putString("parent", "1");
+				
+				Fragment fragment = new TabbedSchedule();
+				fragment.setArguments(bundle);
+				listener.LoadNextFragmentWithBackstack(fragment);
 			}
 		});
 
@@ -100,10 +103,12 @@ public class MainPage_Fragment extends Fragment {
 				.findViewById(R.id.showPersonalSchedule);
 		showPersonalSchedule.setOnClickListener(new OnClickListener() {
 			public void onClick(View view) {
-
-				listener.setVar("parent", "personal");
-				listener.LoadNextFragmentWithBackstack(new TabbedSchedule());
-
+				Bundle bundle = new Bundle();
+				bundle.putString("parent", "personal");
+				
+				Fragment fragment = new TabbedSchedule();
+				fragment.setArguments(bundle);
+				listener.LoadNextFragmentWithBackstack(fragment);
 			}
 		});
 		
