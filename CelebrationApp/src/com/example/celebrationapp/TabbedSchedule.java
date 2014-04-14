@@ -8,6 +8,9 @@ import android.app.ActionBar.Tab;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
 public class TabbedSchedule extends Fragment {
@@ -25,6 +28,7 @@ public class TabbedSchedule extends Fragment {
 		a.show();
 		a.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		a.setDisplayShowTitleEnabled(true);
+		this.setHasOptionsMenu(true);
 		
 
 		makeList();
@@ -40,7 +44,9 @@ public class TabbedSchedule extends Fragment {
 		}
 		else if (parent.equals("personal")){
 			list = dbTools.getFavoriteDays();
+		}else if(parent.equals("filter")){
 		}
+		
 		for (HashMap<String, String> date : list) {
 		Bundle extras = new Bundle();	
 		extras.putString("parent",parent);
@@ -55,56 +61,56 @@ public class TabbedSchedule extends Fragment {
 		}
 	}
 	
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		Log.d("debug","not called");
+		String parent = listener.getVal("parent");
+		if (!parent.equals("author") && !parent.equals("room")){
+			inflater.inflate(R.menu.options, menu);
+			super.onCreateOptionsMenu(menu,inflater);
+		}
+	}
 	
+	public boolean onOptionsItemSelected(MenuItem item) {
+		//TODO:ADD CHECK FOR ACTUAL ITEM CLICK
+		Bundle extras = new Bundle();
+		switch (item.getItemId()) {
+	    case R.id.time:
+	    	extras.remove("parent");
+	    	extras.putString("parent", "1");
+	    	
+	      break;
+	    case R.id.author: 
+	    	listener.setVar("parent", "filter");
+	    	extras.putString("filter", "author_name");
+	    	break;
+	    case R.id.leader:
+	    	listener.setVar("parent", "filter");
+	    	extras.putString("filter", "track");
+	    	extras.putString("type", "Leadership");
+	    	break;
+	    case R.id.technical:
+	    	listener.setVar("parent", "filter");
+	    	extras.putString("filter", "track");
+	    	extras.putString("type", "Technical Excellence");
+	    	break;
+	    case R.id.civic:
+	    	listener.setVar("parent", "filter");
+	    	extras.putString("filter", "track");
+	    	extras.putString("type", "Civic Engagement");
+	    	break;
+	    case R.id.corps:
+	    	listener.setVar("parent", "filter");
+	    	extras.putString("filter", "track");
+	    	extras.putString("type", "Corps Practices");
+	    	break;
+
+	    default:
+	      break;
+	    }
+		makeList();
+		return true;
+	}
 	
-	
-//	public boolean onOptionsItemSelected(MenuItem item) {
-//		//TODO:ADD CHECK FOR ACTUAL ITEM CLICK
-//		
-//		switch (item.getItemId()) {
-//	    case R.id.time:
-//	    	System.out.println("SOMOWETNIONGS");
-//	    	extras.remove("parent");
-//	    	extras.putString("parent", "1");
-//	    	
-//	      break;
-//	    case R.id.author: 
-//	    	extras.remove("parent");
-//	    	extras.putString("parent", "filter");
-//	    	extras.putString("filter", "author_name");
-//	    	break;
-//	    case R.id.leader:
-//	    	extras.remove("parent");
-//	    	extras.putString("parent", "filter");
-//	    	extras.putString("filter", "track");
-//	    	extras.putString("type", "Leadership");
-//	    	break;
-//	    case R.id.technical:
-//	    	extras.remove("parent");
-//	    	extras.putString("parent", "filter");
-//	    	extras.putString("filter", "track");
-//	    	extras.putString("type", "Technical Excellence");
-//	    	break;
-//	    case R.id.civic:
-//	    	extras.remove("parent");
-//	    	extras.putString("parent", "filter");
-//	    	extras.putString("filter", "track");
-//	    	extras.putString("type", "Civic Engagement");
-//	    	break;
-//	    case R.id.corps:
-//	    	extras.remove("parent");
-//	    	extras.putString("parent", "filter");
-//	    	extras.putString("filter", "track");
-//	    	extras.putString("type", "Corps Practices");
-//	    	break;
-//
-//	    default:
-//	      break;
-//	    }
-//
-//		return true;
-//	}
-//	
 	@Override
 	public void onDestroy() {
 		super.onDestroy();

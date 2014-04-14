@@ -52,11 +52,10 @@ public class Schedule extends android.app.Fragment implements OnItemClickListene
 		String authorName = extras.getString("author");
 		String many = extras.getString("many");
 		String roomNum = extras.getString("room");
-		String filterBy = extras.getString("key");
+		String filterBy = extras.getString("filter");
 		String type = extras.getString("type");
 
 		ListAdapter adapter = null;
-Log.d("fuck","HERE BE PARENT "+ eventDate);
 		if (parent.equals("1")) {
 			ArrayList<HashMap<String, String>> sessionList = dbTools
 					.getSessions(eventDate);
@@ -91,63 +90,62 @@ Log.d("fuck","HERE BE PARENT "+ eventDate);
 		this.setHasOptionsMenu(true);
 	}
 
-	@Override
-	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		String parent = listener.getVal("parent");
-		if (!parent.equals("author") && !parent.equals("room"))
-			inflater.inflate(R.menu.options, menu);
-	}
+//	@Override
+//	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//		String parent = listener.getVal("parent");
+//		if (!parent.equals("author") && !parent.equals("room"))
+//			inflater.inflate(R.menu.options, menu);
+//	}
 
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		//TODO:ADD CHECK FOR ACTUAL ITEM CLICK
-		
-		switch (item.getItemId()) {
-	    case R.id.time:
-	    	System.out.println("SOMOWETNIONGS");
-	    	extras.remove("parent");
-	    	extras.putString("parent", "1");
-	    	
-	      break;
-	    case R.id.author: 
-	    	extras.remove("parent");
-	    	extras.putString("parent", "filter");
-	    	extras.putString("filter", "author_name");
-	    	break;
-	    case R.id.leader:
-	    	extras.remove("parent");
-	    	extras.putString("parent", "filter");
-	    	extras.putString("filter", "track");
-	    	extras.putString("type", "Leadership");
-	    	break;
-	    case R.id.technical:
-	    	extras.remove("parent");
-	    	extras.putString("parent", "filter");
-	    	extras.putString("filter", "track");
-	    	extras.putString("type", "Technical Excellence");
-	    	break;
-	    case R.id.civic:
-	    	extras.remove("parent");
-	    	extras.putString("parent", "filter");
-	    	extras.putString("filter", "track");
-	    	extras.putString("type", "Civic Engagement");
-	    	break;
-	    case R.id.corps:
-	    	extras.remove("parent");
-	    	extras.putString("parent", "filter");
-	    	extras.putString("filter", "track");
-	    	extras.putString("type", "Corps Practices");
-	    	break;
+//	public boolean onOptionsItemSelected(MenuItem item) {
+//		//TODO:ADD CHECK FOR ACTUAL ITEM CLICK
+//		
+//		switch (item.getItemId()) {
+//	    case R.id.time:
+//	    	System.out.println("SOMOWETNIONGS");
+//	    	extras.remove("parent");
+//	    	extras.putString("parent", "1");
+//	    	
+//	      break;
+//	    case R.id.author: 
+//	    	extras.remove("parent");
+//	    	extras.putString("parent", "filter");
+//	    	extras.putString("filter", "author_name");
+//	    	break;
+//	    case R.id.leader:
+//	    	extras.remove("parent");
+//	    	extras.putString("parent", "filter");
+//	    	extras.putString("filter", "track");
+//	    	extras.putString("type", "Leadership");
+//	    	break;
+//	    case R.id.technical:
+//	    	extras.remove("parent");
+//	    	extras.putString("parent", "filter");
+//	    	extras.putString("filter", "track");
+//	    	extras.putString("type", "Technical Excellence");
+//	    	break;
+//	    case R.id.civic:
+//	    	extras.remove("parent");
+//	    	extras.putString("parent", "filter");
+//	    	extras.putString("filter", "track");
+//	    	extras.putString("type", "Civic Engagement");
+//	    	break;
+//	    case R.id.corps:
+//	    	extras.remove("parent");
+//	    	extras.putString("parent", "filter");
+//	    	extras.putString("filter", "track");
+//	    	extras.putString("type", "Corps Practices");
+//	    	break;
+//
+//	    default:
+//	      break;
+//	    }
+//
+//		checkStuff();
+//		return true;
+//	}
 
-	    default:
-	      break;
-	    }
-
-		checkStuff();
-		return true;
-	}
-
-	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 
