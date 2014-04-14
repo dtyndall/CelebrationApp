@@ -13,7 +13,6 @@ import android.view.MenuItem;
 public class TabbedSchedule extends Fragment {
 
 	Listener listener;
-	Bundle extras;
 	DBTools dbTools;
 	ActionBar a;
 
@@ -25,29 +24,31 @@ public class TabbedSchedule extends Fragment {
 		a.show();
 		a.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		a.setDisplayShowTitleEnabled(true);
-
 		
+
+		makeList();
 	}
 	
 	public void makeList(){
 		Tab tab;
-
 		String parent = listener.getVal("parent");
 		ArrayList<HashMap<String,String>> list = null;
 		
 		if (parent.equals("1")){
 			list = dbTools.getDays();
-			//filter = generateFilterList\??;
 		}
-		else if (parent.equals("personal"))
+		else if (parent.equals("personal")){
 			list = dbTools.getFavoriteDays();
-		
+		}
 		for (HashMap<String, String> date : list) {
+		Bundle extras = new Bundle();	
+		extras.putString("parent",parent);
+		extras.putString("event_date", date.get("date"));
 			tab = a.newTab()
 					.setText(date.get("public"))
 					.setTabListener(
 							new FragmentTabListener<Schedule>(getActivity(),
-									"tab", Schedule.class, date.get("date"), parent));
+									"tab", Schedule.class, extras));
 
 			a.addTab(tab);
 		}
@@ -56,53 +57,53 @@ public class TabbedSchedule extends Fragment {
 	
 	
 	
-	public boolean onOptionsItemSelected(MenuItem item) {
-		//TODO:ADD CHECK FOR ACTUAL ITEM CLICK
-		
-		switch (item.getItemId()) {
-	    case R.id.time:
-	    	System.out.println("SOMOWETNIONGS");
-	    	extras.remove("parent");
-	    	extras.putString("parent", "1");
-	    	
-	      break;
-	    case R.id.author: 
-	    	extras.remove("parent");
-	    	extras.putString("parent", "filter");
-	    	extras.putString("filter", "author_name");
-	    	break;
-	    case R.id.leader:
-	    	extras.remove("parent");
-	    	extras.putString("parent", "filter");
-	    	extras.putString("filter", "track");
-	    	extras.putString("type", "Leadership");
-	    	break;
-	    case R.id.technical:
-	    	extras.remove("parent");
-	    	extras.putString("parent", "filter");
-	    	extras.putString("filter", "track");
-	    	extras.putString("type", "Technical Excellence");
-	    	break;
-	    case R.id.civic:
-	    	extras.remove("parent");
-	    	extras.putString("parent", "filter");
-	    	extras.putString("filter", "track");
-	    	extras.putString("type", "Civic Engagement");
-	    	break;
-	    case R.id.corps:
-	    	extras.remove("parent");
-	    	extras.putString("parent", "filter");
-	    	extras.putString("filter", "track");
-	    	extras.putString("type", "Corps Practices");
-	    	break;
-
-	    default:
-	      break;
-	    }
-
-		return true;
-	}
-	
+//	public boolean onOptionsItemSelected(MenuItem item) {
+//		//TODO:ADD CHECK FOR ACTUAL ITEM CLICK
+//		
+//		switch (item.getItemId()) {
+//	    case R.id.time:
+//	    	System.out.println("SOMOWETNIONGS");
+//	    	extras.remove("parent");
+//	    	extras.putString("parent", "1");
+//	    	
+//	      break;
+//	    case R.id.author: 
+//	    	extras.remove("parent");
+//	    	extras.putString("parent", "filter");
+//	    	extras.putString("filter", "author_name");
+//	    	break;
+//	    case R.id.leader:
+//	    	extras.remove("parent");
+//	    	extras.putString("parent", "filter");
+//	    	extras.putString("filter", "track");
+//	    	extras.putString("type", "Leadership");
+//	    	break;
+//	    case R.id.technical:
+//	    	extras.remove("parent");
+//	    	extras.putString("parent", "filter");
+//	    	extras.putString("filter", "track");
+//	    	extras.putString("type", "Technical Excellence");
+//	    	break;
+//	    case R.id.civic:
+//	    	extras.remove("parent");
+//	    	extras.putString("parent", "filter");
+//	    	extras.putString("filter", "track");
+//	    	extras.putString("type", "Civic Engagement");
+//	    	break;
+//	    case R.id.corps:
+//	    	extras.remove("parent");
+//	    	extras.putString("parent", "filter");
+//	    	extras.putString("filter", "track");
+//	    	extras.putString("type", "Corps Practices");
+//	    	break;
+//
+//	    default:
+//	      break;
+//	    }
+//
+//		return true;
+//	}
+//	
 	@Override
 	public void onDestroy() {
 		super.onDestroy();

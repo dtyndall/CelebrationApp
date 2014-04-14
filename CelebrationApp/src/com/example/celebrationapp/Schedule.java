@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -55,7 +56,7 @@ public class Schedule extends android.app.Fragment implements OnItemClickListene
 		String type = extras.getString("type");
 
 		ListAdapter adapter = null;
-
+Log.d("fuck","HERE BE PARENT "+ eventDate);
 		if (parent.equals("1")) {
 			ArrayList<HashMap<String, String>> sessionList = dbTools
 					.getSessions(eventDate);
