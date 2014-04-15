@@ -71,8 +71,9 @@ public class TabbedSchedule extends Fragment {
 	}
 	
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		Log.d("debug","not called");
+		
 		String parent = listener.getVal("parent");
+		Log.d("debug",parent);
 		if (!parent.equals("author") && !parent.equals("room")){
 			inflater.inflate(R.menu.options, menu);
 			super.onCreateOptionsMenu(menu,inflater);
