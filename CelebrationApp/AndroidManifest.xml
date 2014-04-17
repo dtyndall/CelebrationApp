@@ -31,38 +31,35 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.celebrationapp.MainActivity">
+            android:name="com.example.celebrationapp.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
  		</intent-filter>
         </activity>
         <activity 
-            android:name="com.example.celebrationapp.ConnectionDetector">
+            android:name="com.example.celebrationapp.ConnectionDetector"
+            android:screenOrientation="portrait">
         </activity>
         <activity 
-            android:name="com.example.celebrationapp.Schedule">
+            android:name="com.example.celebrationapp.Schedule"
+            android:screenOrientation="portrait">
         </activity>
          <activity 
             android:name="com.example.celebrationapp.EventProfile"
             android:screenOrientation="portrait">
         </activity>
         <activity 
-            android:name="com.example.celebrationapp.Days">
+            android:name="com.example.celebrationapp.TabbedSchedule"
+            android:screenOrientation="portrait">
         </activity>
         <activity 
-            android:name="com.example.celebrationapp.TabbedSchedule">
+            android:name="com.example.celebrationapp.WebViewActivity"
+            android:screenOrientation="portrait">
         </activity>
         <activity 
-            android:name="com.example.celebrationapp.TabbedPersonal">
-        </activity>
-        <activity 
-            android:name="com.example.celebrationapp.TabbedSingle">
-        </activity>
-        <activity 
-            android:name="com.example.celebrationapp.WebViewActivity">
-        </activity>
-        <activity 
-            android:name="com.example.celebrationapp.ViewMap">
+            android:name="com.example.celebrationapp.ViewMap"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

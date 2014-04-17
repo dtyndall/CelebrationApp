@@ -868,6 +868,57 @@ public class DBTools extends SQLiteOpenHelper{
 		}
 		return "notPresent";
 	}
+
+	public ArrayList<HashMap<String, String>> getPosters() {
+		ArrayList<HashMap<String, String>> posterList = new ArrayList<HashMap<String, String>>();
+		
+		String selectAllQuery = "Select * from session inner join event where " +
+				"session.sevent_id=event.event_id " +
+					"AND event.event_category = 'Poster'";
+		
+		SQLiteDatabase database = this.getWritableDatabase();
+		
+		Cursor cursor = database.rawQuery(selectAllQuery, null);
+		
+		if (cursor.moveToFirst()) {
+			do {
+				
+				HashMap<String, String> posterMap = new HashMap<String, String>();
+				
+				posterMap.put("event_id", cursor.getString(0));
+				posterMap.put("event_location", cursor.getString(1));
+				posterMap.put("event_date", cursor.getString(2));
+				posterMap.put("session_id", cursor.getString(4));
+				posterMap.put("sevent_id", cursor.getString(5));
+				posterMap.put("event_name", cursor.getString(6));
+				posterMap.put("author_name", cursor.getString(7));
+				posterMap.put("conf_year", cursor.getString(8));
+				posterMap.put("survey", cursor.getString(9));
+				posterMap.put("track", cursor.getString(10));
+				posterMap.put("event_description", cursor.getString(11));
+				posterMap.put("event_category", cursor.getString(12));
+				
+				try {
+					
+					SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss"); 
+					
+					Date timeDate = time.parse(cursor.getString(3));
+					
+					SimpleDateFormat timeOut = new SimpleDateFormat("hh:mm a");
+					
+					posterMap.put("event_time", timeOut.format(timeDate));
+					
+					
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+				
+				posterList.add(posterMap);
+			} while (cursor.moveToNext());
+			
+		}
+		return posterList;
+	}
 	
 	
 

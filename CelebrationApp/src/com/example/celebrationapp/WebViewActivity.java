@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.webkit.WebView;
 
+
 public class WebViewActivity extends Activity {
 
 	private WebView webView;

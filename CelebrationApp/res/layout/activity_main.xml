@@ -39,4 +39,22 @@
         android:layout_marginTop="47dp"
         android:text="View Map" />
 
+    <TextView
+        android1:id="@+id/tweetView"
+        android1:layout_width="wrap_content"
+        android1:layout_height="wrap_content"
+        android1:layout_alignLeft="@+id/showPersonalSchedule"
+        android1:layout_alignParentBottom="true"
+        android1:layout_alignRight="@+id/showPersonalSchedule" />
+
+    <Button
+        android1:id="@+id/tweetButton"
+        style="?android:attr/buttonStyleSmall"
+        android1:layout_width="wrap_content"
+        android1:layout_height="wrap_content"
+        android1:layout_alignLeft="@+id/tweetView"
+        android1:layout_below="@+id/getMap"
+        android1:layout_marginTop="28dp"
+        android1:text="Button" />
+
 </RelativeLayout>

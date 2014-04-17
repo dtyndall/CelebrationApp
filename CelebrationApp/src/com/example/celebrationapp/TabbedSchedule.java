@@ -53,7 +53,14 @@ public class TabbedSchedule extends Fragment {
 		else if (parent.equals("personal")){
 			list = dbTools.getFavoriteDays();
 		}else if(parent.equals("author")){
-			list = dbTools.getDays();
+			showAuthor();
+			return;
+		}else if(parent.equals("room")){
+			showRoom();
+			return;
+		}else if(parent.equals("poster")){
+			showPosters();
+			return;
 		}
 		
 		for (HashMap<String, String> date : list) {
@@ -68,6 +75,49 @@ public class TabbedSchedule extends Fragment {
 
 			a.addTab(tab);
 		}
+	}
+	
+	public void showAuthor(){
+		Tab tab;
+		Bundle extras = new Bundle();	
+		extras.putString("parent",parent);
+		if(bundle.containsKey("many"))
+			extras.putString("many", "many");
+		extras.putString("author", bundle.getString("author"));
+			tab = a.newTab()
+					.setText(bundle.getString("author"))
+					.setTabListener(
+							new FragmentTabListener<Schedule>(getActivity(),
+									"tab", Schedule.class, extras));
+
+			a.addTab(tab);
+	}
+	
+	public void showRoom(){
+		Tab tab;
+		Bundle extras = new Bundle();	
+		extras.putString("parent",parent);
+		extras.putString("room", bundle.getString("room"));
+			tab = a.newTab()
+					.setText(bundle.getString("room"))
+					.setTabListener(
+							new FragmentTabListener<Schedule>(getActivity(),
+									"tab", Schedule.class, extras));
+
+			a.addTab(tab);
+	}
+	
+	public void showPosters(){
+		Tab tab;
+		Bundle extras = new Bundle();	
+		extras.putString("parent",parent);
+			tab = a.newTab()
+					.setText("Posters")
+					.setTabListener(
+							new FragmentTabListener<Schedule>(getActivity(),
+									"tab", Schedule.class, extras));
+
+			a.addTab(tab);
 	}
 	
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -115,7 +165,7 @@ public class TabbedSchedule extends Fragment {
 	    default:
 	      break;
 	    }
-		makeList();
+		//makeList();
 		return true;
 	}
 	

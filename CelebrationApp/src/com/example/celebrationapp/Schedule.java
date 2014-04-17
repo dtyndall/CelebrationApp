@@ -74,6 +74,10 @@ public class Schedule extends android.app.Fragment implements OnItemClickListene
 			ArrayList<HashMap<String, String>> sessionList = dbTools
 					.getFilteredFavorite(eventDate, filterBy, type);
 			adapter = new CustomListAdapter(getActivity(), sessionList);
+		} else if (parent.equals("poster")){
+			ArrayList<HashMap<String, String>> posterList = dbTools
+					.getPosters();
+			adapter = new CustomListAdapter(getActivity(), posterList);
 		}
 		eventListView.setAdapter(adapter);
 	}
@@ -143,16 +147,27 @@ public class Schedule extends android.app.Fragment implements OnItemClickListene
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 
-		// Gets the HashMap stored in the tile at the selected position
+		
 		HashMap<?, ?> eventId = (HashMap<?, ?>) eventListView
 				.getItemAtPosition(position);
-
-		String event_id = eventId.get("event_id").toString();
-		String session_id = eventId.get("session_id").toString();
+		if(eventId.containsKey("event_category") && 
+				eventId.get("event_category").toString().equals("Poster Session")){
+			System.out.println("running");
+				
+				Bundle bundle = new Bundle();
+				bundle.putString("parent", "poster");
+				
+				Fragment fragment = new TabbedSchedule();
+				fragment.setArguments(bundle);
+				listener.LoadNextFragmentWithBackstack(fragment);
+		}else{
+			String event_id = eventId.get("event_id").toString();
+			String session_id = eventId.get("session_id").toString();
+		
+			Fragment fragment = new EventProfile(event_id, session_id);
 	
-		Fragment fragment = new EventProfile(event_id, session_id);
-
-		listener.LoadNextFragmentWithBackstack(fragment);
+			listener.LoadNextFragmentWithBackstack(fragment);
+		}
 	}
 
 	@Override

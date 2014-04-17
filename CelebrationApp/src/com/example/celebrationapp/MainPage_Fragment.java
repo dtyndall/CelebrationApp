@@ -8,6 +8,8 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -37,6 +39,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -51,6 +54,8 @@ public class MainPage_Fragment extends Fragment {
 	DBTools dbTools;
 	Listener listener;
 	final static String ScreenName = "episod";
+	Twitter tweetList;
+	int tweetIndex =1;
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
@@ -112,7 +117,14 @@ public class MainPage_Fragment extends Fragment {
 			}
 		});
 		
-//		downloadTweets();
+		final Button tweetButton = (Button) getActivity()
+				.findViewById(R.id.tweetButton);
+		tweetButton.setOnClickListener(new OnClickListener() {
+			public void onClick(View view) {
+				downloadTweets();
+			}
+		});
+		
 	}
 
 	@Override
@@ -280,14 +292,37 @@ public class MainPage_Fragment extends Fragment {
 		protected void onPostExecute(String result) {
 			Twitter twits = jsonToTwitter(result);
 
-			for (Tweet tweet : twits) {
-				Log.i("RNC", tweet.getText());
-			}
+//			for (Tweet tweet : twits) {
+//				Log.i("RNC", tweet.getText());
+//			}
 
-			// send the tweets to the adapter for rendering
-			//ArrayAdapter<Tweet> adapter = new ArrayAdapter<Tweet>(getActivity(), android.R.layout.simple_list_item_1, twits);
-			//setListAdapter(adapter);
+			
+			TextView tweetView = (TextView) getActivity().findViewById(R.id.tweetView);
+			tweetList = twits;
+			tweetView.setText(tweetList.get(0).toString());
+			Timer timing = new Timer();
+			timing.schedule(new Updater(tweetView), 3000, 3000);
+			
 		}
+		 private class Updater extends TimerTask {
+		        private final TextView subject;
+
+		        public Updater(TextView subject) {
+		            this.subject = subject;
+		        }
+
+		        @Override
+		        public void run() {
+		            subject.post(new Runnable() {
+		            	
+		                public void run() {
+		                    subject.setText(tweetList.get(tweetIndex).toString());
+		                    tweetIndex++;
+		                }
+		            });
+		        }
+		    }
+
 
 		// converts a string of JSON data into a Twitter object
 		private Twitter jsonToTwitter(String result) {
